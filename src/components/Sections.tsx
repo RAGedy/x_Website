@@ -74,7 +74,7 @@ export function ProblemSection() {
         <div className="text-center mb-16 space-y-4">
           <h2 className="mx-auto max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-5xl">
             Employees spend 20% of their work week searching for information.{' '}
-            <span className="text-ember-orange">Ember</span> reclaims 416 hours per employee per year.
+            <span className="text-ember-orange">Ember</span> reclaims 416 hours per employee, per year.
           </h2>
         </div>
         
