@@ -29,7 +29,7 @@ export function CapabilitiesGrid() {
   }, [highStakesWords.length]);
 
   return (
-    <section className="bg-background py-24 px-6">
+    <section id="use-cases" className="bg-background scroll-mt-20 py-24 px-6">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-16 text-center text-4xl font-semibold tracking-tight text-white md:text-5xl">
           Built for High-Stakes{' '}
@@ -94,7 +94,7 @@ export function SecuritySection() {
   ];
 
   return (
-    <section className="grain-bottom-ember py-24 px-6">
+    <section id="security" className="grain-bottom-ember scroll-mt-20 py-24 px-6">
       <div className="mx-auto max-w-7xl">
         <h2 className="mx-auto max-w-4xl text-center text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
           Secure, sovereign, customizable

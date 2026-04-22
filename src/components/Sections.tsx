@@ -103,7 +103,7 @@ export function ProblemSection() {
 
 export function SolutionSection() {
   return (
-    <section className="hero-gradient border-y border-zinc-900 bg-hero-purple py-24 px-6 overflow-hidden">
+    <section id="platform" className="hero-gradient scroll-mt-20 border-y border-zinc-900 bg-hero-purple py-24 px-6 overflow-hidden">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
