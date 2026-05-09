@@ -294,18 +294,24 @@
   }
   .logo-row {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0,1fr));
-    gap: 24px;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 32px;
     align-items: center;
   }
   .wm {
-    color: var(--muted); opacity: 0.85;
-    font-weight: 500; font-size: 16px; letter-spacing: -0.01em;
-    text-align: center; transition: opacity .2s var(--ease), color .2s var(--ease);
-    font-feature-settings: "ss01";
+    display: flex; align-items: center; justify-content: center;
+    height: 56px;
+    transition: opacity .2s var(--ease);
   }
-  .wm:hover { color: var(--text); opacity: 1; }
-  .wm .dot { display:inline-block; width: 5px; height:5px; background: var(--muted); border-radius: 999px; margin-right: 6px; vertical-align: middle; }
+  .wm img {
+    max-height: 100%; max-width: 100%;
+    width: auto; height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.78;
+    transition: opacity .2s var(--ease);
+  }
+  .wm:hover img { opacity: 1; }
 
   /* ----- How it works ----- */
   .how-grid {
@@ -738,7 +744,7 @@
     .int-grid, .console-grid { grid-template-columns: 1fr; gap: 40px; }
     .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
     .footer-brand { grid-column: 1 / -1; }
-    .logo-row { grid-template-columns: repeat(3, 1fr); row-gap: 24px; }
+    .logo-row { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
   }
   @media (max-width: 768px) {
     .wrap { padding: 0 20px; }
@@ -852,12 +858,10 @@
     <div class="wrap">
       <div class="label">Wired into the stacks of teams shipping serious agents</div>
       <div class="logo-row">
-        <div class="wm"><span class="dot"></span>NORTHRIDGE</div>
-        <div class="wm">▲ Atelier</div>
-        <div class="wm">Halcyon&nbsp;Labs</div>
-        <div class="wm">parallax/</div>
-        <div class="wm">◇ Meridian</div>
-        <div class="wm">Soren&nbsp;&amp;&nbsp;Co</div>
+        <div class="wm"><img src="assets/logos/dukeendowment_light.png" alt="The Duke Endowment"></div>
+        <div class="wm"><img src="assets/logos/DIIG.png" alt="DIIG"></div>
+        <div class="wm"><img src="assets/logos/sapien_labs.png" alt="Sapien Labs"></div>
+        <div class="wm"><img src="assets/logos/WSU.png" alt="WSU"></div>
       </div>
     </div>
   </section>
@@ -1333,35 +1337,36 @@
     window.addEventListener('resize', resize);
 
     // Nodes scattered through a 3D box. Slight drift gives the graph life.
-    var NODE_COUNT = 64;
+    var INITIAL_NODE_COUNT = 64;
     var nodes = [];
-    for (var i = 0; i < NODE_COUNT; i++) {
-      // Bias distribution: avoid the dead center, prefer outer band
+    function makeBaseNode() {
       var theta = Math.random() * Math.PI * 2;
       var phi   = Math.acos(2 * Math.random() - 1);
       var rad   = 0.55 + Math.random() * 0.55;
-      nodes.push({
+      return {
         x: rad * Math.sin(phi) * Math.cos(theta),
         y: rad * Math.cos(phi) * 0.62,
         z: rad * Math.sin(phi) * Math.sin(theta),
-        // tiny drift velocities
         vx: (Math.random() - 0.5) * 0.00018,
         vy: (Math.random() - 0.5) * 0.00012,
         vz: (Math.random() - 0.5) * 0.00018,
-        r: 1.1 + Math.random() * 0.7
-      });
+        r: 1.1 + Math.random() * 0.7,
+        bornAt: 0 // 0 = always alive; nonzero = cursor-spawned, ramps in
+      };
     }
+    for (var i = 0; i < INITIAL_NODE_COUNT; i++) nodes.push(makeBaseNode());
 
     var activeEdges = [];
-    var MAX_EDGES = 22;
+    var MAX_EDGES = 36;
 
     function maybeSpawnEdge(now) {
       if (activeEdges.length >= MAX_EDGES) return;
-      var a = (Math.random() * NODE_COUNT) | 0;
+      var N = nodes.length;
+      var a = (Math.random() * N) | 0;
       // Find a near neighbour by sampling
       var bestB = -1, bestD = Infinity;
       for (var k = 0; k < 7; k++) {
-        var b = (Math.random() * NODE_COUNT) | 0;
+        var b = (Math.random() * N) | 0;
         if (b === a) continue;
         var dx = nodes[a].x - nodes[b].x;
         var dy = nodes[a].y - nodes[b].y;
@@ -1393,6 +1398,77 @@
     var rafId = 0;
     var paused = false;
 
+    // Cursor-spawned nodes join the 3D graph. Inverse-project the cursor onto
+    // the z=0 plane (using current rotation) so spawned dots sit visually under
+    // the cursor, then drift and form edges like the original nodes.
+    var MAX_CURSOR_NODES = 110;
+    var cursorNodeQueue = []; // FIFO of indices into `nodes`; recycled when full
+    var lastCursorSpawn = 0;
+
+    function inverseProjectToWorld(sx, sy) {
+      var cx = W / 2;
+      var cy = H / 2;
+      var scale = Math.min(W, H) * 0.62;
+      var cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+      var tilt = Math.sin(rotY * 0.35) * 0.07;
+      var cosX = Math.cos(tilt), sinX = Math.sin(tilt);
+      // Pin to z2 = 0 plane → f = 1
+      var x1 = (sx - cx) / scale;
+      var y1 = (sy - cy) / scale;
+      // Inverse X-rotation (with z2 = 0)
+      var y = y1 * cosX;
+      var z1 = -y1 * sinX;
+      // Inverse Y-rotation
+      var x = x1 * cosY - z1 * sinY;
+      var z = x1 * sinY + z1 * cosY;
+      return { x: x, y: y, z: z };
+    }
+
+    function spawnCursorNode(sx, sy, now) {
+      var w = inverseProjectToWorld(sx, sy);
+      var jitter = 0.025;
+      var node = {
+        x: w.x + (Math.random() - 0.5) * jitter,
+        y: w.y + (Math.random() - 0.5) * jitter,
+        z: w.z + (Math.random() - 0.5) * jitter,
+        vx: (Math.random() - 0.5) * 0.00022,
+        vy: (Math.random() - 0.5) * 0.00016,
+        vz: (Math.random() - 0.5) * 0.00022,
+        r: 1.0 + Math.random() * 0.8,
+        bornAt: now
+      };
+      var idx;
+      if (cursorNodeQueue.length >= MAX_CURSOR_NODES) {
+        // Recycle oldest cursor node — keeps `nodes` indices stable so edges
+        // referencing it stay valid (though we drop edges touching it for
+        // visual cleanliness since the node teleports).
+        idx = cursorNodeQueue.shift();
+        nodes[idx] = node;
+        for (var ei = activeEdges.length - 1; ei >= 0; ei--) {
+          var ae = activeEdges[ei];
+          if (ae.a === idx || ae.b === idx) activeEdges.splice(ei, 1);
+        }
+      } else {
+        idx = nodes.length;
+        nodes.push(node);
+      }
+      cursorNodeQueue.push(idx);
+    }
+
+    var hero = canvas.parentElement;
+    if (hero && !prefersReduced) {
+      hero.addEventListener('pointermove', function (ev) {
+        var now = performance.now();
+        if (now - lastCursorSpawn < 70) return; // ~14 spawns/sec max
+        lastCursorSpawn = now;
+        var rect = canvas.getBoundingClientRect();
+        var mx = ev.clientX - rect.left;
+        var my = ev.clientY - rect.top;
+        if (mx < 0 || my < 0 || mx > rect.width || my > rect.height) return;
+        spawnCursorNode(mx, my, now);
+      });
+    }
+
     document.addEventListener('visibilitychange', function () {
       paused = document.hidden;
       if (!paused) { lastT = performance.now(); rafId = requestAnimationFrame(frame); }
@@ -1406,7 +1482,8 @@
       rotY += dt * 0.00012; // very slow azimuth
 
       // Drift nodes
-      for (var i = 0; i < NODE_COUNT; i++) {
+      var N = nodes.length;
+      for (var i = 0; i < N; i++) {
         var n = nodes[i];
         n.x += n.vx * dt; n.y += n.vy * dt; n.z += n.vz * dt;
         // Soft bounds
@@ -1441,8 +1518,8 @@
       var cosX = Math.cos(tilt);
       var sinX = Math.sin(tilt);
 
-      var projected = new Array(NODE_COUNT);
-      for (var p = 0; p < NODE_COUNT; p++) {
+      var projected = new Array(N);
+      for (var p = 0; p < N; p++) {
         var nn = nodes[p];
         // rotate Y
         var x1 = nn.x * cosY + nn.z * sinY;
@@ -1498,16 +1575,21 @@
       }
       ctx.shadowBlur = 0;
 
-      // Nodes — small open circles, depth-faded
+      // Nodes — small open circles, depth-faded. Cursor-spawned nodes ramp in.
       for (var ni = 0; ni < projected.length; ni++) {
         var pp = projected[ni];
+        var nd = nodes[ni];
         var df = 0.4 + (pp.d + 1) * 0.3;
-        var rr = nodes[ni].r * (0.7 + pp.f * 0.35);
+        var rr = nd.r * (0.7 + pp.f * 0.35);
+        var fadeIn = 1;
+        if (nd.bornAt) {
+          fadeIn = Math.min(1, (now - nd.bornAt) / 600);
+        }
         ctx.beginPath();
         ctx.arc(pp.sx, pp.sy, rr, 0, Math.PI * 2);
         ctx.fillStyle = '#07071A';
         ctx.fill();
-        ctx.strokeStyle = 'rgba(244,244,248,' + (0.55 * df) + ')';
+        ctx.strokeStyle = 'rgba(244,244,248,' + (0.55 * df * fadeIn) + ')';
         ctx.lineWidth = 1;
         ctx.stroke();
       }
