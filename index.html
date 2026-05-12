@@ -278,6 +278,43 @@
     padding: 0 0.12em 0.04em 0.04em;
     margin: 0 -0.12em 0 -0.04em;
   }
+
+  /* Rotating headline phrase */
+  .rot-wrap {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    vertical-align: -0.25em;
+    height: 1.15em;
+  }
+  .rot-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    font-style: italic;
+    font-weight: 600;
+    background: var(--ember);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 0 0.55em 0.04em 0.04em;
+  }
+  .rot-item.rot-active { opacity: 1; }
+
+  /* "industry works" underline highlight */
+  .h2 em.ind-hl {
+    font-style: normal;
+    background: linear-gradient(90deg, #2DD4BF, #818CF8) no-repeat 0 100% / 100% 4px;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: var(--text);
+    display: inline-block;
+    padding: 0 0 5px;
+    margin: 0;
+  }
   .lede {
     color: var(--muted); font-size: 17px; line-height: 1.55; max-width: 60ch;
   }
@@ -856,7 +893,7 @@
   <!-- ============== LOGO STRIP ============== -->
   <section class="logo-strip iv" aria-label="Trusted by">
     <div class="wrap">
-      <div class="label">Wired into the stacks of teams at the top levels of finance, consulting, and elsewhere.</div>
+      <div class="label">Wired into the stacks of early design partners across  consulting, finance, and elsewhere.</div>
       <div class="logo-row">
         <div class="wm"><img src="assets/logos/dukeendowment_light.png" alt="The Duke Endowment"></div>
         <div class="wm"><img src="assets/logos/DIIG.png" alt="DIIG"></div>
@@ -872,7 +909,7 @@
     <div class="wrap">
       <div class="iv">
         <div class="kicker">The pipeline</div>
-        <h2 class="h2">From every document<br/>to a single <em>company brain</em>.</h2>
+        <h2 class="h2" id="rotH2">A back-brain for agents<br/>in <span class="rot-wrap" id="rotWrap" aria-live="polite">&#8203;<span class="rot-item rot-active" style="padding-right:0.7em">the venture capital</span><span class="rot-item" style="padding-right:0.7em">the private equity</span><span class="rot-item">the consulting</span><span class="rot-item" style="padding-right:0.35em">any</span></span> vertical.</h2>
         <p class="lede">Ember ingests the long tail of institutional knowledge — across file types, across tenants — and assembles it into a graph-RAG structure your agents can navigate. No bespoke embeddings work. No retrieval pipeline to maintain.</p>
       </div>
 
@@ -1049,7 +1086,7 @@
     <div class="wrap">
       <div class="iv">
         <div class="kicker">Graph RAG, rebuilt</div>
-        <h2 class="h2">Retrieval that <em>understands</em><br/>how your company thinks.</h2>
+        <h2 class="h2">Retrieval that <em>understands</em><br/>how your <em class="ind-hl">industry works</em>.</h2>
         <p class="lede">Most RAG systems flatten knowledge. Ember preserves the lineage — citations, ownership, version history, the way teams actually reason — so retrieval traces the real shape of institutional memory.</p>
       </div>
 
@@ -1637,6 +1674,66 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     document.querySelectorAll('.iv').forEach(function (el) { io.observe(el); });
+  })();
+
+  // Rotating headline phrase
+  (function () {
+    var wrap = document.getElementById('rotWrap');
+    var h2 = document.getElementById('rotH2');
+    if (!wrap || !h2) return;
+    var items = Array.prototype.slice.call(wrap.querySelectorAll('.rot-item'));
+    var current = 0;
+    var phrases = ['the venture capital', 'the private equity', 'the consulting', 'any'];
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Measure the absolutely-positioned items directly. They render at their
+    // natural width regardless of the wrap's constrained width, and
+    // getBoundingClientRect() returns sub-pixel precision — Math.ceil + a
+    // small buffer guards against italic ink-overhang past the advance width.
+    function measureItems() {
+      return items.map(function (item) {
+        return Math.ceil(item.getBoundingClientRect().width) + 4;
+      });
+    }
+
+    var widths = measureItems();
+    wrap.style.width = widths[0] + 'px';
+
+    window.addEventListener('resize', function () {
+      widths = measureItems();
+      wrap.style.width = widths[current] + 'px';
+    });
+
+    if (prefersReduced) return;
+
+    var animId = 0;
+    var animStart, animFrom, animTo;
+    var ANIM_MS = 850;
+
+    function easeOut(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function stepWidth(ts) {
+      if (!animStart) animStart = ts;
+      var t = Math.min((ts - animStart) / ANIM_MS, 1);
+      wrap.style.width = (animFrom + (animTo - animFrom) * easeOut(t)) + 'px';
+      if (t < 1) animId = requestAnimationFrame(stepWidth);
+    }
+
+    function advance() {
+      var prevWidth = widths[current];
+      items[current].classList.remove('rot-active');
+      current = (current + 1) % phrases.length;
+      items[current].classList.add('rot-active');
+      if (animId) cancelAnimationFrame(animId);
+      animStart = null;
+      animFrom = prevWidth;
+      animTo = widths[current];
+      animId = requestAnimationFrame(stepWidth);
+    }
+
+    setInterval(advance, 4000);
   })();
 
   // Code tab switcher
