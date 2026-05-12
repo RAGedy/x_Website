@@ -278,6 +278,43 @@
     padding: 0 0.12em 0.04em 0.04em;
     margin: 0 -0.12em 0 -0.04em;
   }
+
+  /* Rotating headline phrase */
+  .rot-wrap {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    vertical-align: -0.25em;
+    height: 1.15em;
+  }
+  .rot-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    font-style: italic;
+    font-weight: 600;
+    background: var(--ember);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 0 0.55em 0.04em 0.04em;
+  }
+  .rot-item.rot-active { opacity: 1; }
+
+  /* "industry works" underline highlight */
+  .h2 em.ind-hl {
+    font-style: normal;
+    background: linear-gradient(90deg, #2DD4BF, #818CF8) no-repeat 0 100% / 100% 4px;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: var(--text);
+    display: inline-block;
+    padding: 0 0 5px;
+    margin: 0;
+  }
   .lede {
     color: var(--muted); font-size: 17px; line-height: 1.55; max-width: 60ch;
   }
@@ -856,7 +893,7 @@
   <!-- ============== LOGO STRIP ============== -->
   <section class="logo-strip iv" aria-label="Trusted by">
     <div class="wrap">
-      <div class="label">Wired into the stacks of teams at the top levels of finance, consulting, and elsewhere.</div>
+      <div class="label">Wired into the stacks of early design partners across  consulting, finance, and elsewhere.</div>
       <div class="logo-row">
         <div class="wm"><img src="assets/logos/dukeendowment_light.png" alt="The Duke Endowment"></div>
         <div class="wm"><img src="assets/logos/DIIG.png" alt="DIIG"></div>
@@ -872,7 +909,7 @@
     <div class="wrap">
       <div class="iv">
         <div class="kicker">The pipeline</div>
-        <h2 class="h2">From every document<br/>to a single <em>company brain</em>.</h2>
+        <h2 class="h2" id="rotH2">A back-brain for agents<br/>in <span class="rot-wrap" id="rotWrap" aria-live="polite">&#8203;<span class="rot-item rot-active" style="padding-right:0.7em">the venture capital</span><span class="rot-item" style="padding-right:0.7em">the private equity</span><span class="rot-item">the consulting</span><span class="rot-item" style="padding-right:0.35em">any</span></span> vertical.</h2>
         <p class="lede">Ember ingests the long tail of institutional knowledge — across file types, across tenants — and assembles it into a graph-RAG structure your agents can navigate. No bespoke embeddings work. No retrieval pipeline to maintain.</p>
       </div>
 
@@ -1049,7 +1086,7 @@
     <div class="wrap">
       <div class="iv">
         <div class="kicker">Graph RAG, rebuilt</div>
-        <h2 class="h2">Retrieval that <em>understands</em><br/>how your company thinks.</h2>
+        <h2 class="h2">Retrieval that <em>understands</em><br/>how your <em class="ind-hl">industry works</em>.</h2>
         <p class="lede">Most RAG systems flatten knowledge. Ember preserves the lineage — citations, ownership, version history, the way teams actually reason — so retrieval traces the real shape of institutional memory.</p>
       </div>
 
@@ -1195,11 +1232,11 @@
   <section class="quote-band" id="customers">
     <div class="quote-inner iv">
       <blockquote class="q">
-        We swapped six retrieval pipelines and a rats nest of vector stores for two markdown files. Our agents are sharper, our citations are real, and our security review actually passed.
+        We bolted on Ember and by EOD it was clear it had been night and day for our agents. Zero migration friction, and our team's output is just plain better now.
       </blockquote>
       <div class="q-attr">
-        <span class="av">EM</span>
-        <span><strong style="color:var(--text);font-weight:500;">Elena Marchetti</strong> · VP Platform Engineering, Halcyon Labs</span>
+        <span class="av">DD</span>
+        <span><strong style="color:var(--text);font-weight:500;">David Deal</strong> · Managing Director, Build Consulting</span>
       </div>
     </div>
   </section>
@@ -1230,9 +1267,9 @@
             <span>Ember</span>
           </a>
           <address class="footer-addr">
-            Ember Intelligence Inc.<br/>
-            San Francisco · New York · London<br/>
-            <a href="mailto:hello@ember.ai">hello@ember.ai</a>
+            Ember Intelligence LLC<br/>
+            New York City · Shanghai<br/>
+            <a href="mailto:hello@allember.com">hello@allember.com</a>
           </address>
         </div>
         <div class="footer-col">
@@ -1272,21 +1309,21 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span class="copyright">© 2026 Ember Intelligence Inc. All rights reserved.</span>
+        <span class="copyright">© 2026 Ember Intelligence LLC. All rights reserved.</span>
         <div class="footer-social" aria-label="Social links">
-          <a href="#" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/company/emberintel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <rect x="2" y="6" width="2" height="8"/>
               <circle cx="3" cy="3.5" r="1.2"/>
               <path d="M6 6h2v1.15c0.55-0.85 1.55-1.35 2.65-1.35c1.7 0 2.35 1 2.35 2.7V14h-2V9.5c0-0.9-0.45-1.4-1.25-1.4S8 8.7 8 9.6V14H6z"/>
             </svg>
           </a>
-          <a href="#" aria-label="GitHub">
+          <a href="https://github.com/Ember-Intelligence" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M8 1.5C4.4 1.5 1.5 4.4 1.5 8c0 2.9 1.9 5.3 4.45 6.18c0.3 0.05 0.4-0.13 0.4-0.3v-1.15c-1.8 0.4-2.2-0.85-2.2-0.85c-0.3-0.75-0.7-0.95-0.7-0.95c-0.6-0.4 0.05-0.4 0.05-0.4c0.65 0.05 1 0.65 1 0.65c0.6 1 1.55 0.75 1.95 0.55c0.05-0.4 0.2-0.75 0.4-0.9c-1.4-0.15-2.9-0.7-2.9-3.2c0-0.7 0.25-1.3 0.7-1.7c-0.05-0.2-0.3-0.9 0.1-1.8c0 0 0.55-0.2 1.85 0.65c0.55-0.15 1.1-0.2 1.65-0.2c0.55 0 1.1 0.05 1.65 0.2c1.3-0.85 1.85-0.65 1.85-0.65c0.4 0.9 0.15 1.6 0.1 1.8c0.4 0.45 0.7 1 0.7 1.7c0 2.5-1.5 3.05-2.9 3.2c0.2 0.2 0.4 0.6 0.4 1.2v1.7c0 0.18 0.1 0.35 0.4 0.3C12.6 13.3 14.5 10.9 14.5 8C14.5 4.4 11.6 1.5 8 1.5z"/>
             </svg>
           </a>
-          <a href="#" aria-label="X">
+          <a href="https://x.com/EmbrIntel" target="_blank" rel="noopener noreferrer" aria-label="X">
             <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M9.55 7.05L13.9 2h-1.1L9.05 6.4L6.05 2H2.6l4.55 6.55L2.6 14h1.1l4-4.65L11 14h3.45L9.55 7.05zM8.3 8.55l-0.45-0.65L4.1 2.85h1.65l3 4.3l0.45 0.65l3.85 5.5h-1.65L8.3 8.55z"/>
             </svg>
@@ -1637,6 +1674,66 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     document.querySelectorAll('.iv').forEach(function (el) { io.observe(el); });
+  })();
+
+  // Rotating headline phrase
+  (function () {
+    var wrap = document.getElementById('rotWrap');
+    var h2 = document.getElementById('rotH2');
+    if (!wrap || !h2) return;
+    var items = Array.prototype.slice.call(wrap.querySelectorAll('.rot-item'));
+    var current = 0;
+    var phrases = ['the venture capital', 'the private equity', 'the consulting', 'any'];
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Measure the absolutely-positioned items directly. They render at their
+    // natural width regardless of the wrap's constrained width, and
+    // getBoundingClientRect() returns sub-pixel precision — Math.ceil + a
+    // small buffer guards against italic ink-overhang past the advance width.
+    function measureItems() {
+      return items.map(function (item) {
+        return Math.ceil(item.getBoundingClientRect().width) + 4;
+      });
+    }
+
+    var widths = measureItems();
+    wrap.style.width = widths[0] + 'px';
+
+    window.addEventListener('resize', function () {
+      widths = measureItems();
+      wrap.style.width = widths[current] + 'px';
+    });
+
+    if (prefersReduced) return;
+
+    var animId = 0;
+    var animStart, animFrom, animTo;
+    var ANIM_MS = 850;
+
+    function easeOut(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function stepWidth(ts) {
+      if (!animStart) animStart = ts;
+      var t = Math.min((ts - animStart) / ANIM_MS, 1);
+      wrap.style.width = (animFrom + (animTo - animFrom) * easeOut(t)) + 'px';
+      if (t < 1) animId = requestAnimationFrame(stepWidth);
+    }
+
+    function advance() {
+      var prevWidth = widths[current];
+      items[current].classList.remove('rot-active');
+      current = (current + 1) % phrases.length;
+      items[current].classList.add('rot-active');
+      if (animId) cancelAnimationFrame(animId);
+      animStart = null;
+      animFrom = prevWidth;
+      animTo = widths[current];
+      animId = requestAnimationFrame(stepWidth);
+    }
+
+    setInterval(advance, 4000);
   })();
 
   // Code tab switcher
