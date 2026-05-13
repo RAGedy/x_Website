@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Careers — Ember Intelligence</title>
-<meta name="description" content="Open roles at Ember Intelligence. The institutional knowledge layer for AI agents inside finance and consulting firms." />
+<title>BD Intern — Summer 2026 — Ember Intelligence</title>
+<meta name="description" content="Summer 2026 Business Development Intern at Ember Intelligence. Run our LinkedIn and X accounts and own the broader social strategy. SF / NY, hybrid or remote, conversion to full- or part-time available." />
 <meta name="theme-color" content="#07071A" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -88,93 +88,126 @@
     box-shadow: 0 1px 0 rgba(255,233,199,0.04) inset, 0 10px 30px rgba(228, 90, 123, 0.10), 0 0 0 1px rgba(228, 90, 123, 0.04);
   }
 
-  /* Page header */
-  .page-head { padding: 96px 0 56px; text-align: left; position: relative; }
-  .eyebrow {
-    font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--muted); display: inline-flex; align-items: center; gap: 10px;
-    padding: 8px 14px; border: 1px solid var(--hairline); border-radius: 999px;
-    background: rgba(11,11,34,0.6);
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  /* Role detail header */
+  .role-detail-head { padding: 64px 0 36px; }
+  .backlink {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 13px; letter-spacing: -0.005em;
+    transition: color .2s var(--ease);
   }
-  .eyebrow .dot {
-    width: 6px; height: 6px; border-radius: 999px;
-    background: linear-gradient(135deg, var(--o3), var(--o4));
-    box-shadow: 0 0 10px rgba(242,166,90,0.6);
+  .backlink:hover { color: var(--text); }
+  .role-detail-head h1 {
+    margin: 24px 0 14px;
+    font-size: clamp(36px, 5.4vw, 60px);
+    letter-spacing: -0.03em; line-height: 1.05; font-weight: 600;
   }
-  .page-title {
-    margin: 24px 0 18px;
-    font-size: clamp(40px, 6vw, 72px);
-    line-height: 1.04; letter-spacing: -0.03em; font-weight: 600;
-    max-width: 22ch;
+  .role-detail-head .role-meta {
+    color: var(--muted); font-size: 14px; letter-spacing: -0.005em;
   }
-  .page-title em {
-    font-style: italic; font-weight: 600;
-    background: var(--ember); -webkit-background-clip: text; background-clip: text;
-    color: transparent; display: inline-block;
-    padding: 0 0.12em 0.04em 0.04em; margin: 0 -0.12em 0 -0.04em;
-  }
-  .page-lede { color: var(--muted); font-size: 17px; line-height: 1.6; max-width: 62ch; margin: 0; }
+  .role-detail-head .role-meta .sep { color: var(--hairline); margin: 0 8px; }
 
-  /* Roles grid (listing) */
-  .roles { padding: 0 0 110px; }
-  .roles-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  /* Detail grid */
+  .role-detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    align-items: start;
+    padding: 24px 0 110px;
   }
-  .role-tile {
-    position: relative; overflow: hidden;
+  .role-prose { min-width: 0; }
+  .prose-inner { max-width: 60%; }
+  .prose-inner h3 {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--muted); display: inline-flex;
+    align-items: center; gap: 10px;
+    margin: 36px 0 14px;
+  }
+  .prose-inner h3::before {
+    content: ""; width: 18px; height: 1px; background: var(--ember); display: inline-block;
+  }
+  .prose-inner h3:first-child { margin-top: 0; }
+  .prose-inner p { margin: 0 0 16px; color: #D6D6E2; font-size: 15.5px; line-height: 1.72; }
+  .prose-inner p.note { color: var(--muted); font-style: italic; font-size: 14px; margin-top: -6px; }
+  .prose-inner strong { color: var(--text); font-weight: 600; }
+  .prose-inner em { color: var(--text); }
+  .prose-inner ul { margin: 0 0 18px; padding: 0 0 0 20px; }
+  .prose-inner ul li { margin: 0 0 10px; color: #D6D6E2; font-size: 15.5px; line-height: 1.7; }
+  .prose-inner ul li::marker { color: var(--muted-2); }
+  .prose-inner a {
+    color: var(--text); border-bottom: 1px solid rgba(228,90,123,0.45);
+    transition: border-color .2s var(--ease);
+  }
+  .prose-inner a:hover { border-bottom-color: var(--o4); }
+  .prose-inner hr {
+    border: 0; height: 1px; margin: 32px 0;
+    background: linear-gradient(90deg, transparent 0%, var(--hairline) 20%, var(--hairline) 80%, transparent 100%);
+  }
+
+  /* Spec sidebar — single rounded card */
+  .role-spec {
+    position: sticky;
+    top: 96px;
     background: var(--bg-elev);
     border: 1px solid var(--hairline);
     border-radius: 18px;
-    padding: 36px 36px 32px;
-    display: flex; flex-direction: column; gap: 16px;
-    color: inherit;
-    transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .35s var(--ease);
+    padding: 28px 28px 24px;
   }
-  .role-tile::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: var(--ember); opacity: .65;
+  .role-spec::before {
+    content: ""; display: block; height: 1px; margin: -28px -28px 24px;
+    background: var(--ember); opacity: .55;
+    border-top-left-radius: 18px; border-top-right-radius: 18px;
   }
-  .role-tile:hover {
-    transform: translateY(-3px);
-    border-color: rgba(228,90,123,0.32);
-    box-shadow: 0 16px 50px rgba(228,90,123,0.08);
-  }
-  .role-tile-top {
-    display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
-  }
-  .role-tile h3 {
-    margin: 0; font-size: 26px; line-height: 1.15;
-    letter-spacing: -0.02em; font-weight: 600; color: var(--text);
-  }
-  .role-tile-arrow {
-    width: 36px; height: 36px; flex: 0 0 36px;
-    border-radius: 999px; border: 1px solid var(--hairline);
-    display: inline-flex; align-items: center; justify-content: center;
-    color: var(--muted); transition: color .2s var(--ease), border-color .2s var(--ease), background-color .2s var(--ease);
-  }
-  .role-tile:hover .role-tile-arrow {
-    color: var(--text); border-color: rgba(242,166,90,0.55);
-    background: rgba(242,166,90,0.06);
-  }
-  .role-tile-meta {
-    font-size: 13px; color: var(--muted); letter-spacing: -0.005em;
-  }
-  .role-tile-meta .sep { color: var(--hairline); margin: 0 8px; }
-  .role-tile-teaser {
-    margin: 4px 0 0; color: #C9C9D8; font-size: 14.5px; line-height: 1.65;
-  }
-  .role-tile-foot {
-    margin-top: auto; padding-top: 22px;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  .spec-row {
+    display: grid; grid-template-columns: 96px 1fr; gap: 16px;
+    padding: 14px 0;
     border-top: 1px solid var(--hairline-2);
   }
-  .role-tile-cta {
-    color: var(--text); font-size: 13.5px; font-weight: 500; letter-spacing: -0.005em;
+  .spec-row:first-of-type { padding-top: 0; border-top: 0; }
+  .spec-row .label {
+    font-size: 10.5px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted-2);
+    padding-top: 2px;
   }
-  .role-tile-tag {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11.5px; color: var(--muted-2); letter-spacing: 0;
+  .spec-row .value {
+    font-size: 14px; color: var(--text); line-height: 1.55; font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .spec-row .value .sub {
+    display: block; color: var(--muted); font-weight: 400; font-size: 13px;
+    margin-top: 3px;
+  }
+  .spec-row.highlight .value { color: var(--text); }
+  .spec-row.highlight .value .sub { color: #B7B7CB; }
+  .spec-apply {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin-top: 22px; padding: 14px 16px;
+    color: var(--text); font-size: 14px; font-weight: 500;
+    letter-spacing: -0.005em;
+    background:
+      linear-gradient(135deg, rgba(178,42,124,0.18) 0%, rgba(242,166,90,0.14) 100%) padding-box,
+      var(--ember) border-box;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    transition: transform .25s var(--ease), box-shadow .35s var(--ease);
+  }
+  .spec-apply:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(228, 90, 123, 0.12);
+  }
+  .spec-apply .arrow {
+    width: 28px; height: 28px;
+    border-radius: 999px; border: 1px solid rgba(255,255,255,0.18);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--text); transition: background-color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .spec-apply:hover .arrow {
+    background: rgba(255,233,199,0.10);
+    border-color: rgba(255,233,199,0.45);
+  }
+  .spec-footnote {
+    margin: 10px 4px 0; font-size: 12px; color: var(--muted-2);
+    text-align: center; letter-spacing: -0.005em;
   }
 
   /* Footer */
@@ -224,13 +257,17 @@
   @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
   .d1 { animation-delay: .05s; } .d2 { animation-delay: .12s; } .d3 { animation-delay: .2s; }
 
+  @media (max-width: 1080px) {
+    .prose-inner { max-width: 100%; }
+  }
   @media (max-width: 900px) {
-    .roles-grid { grid-template-columns: 1fr; }
+    .role-detail-grid { grid-template-columns: 1fr; gap: 32px; }
+    .role-spec { position: static; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
-    .page-head { padding: 64px 0 40px; }
   }
   @media (max-width: 720px) {
     .nav-links { display: none; }
+    .spec-row { grid-template-columns: 1fr; gap: 4px; }
     .footer-bottom { grid-template-columns: 1fr; text-align: center; }
     .footer-bottom .legal { justify-self: center; }
   }
@@ -275,75 +312,88 @@
 </div>
 
 <main>
-  <section class="page-head">
+  <section class="role-detail-head">
     <div class="wrap">
-      <span class="eyebrow reveal d1"><span class="dot"></span> We're hiring</span>
-      <h1 class="page-title reveal d2">Build the company brain for <em>agents</em>.</h1>
-      <p class="page-lede reveal d3">
-        Ember Intelligence is the institutional knowledge layer that plugs into the agents firms already run and gives those agents structured, navigable access to the firm's full body of work. Three open roles right now.
-      </p>
+      <a href="/careers" class="backlink reveal d1">← All roles</a>
+      <h1 class="reveal d2">BD Intern — Summer 2026</h1>
+      <div class="role-meta reveal d3">
+        San Francisco / New York
+        <span class="sep">·</span>
+        Hybrid or remote
+        <span class="sep">·</span>
+        10–12 weeks
+      </div>
     </div>
   </section>
 
-  <section class="roles">
+  <section>
     <div class="wrap">
-      <div class="roles-grid">
-        <a class="role-tile reveal d3" href="/careers/founding-fde">
-          <div class="role-tile-top">
-            <h3>Founding FDE</h3>
-            <span class="role-tile-arrow" aria-hidden="true">
-              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
-          </div>
-          <div class="role-tile-meta">
-            SF / NY <span class="sep">·</span> Hybrid or remote <span class="sep">·</span> Full-time or part-time
-          </div>
-          <p class="role-tile-teaser">
-            Walk into a PE firm or top consultancy, understand how partners actually do the work, and ship an Ember deployment that materially changes it. Half customer, a quarter code, a quarter writing.
-          </p>
-          <div class="role-tile-foot">
-            <span class="role-tile-cta">View role →</span>
-            <span class="role-tile-tag">founding · open</span>
-          </div>
-        </a>
+      <div class="role-detail-grid">
+        <div class="role-prose reveal d3">
+          <div class="prose-inner">
+            <h3>The role</h3>
+            <p>Run Ember's voice on LinkedIn and X day to day — and own the broader social strategy underneath it. You'll write the posts, design the cadence, build the editorial calendar, and turn what we ship internally into a public narrative the right people actually want to read. You'll work directly with the founders on positioning and the tone of the firm.</p>
+            <p>Depending on what you're good at and what you want to learn, this can also pull into client sourcing — identifying funds and consultancies worth a first conversation, drafting outbound, helping us think about who actually fits as a design partner. Scope on this is genuinely tbd and will be shaped to your strengths.</p>
 
-        <a class="role-tile reveal d3" href="/careers/fde-intern-summer-2026">
-          <div class="role-tile-top">
-            <h3>FDE Intern</h3>
-            <span class="role-tile-arrow" aria-hidden="true">
-              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
-          </div>
-          <div class="role-tile-meta">
-            SF / NY <span class="sep">·</span> Hybrid or remote <span class="sep">·</span> 10–12 weeks
-          </div>
-          <p class="role-tile-teaser">
-            Spend the summer deploying Ember alongside our Founding FDE at a design-partner firm. End-to-end retrieval work that almost no other internship offers.
-          </p>
-          <div class="role-tile-foot">
-            <span class="role-tile-cta">View role →</span>
-            <span class="role-tile-tag">summer 2026</span>
-          </div>
-        </a>
+            <h3>You are</h3>
+            <ul>
+              <li><strong>A strong writer with a real point of view.</strong> You can take a raw idea from a founder and turn it into a tight, opinionated post — not a press release, not a thread of platitudes.</li>
+              <li><strong>Fluent in B2B social.</strong> You read what good enterprise AI accounts post, you know what works on LinkedIn vs. X, and you have your own opinions about why.</li>
+              <li><strong>Curious about how finance and consulting firms actually buy software.</strong> You don't need to know this yet; you need to want to learn it.</li>
+              <li>An undergrad or grad student. Background open — humanities, business, CS, anything. Writing samples matter more than résumés.</li>
+            </ul>
 
-        <a class="role-tile reveal d3" href="/careers/biz-dev-intern-summer-2026">
-          <div class="role-tile-top">
-            <h3>BD Intern</h3>
-            <span class="role-tile-arrow" aria-hidden="true">
-              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            <h3>How to apply</h3>
+            <p>Send a one-page note to <a href="mailto:founders@allember.com?subject=BD%20Intern%20%E2%80%94%20Summer%202026">founders@allember.com</a> with the subject <em>"BD Intern — Summer 2026."</em> Include:</p>
+            <ul>
+              <li>2–3 links to your best public writing — your own account, school paper, Substack, anything.</li>
+              <li>A LinkedIn or X post you'd write for Ember tomorrow.</li>
+              <li>Your earliest start / latest end dates, and whether you'd want to convert full- or part-time after the summer.</li>
+            </ul>
+            <p>Rolling review until filled.</p>
+
+            <hr/>
+            <p class="note">Ember Intelligence is an equal opportunity employer. We hire on the basis of what you can build, what you have built, and how you think — full stop.</p>
+          </div>
+        </div>
+
+        <aside class="role-spec reveal d3" aria-label="Role specifications">
+          <div class="spec-row">
+            <div class="label">Location</div>
+            <div class="value">SF / NY <span class="sub">Hybrid or remote</span></div>
+          </div>
+          <div class="spec-row">
+            <div class="label">Term</div>
+            <div class="value">Summer 2026 <span class="sub">10–12 weeks</span></div>
+          </div>
+          <div class="spec-row highlight">
+            <div class="label">Focus</div>
+            <div class="value">LinkedIn + X <span class="sub">Plus the broader social strategy underneath them.</span></div>
+          </div>
+          <div class="spec-row">
+            <div class="label">Scope</div>
+            <div class="value">Social media management <span class="sub">Possible client-sourcing work, tbd.</span></div>
+          </div>
+          <div class="spec-row highlight">
+            <div class="label">Conversion</div>
+            <div class="value">Full- or part-time <span class="sub">offered after summer for the right fit.</span></div>
+          </div>
+          <div class="spec-row">
+            <div class="label">Pay</div>
+            <div class="value">Competitive stipend</div>
+          </div>
+          <div class="spec-row">
+            <div class="label">Reports to</div>
+            <div class="value">Krishna Thiagarajan & Colden Johnson <span class="sub">co-founders</span></div>
+          </div>
+          <a class="spec-apply" href="mailto:founders@allember.com?subject=BD%20Intern%20%E2%80%94%20Summer%202026">
+            <span>Apply: founders@allember.com</span>
+            <span class="arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </span>
-          </div>
-          <div class="role-tile-meta">
-            SF / NY <span class="sep">·</span> Hybrid or remote <span class="sep">·</span> 10–12 weeks
-          </div>
-          <p class="role-tile-teaser">
-            Run Ember's LinkedIn and X day to day and own the broader social strategy underneath. Work directly with the founders on positioning. Full- or part-time conversion available after summer.
-          </p>
-          <div class="role-tile-foot">
-            <span class="role-tile-cta">View role →</span>
-            <span class="role-tile-tag">summer 2026 · convertible</span>
-          </div>
-        </a>
+          </a>
+          <div class="spec-footnote">Rolling review until filled.</div>
+        </aside>
       </div>
     </div>
   </section>
