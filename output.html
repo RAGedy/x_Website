@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Our Output — Ember Intelligence</title>
+<meta name="description" content="Ember Insights, our blog, and Ember Output, our technical papers. Notes, deployments, and research from the team building the company brain for agents." />
+<meta name="theme-color" content="#07071A" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* progress: 0 = ember/dark, 1 = cool/light */
+    --theme: 0;
+
+    /* dark palette */
+    --d-bg:        #07071A;
+    --d-bg-deep:   #030310;
+    --d-bg-elev:   #0B0B22;
+    --d-card:      #11112E;
+    --d-text:      #F4F4F8;
+    --d-muted:     #8A8AA3;
+    --d-muted-2:   #6B6B85;
+    --d-hairline:  #1F1F3D;
+    --d-hairline-2:#15152F;
+
+    /* light palette */
+    --l-bg:        #F2F5FF;
+    --l-bg-deep:   #E6ECFB;
+    --l-bg-elev:   #FFFFFF;
+    --l-card:      #FFFFFF;
+    --l-text:      #0E1330;
+    --l-muted:     #555E84;
+    --l-muted-2:   #8A91AE;
+    --l-hairline:  #D7DDF0;
+    --l-hairline-2:#E6EAF7;
+
+    /* ember (top) */
+    --o1: #4F2A8F; --o2: #B22A7C; --o3: #E45A7B; --o4: #F2A65A; --o5: #FFE9C7;
+    --ember: linear-gradient(90deg,
+      var(--o1) 0%, var(--o2) 26%, var(--o3) 52%, var(--o4) 76%, var(--o5) 100%);
+
+    /* cool (bottom) — matches "industry works" underline on index */
+    --c1: #2DD4BF; --c2: #4F9EF8; --c3: #818CF8;
+    --cool: linear-gradient(90deg, var(--c1) 0%, var(--c2) 50%, var(--c3) 100%);
+
+    /* the live accent — interpolates as you scroll */
+    --accent-a: color-mix(in srgb, var(--o2), var(--c1) calc(var(--theme) * 100%));
+    --accent-b: color-mix(in srgb, var(--o3), var(--c2) calc(var(--theme) * 100%));
+    --accent-c: color-mix(in srgb, var(--o4), var(--c3) calc(var(--theme) * 100%));
+    --accent: linear-gradient(90deg, var(--accent-a) 0%, var(--accent-b) 50%, var(--accent-c) 100%);
+
+    /* live tokens */
+    --bg:        color-mix(in srgb, var(--d-bg)        0%, var(--l-bg)        100%);
+    --bg-deep:   color-mix(in srgb, var(--d-bg-deep)   0%, var(--l-bg-deep)   100%);
+    --bg-elev:   color-mix(in srgb, var(--d-bg-elev)   0%, var(--l-bg-elev)   100%);
+    --card:      color-mix(in srgb, var(--d-card)      0%, var(--l-card)      100%);
+    --text:      color-mix(in srgb, var(--d-text)      0%, var(--l-text)      100%);
+    --muted:     color-mix(in srgb, var(--d-muted)     0%, var(--l-muted)     100%);
+    --muted-2:   color-mix(in srgb, var(--d-muted-2)   0%, var(--l-muted-2)   100%);
+    --hairline:  color-mix(in srgb, var(--d-hairline)  0%, var(--l-hairline)  100%);
+    --hairline-2:color-mix(in srgb, var(--d-hairline-2) 0%, var(--l-hairline-2) 100%);
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --maxw: 1200px;
+  }
+
+  /* recompute tokens from --theme on body (set by JS) */
+  body {
+    --bg:        color-mix(in srgb, var(--d-bg),        var(--l-bg)        calc(var(--theme) * 100%));
+    --bg-deep:   color-mix(in srgb, var(--d-bg-deep),   var(--l-bg-deep)   calc(var(--theme) * 100%));
+    --bg-elev:   color-mix(in srgb, var(--d-bg-elev),   var(--l-bg-elev)   calc(var(--theme) * 100%));
+    --card:      color-mix(in srgb, var(--d-card),      var(--l-card)      calc(var(--theme) * 100%));
+    --text:      color-mix(in srgb, var(--d-text),      var(--l-text)      calc(var(--theme) * 100%));
+    --muted:     color-mix(in srgb, var(--d-muted),     var(--l-muted)     calc(var(--theme) * 100%));
+    --muted-2:   color-mix(in srgb, var(--d-muted-2),   var(--l-muted-2)   calc(var(--theme) * 100%));
+    --hairline:  color-mix(in srgb, var(--d-hairline),  var(--l-hairline)  calc(var(--theme) * 100%));
+    --hairline-2:color-mix(in srgb, var(--d-hairline-2), var(--l-hairline-2) calc(var(--theme) * 100%));
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { background: var(--bg); }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    overflow-x: hidden; min-height: 100vh; position: relative;
+  }
+
+  ::selection { background: rgba(228, 90, 123, 0.30); color: var(--text); }
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid transparent; outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent-b), 0 0 18px rgba(0,0,0,0.10);
+    border-radius: 6px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+  /* Nav */
+  .nav-outer {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, rgba(7,7,26,0.72), rgba(242,245,255,0.82) calc(var(--theme) * 100%));
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-bottom: 1px solid var(--hairline-2);
+    transition: border-color .3s ease;
+  }
+  .nav { padding: 18px 0; }
+  .nav-inner { display: flex; align-items: center; gap: 28px; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-weight: 500; font-size: 17px; letter-spacing: -0.01em; color: var(--text);
+  }
+  .brand-glyph { width: 22px; height: 22px; display: inline-block; }
+  .brand-glyph circle.ring-stroke { fill: none; stroke: var(--accent-b); stroke-width: 1.25; }
+  .nav-links { display: flex; gap: 26px; margin-left: 24px; flex: 1; }
+  .nav-links a {
+    color: var(--muted); font-size: 13.5px; font-weight: 450;
+    letter-spacing: -0.005em; transition: color .2s var(--ease);
+  }
+  .nav-links a:hover, .nav-links a.current { color: var(--text); }
+  .nav-cta { display: flex; gap: 10px; align-items: center; }
+
+  .btn {
+    height: 44px; display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 18px; font: inherit; font-size: 14px; font-weight: 500;
+    letter-spacing: -0.005em; color: var(--text); background: transparent;
+    border: 1px solid transparent; border-radius: 10px; cursor: pointer;
+    text-decoration: none;
+    transition: transform .25s var(--ease), box-shadow .35s var(--ease), color .2s var(--ease), background-color .2s var(--ease);
+    position: relative; isolation: isolate;
+  }
+  .btn-sm { height: 36px; font-size: 13px; padding: 0 14px; }
+  .btn-outline {
+    color: var(--text);
+    background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--accent) border-box;
+    border: 1px solid transparent;
+  }
+  .btn-outline:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-b) 18%, transparent);
+  }
+
+  /* Section primitives */
+  section { position: relative; }
+  .section { padding: 96px 0; }
+  .section-tight { padding: 64px 0; }
+
+  .eyebrow {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 14px; border: 1px solid var(--hairline); border-radius: 999px;
+    background: color-mix(in srgb, var(--bg-elev) 60%, transparent);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--accent-b) 70%, transparent);
+  }
+
+  .kicker {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--muted); display: inline-flex;
+    align-items: center; gap: 10px;
+  }
+  .kicker::before {
+    content: ""; width: 18px; height: 1px; background: var(--accent); display: inline-block;
+  }
+
+  .page-head { padding: 88px 0 36px; text-align: left; }
+  .page-title {
+    margin: 22px 0 16px;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.04; letter-spacing: -0.03em; font-weight: 600;
+    max-width: 22ch;
+  }
+  .page-title em {
+    font-style: italic; font-weight: 600;
+    background: var(--accent); -webkit-background-clip: text; background-clip: text;
+    color: transparent; display: inline-block;
+    padding: 0 0.12em 0.04em 0.04em; margin: 0 -0.12em 0 -0.04em;
+  }
+  .page-lede { color: var(--muted); font-size: 17px; line-height: 1.6; max-width: 62ch; margin: 0; }
+
+  /* Post grid */
+  .post-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 40px;
+  }
+  .post-card {
+    position: relative; overflow: hidden;
+    background: var(--bg-elev);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    display: flex; flex-direction: column;
+    color: inherit;
+    transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .35s var(--ease), background-color .3s ease;
+  }
+  .post-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent-b) 45%, var(--hairline));
+    box-shadow: 0 16px 50px color-mix(in srgb, var(--accent-b) 10%, transparent);
+  }
+  .post-thumb {
+    aspect-ratio: 16 / 10;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--hairline-2);
+  }
+  .post-thumb::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, color-mix(in srgb, var(--bg-elev) 65%, transparent) 100%);
+  }
+  /* per-card thumb gradients — distinct, harmonious */
+  .t-a { background: radial-gradient(120% 90% at 15% 20%, #4F2A8F 0%, #B22A7C 35%, #E45A7B 65%, #F2A65A 100%); }
+  .t-b { background: radial-gradient(110% 100% at 80% 30%, #11112E 0%, #4F2A8F 35%, #B22A7C 70%, #E45A7B 100%); }
+  .t-c { background: linear-gradient(135deg, #07071A 0%, #4F2A8F 40%, #E45A7B 75%, #F2A65A 100%); }
+  .t-d { background: radial-gradient(120% 90% at 30% 70%, #2DD4BF 0%, #4F9EF8 45%, #818CF8 85%); }
+  .t-e { background: linear-gradient(135deg, #11112E 0%, #2D2A8F 35%, #818CF8 65%, #2DD4BF 100%); }
+  .t-f { background: radial-gradient(110% 100% at 70% 75%, #818CF8 0%, #4F9EF8 35%, #2DD4BF 70%, #FFE9C7 100%); }
+
+  .thumb-mark {
+    position: absolute; left: 18px; top: 16px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.78); text-transform: uppercase;
+    padding: 4px 8px; border-radius: 999px;
+    background: rgba(0,0,0,0.32); backdrop-filter: blur(4px);
+    z-index: 2;
+  }
+  .thumb-art {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.85);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 56px; font-weight: 400; letter-spacing: -0.03em;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    z-index: 1;
+  }
+  .post-body { padding: 22px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .post-meta {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.04em;
+    color: var(--muted-2); text-transform: uppercase;
+    display: inline-flex; gap: 8px; align-items: center;
+  }
+  .post-meta .sep { width: 3px; height: 3px; border-radius: 999px; background: var(--muted-2); opacity: .55; }
+  .post-title {
+    margin: 0; font-size: 18.5px; line-height: 1.25;
+    letter-spacing: -0.015em; font-weight: 600; color: var(--text);
+  }
+  .post-desc {
+    margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55;
+  }
+  .post-foot {
+    margin-top: auto; padding-top: 14px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    border-top: 1px solid var(--hairline-2);
+    font-size: 12.5px;
+  }
+  .post-author { color: var(--muted); }
+  .post-time { color: var(--muted-2); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; }
+
+  .see-more-row { display: flex; justify-content: center; margin-top: 36px; }
+  .see-more {
+    color: var(--muted); font-size: 13.5px; letter-spacing: -0.005em;
+    padding: 12px 18px; border: 1px solid var(--hairline); border-radius: 999px;
+    transition: color .2s var(--ease), border-color .2s var(--ease), transform .25s var(--ease);
+  }
+  .see-more:hover {
+    color: var(--text); border-color: color-mix(in srgb, var(--accent-b) 55%, var(--hairline));
+    transform: translateY(-1px);
+  }
+
+  /* Featured strip */
+  .featured {
+    margin: 96px 0 0;
+    padding: 32px 36px;
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    background: var(--bg-elev);
+    display: flex; flex-direction: column; gap: 22px; align-items: center;
+  }
+  .featured .label {
+    text-align: center; color: var(--muted-2);
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .featured-row {
+    display: grid; grid-template-columns: repeat(6, minmax(0,1fr));
+    gap: 32px; align-items: center; width: 100%;
+  }
+  .wm {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--muted);
+    opacity: 0.85;
+    white-space: nowrap;
+    transition: color .2s var(--ease), opacity .2s var(--ease);
+  }
+  .wm.serif {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400; letter-spacing: 0;
+  }
+  .wm.mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 500; font-size: 13.5px; letter-spacing: -0.01em;
+  }
+  .wm:hover { opacity: 1; color: var(--text); }
+
+  /* Seam between sections */
+  .seam-wrap { padding: 24px 0 0; }
+  .seam {
+    height: 1px; width: 100%;
+    background: var(--accent);
+    opacity: .55;
+  }
+
+  /* Papers grid (denser, with badge) */
+  .paper-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 40px;
+  }
+  .paper-card {
+    position: relative; overflow: hidden;
+    background: var(--bg-elev);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    display: flex; flex-direction: column;
+    color: inherit;
+    transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .35s var(--ease), background-color .3s ease;
+  }
+  .paper-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: var(--cool); opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .paper-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c2) 45%, var(--hairline)); box-shadow: 0 16px 50px rgba(79,158,248,0.10); }
+  .paper-card:hover::before { opacity: .85; }
+
+  .paper-thumb {
+    aspect-ratio: 16 / 10;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--hairline-2);
+    background: linear-gradient(135deg, #F8FAFF 0%, #E6ECFB 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* paper preview look — abstract "pages" */
+  .paper-thumb svg { width: 70%; height: 70%; }
+  .paper-thumb .page-bg { fill: #FFFFFF; stroke: #D7DDF0; stroke-width: 1; }
+  .paper-thumb .page-bg.back { fill: #F2F5FF; }
+  .paper-thumb .line { stroke: #C4CCE3; stroke-width: 1.5; stroke-linecap: round; }
+  .paper-thumb .accent-line { stroke: url(#paperAccent); stroke-width: 2.5; stroke-linecap: round; }
+  .paper-thumb .heading { fill: #0E1330; }
+
+  .paper-badge {
+    position: absolute; left: 14px; top: 14px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px; letter-spacing: 0.08em;
+    color: #0E1330; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px;
+    background: rgba(255,255,255,0.86); border: 1px solid #D7DDF0;
+    z-index: 2;
+  }
+
+  .paper-body { padding: 22px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .paper-meta {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.04em;
+    color: var(--muted-2); text-transform: uppercase;
+    display: inline-flex; gap: 8px; align-items: center;
+  }
+  .paper-title {
+    margin: 0; font-size: 18.5px; line-height: 1.25;
+    letter-spacing: -0.015em; font-weight: 600; color: var(--text);
+  }
+  .paper-authors { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .paper-abstract { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .paper-foot {
+    margin-top: auto; padding-top: 14px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    border-top: 1px solid var(--hairline-2);
+    font-size: 12.5px;
+  }
+  .paper-foot .links { display: inline-flex; gap: 14px; }
+  .paper-foot .links a {
+    color: var(--muted); font-size: 12.5px;
+    transition: color .2s var(--ease);
+  }
+  .paper-foot .links a:hover { color: var(--text); }
+  .paper-tag { color: var(--muted-2); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; }
+
+  /* Footer */
+  footer {
+    margin-top: 96px;
+    border-top: 1px solid var(--hairline-2);
+    background: var(--bg-deep);
+    padding: 64px 0 28px;
+    transition: background-color .3s ease;
+  }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(5, 1fr); gap: 40px; }
+  .footer-addr {
+    color: var(--muted); font-size: 13px; line-height: 1.7;
+    margin: 18px 0 0; font-style: normal; max-width: 28ch;
+  }
+  .footer-addr a { color: var(--muted); transition: color .2s var(--ease); }
+  .footer-addr a:hover { color: var(--text); }
+  .footer-col h5 {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted-2);
+    margin: 4px 0 16px;
+  }
+  .footer-col a {
+    display: block; color: var(--muted); font-size: 13.5px;
+    padding: 6px 0; transition: color .2s var(--ease);
+  }
+  .footer-col a:hover { color: var(--text); }
+  .footer-bottom {
+    margin-top: 64px; padding-top: 22px;
+    border-top: 1px solid var(--hairline-2);
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center;
+  }
+  .footer-bottom .copyright { color: var(--muted-2); font-size: 12px; }
+  .footer-social { justify-self: center; display: inline-flex; gap: 8px; }
+  .footer-social a {
+    width: 30px; height: 30px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--hairline); border-radius: 6px; color: var(--muted);
+    transition: color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .footer-social a:hover { color: var(--text); border-color: var(--muted-2); }
+  .footer-social svg { width: 14px; height: 14px; display: block; }
+  .footer-bottom .legal { justify-self: end; display: inline-flex; gap: 18px; }
+  .footer-bottom .legal a { color: var(--muted-2); font-size: 12px; transition: color .2s var(--ease); }
+  .footer-bottom .legal a:hover { color: var(--text); }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(8px); animation: reveal .9s var(--ease) forwards; }
+  @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+  .d1 { animation-delay: .05s; } .d2 { animation-delay: .12s; } .d3 { animation-delay: .2s; }
+
+  @media (max-width: 1000px) {
+    .post-grid, .paper-grid { grid-template-columns: repeat(2, 1fr); }
+    .featured-row { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .post-grid, .paper-grid { grid-template-columns: 1fr; }
+    .featured-row { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; }
+    .footer-bottom { grid-template-columns: 1fr; text-align: center; }
+    .footer-bottom .legal { justify-self: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { animation: none; opacity: 1; transform: none; }
+    body, .post-card, .paper-card, footer, .nav-outer { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="paperAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#2DD4BF"/>
+      <stop offset="50%"  stop-color="#4F9EF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="nav-outer">
+<header class="nav reveal d1">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="Ember Intelligence">
+      <svg class="brand-glyph" viewBox="0 0 22 22" aria-hidden="true">
+        <circle class="ring-stroke" cx="11" cy="11" r="9.4"/>
+      </svg>
+      <span>Ember</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#platform">Platform</a>
+      <a href="/#graph-rag">Graph RAG</a>
+      <a href="/#integrations">Integrations</a>
+      <a href="/#research">Research</a>
+      <a href="/#customers">Customers</a>
+      <a href="/careers">Careers</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-outline btn-sm" href="mailto:founders@allember.com?subject=Curious%20about%20Ember">Contact the Founders</a>
+    </div>
+  </div>
+</header>
+</div>
+
+<main>
+
+  <!-- ============== BLOG ============== -->
+  <section id="blog" class="page-head">
+    <div class="wrap">
+      <span class="eyebrow reveal d1"><span class="dot"></span> Ember Insights · The Blog</span>
+      <h1 class="page-title reveal d2">Notes from inside <em>real deployments</em>.</h1>
+      <p class="page-lede reveal d3">
+        How we think about retrieval, what we've learned shipping Ember into PE firms, top-quartile consultancies, and venture funds — and the occasional opinion the rest of the industry won't have for another year.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight" aria-label="Latest posts">
+    <div class="wrap">
+      <div class="post-grid">
+
+        <a class="post-card reveal d1" href="#">
+          <div class="post-thumb t-a">
+            <span class="thumb-mark">Retrieval</span>
+            <div class="thumb-art" aria-hidden="true">G·R</div>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">Apr 22, 2026 <span class="sep"></span> 8 min read</div>
+            <h3 class="post-title">Why Graph-RAG eats vector search for breakfast in the enterprise</h3>
+            <p class="post-desc">Chunks-and-cosine works for blogs. It quietly falls apart on a deal room, where the answer lives across a memo, three appendices, and a footnote that cites them.</p>
+            <div class="post-foot">
+              <span class="post-author">Sam Chen</span>
+              <span class="post-time">2026-04-22</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="post-card reveal d2" href="#">
+          <div class="post-thumb t-b">
+            <span class="thumb-mark">Architecture</span>
+            <div class="thumb-art" aria-hidden="true">{ }</div>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">Apr 08, 2026 <span class="sep"></span> 5 min read</div>
+            <h3 class="post-title">Two files, any agent: how Ember Native plugs into your stack in an afternoon</h3>
+            <p class="post-desc">A pointer file and a manifest. That's the whole integration surface. Here's the design rationale, and what we deliberately left out.</p>
+            <div class="post-foot">
+              <span class="post-author">Krishna T</span>
+              <span class="post-time">2026-04-08</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="post-card reveal d3" href="#">
+          <div class="post-thumb t-c">
+            <span class="thumb-mark">Field Notes</span>
+            <div class="thumb-art" aria-hidden="true">PE</div>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">Mar 19, 2026 <span class="sep"></span> 12 min read</div>
+            <h3 class="post-title">Inside a PE deployment: what a deal team's brain actually looks like</h3>
+            <p class="post-desc">Six weeks at a $40B AUM firm. The agents the partners already use, the documents they wouldn't share with each other, and the structure that finally made the agents useful.</p>
+            <div class="post-foot">
+              <span class="post-author">Dela L</span>
+              <span class="post-time">2026-03-19</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="post-card reveal d1" href="#">
+          <div class="post-thumb t-d">
+            <span class="thumb-mark">Graph</span>
+            <div class="thumb-art" aria-hidden="true">⌗</div>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">Mar 02, 2026 <span class="sep"></span> 9 min read</div>
+            <h3 class="post-title">Document graphs, citations, and why chunking lies to you</h3>
+            <p class="post-desc">If a memo references an exhibit and the exhibit references a model, your chunker has no idea. The graph does — and it changes which sources get retrieved.</p>
+            <div class="post-foot">
+              <span class="post-author">Sam Chen</span>
+              <span class="post-time">2026-03-02</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="post-card reveal d2" href="#">
+          <div class="post-thumb t-e">
+            <span class="thumb-mark">Security</span>
+            <div class="thumb-art" aria-hidden="true">/T</div>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">Feb 14, 2026 <span class="sep"></span> 6 min read</div>
+            <h3 class="post-title">The cross-tenant problem nobody talks about</h3>
+            <p class="post-desc">Most enterprise RAG vendors will, given the right prompt, leak across customers. Here's the boring, low-glamour fix — and why it has to live below the retriever.</p>
+            <div class="post-foot">
+              <span class="post-author">Krishna T</span>
+              <span class="post-time">2026-02-14</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="post-card reveal d3" href="#">
+          <div class="post-thumb t-f">
+            <span class="thumb-mark">Strategy</span>
+            <div class="thumb-art" aria-hidden="true">IK</div>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">Jan 28, 2026 <span class="sep"></span> 4 min read</div>
+            <h3 class="post-title">What we actually mean when we say "institutional knowledge"</h3>
+            <p class="post-desc">It's not the Confluence wiki. It's not even the deal memos. It's the way the partners reason about them — and that's the thing agents need next.</p>
+            <div class="post-foot">
+              <span class="post-author">Dela L</span>
+              <span class="post-time">2026-01-28</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="see-more-row">
+        <a class="see-more" href="#">See all posts →</a>
+      </div>
+
+      <div class="featured" aria-label="Ember Insights in the press">
+        <div class="label">Ember Insights has been picked up by</div>
+        <div class="featured-row">
+          <div class="wm serif">The&nbsp;Information</div>
+          <div class="wm">Stratechery</div>
+          <div class="wm serif">Bloomberg</div>
+          <div class="wm">TechCrunch</div>
+          <div class="wm mono">a16z · future</div>
+          <div class="wm">Lenny's Newsletter</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap seam-wrap"><div class="seam"></div></div>
+
+  <!-- ============== PAPERS ============== -->
+  <section id="papers" class="page-head">
+    <div class="wrap">
+      <span class="eyebrow reveal d1"><span class="dot"></span> Ember Output · Technical Papers</span>
+      <h1 class="page-title reveal d2">Research from the team building <em>the knowledge layer</em>.</h1>
+      <p class="page-lede reveal d3">
+        Peer-reviewed work, preprints, and internal technical reports. Most of what we publish is a direct consequence of something we hit in production at a customer — written up so the rest of the field can build on it.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight" aria-label="Recent papers">
+    <div class="wrap">
+      <div class="paper-grid">
+
+        <a class="paper-card reveal d1" href="#">
+          <div class="paper-thumb">
+            <span class="paper-badge">NeurIPS '26 W/S</span>
+            <svg viewBox="0 0 160 100" aria-hidden="true">
+              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
+              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
+              <rect class="heading" x="24" y="30" width="58" height="5" rx="1.5"/>
+              <line class="accent-line" x1="24" y1="44" x2="100" y2="44"/>
+              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
+              <line class="line" x1="24" y1="61" x2="108" y2="61"/>
+              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
+              <line class="line" x1="24" y1="75" x2="96" y2="75"/>
+              <line class="line" x1="24" y1="82" x2="104" y2="82"/>
+            </svg>
+          </div>
+          <div class="paper-body">
+            <div class="paper-meta">Apr 2026 <span class="sep"></span> NeurIPS Workshop</div>
+            <h3 class="paper-title">GraphRAG-X: Citation-Aware Retrieval over Heterogeneous Enterprise Corpora</h3>
+            <p class="paper-authors">S. Chen, K. Thiagarajan, D. Lin, et al.</p>
+            <p class="paper-abstract">A retrieval architecture that treats citations as first-class edges. Outperforms dense baselines by 17.4 nDCG@10 on a held-out PE deal-room benchmark.</p>
+            <div class="paper-foot">
+              <span class="links">
+                <a href="#">PDF</a>
+                <a href="#">arXiv</a>
+                <a href="#">BibTeX</a>
+              </span>
+              <span class="paper-tag">14 pp</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="paper-card reveal d2" href="#">
+          <div class="paper-thumb">
+            <span class="paper-badge">arXiv preprint</span>
+            <svg viewBox="0 0 160 100" aria-hidden="true">
+              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
+              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
+              <rect class="heading" x="24" y="30" width="74" height="5" rx="1.5"/>
+              <line class="accent-line" x1="24" y1="44" x2="88" y2="44"/>
+              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
+              <line class="line" x1="24" y1="61" x2="100" y2="61"/>
+              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
+              <line class="line" x1="24" y1="75" x2="108" y2="75"/>
+              <line class="line" x1="24" y1="82" x2="92" y2="82"/>
+            </svg>
+          </div>
+          <div class="paper-body">
+            <div class="paper-meta">Mar 2026 <span class="sep"></span> arXiv:2603.11421</div>
+            <h3 class="paper-title">Cross-Tenant Retrieval Without Cross-Tenant Leakage</h3>
+            <p class="paper-authors">K. Thiagarajan, S. Chen</p>
+            <p class="paper-abstract">A permission-aware retriever that enforces tenant boundaries below the embedding layer. Zero cross-tenant hits across 1.2M adversarial probes; 0.3% latency overhead.</p>
+            <div class="paper-foot">
+              <span class="links">
+                <a href="#">PDF</a>
+                <a href="#">arXiv</a>
+                <a href="#">BibTeX</a>
+              </span>
+              <span class="paper-tag">22 pp</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="paper-card reveal d3" href="#">
+          <div class="paper-thumb">
+            <span class="paper-badge">VLDB '26</span>
+            <svg viewBox="0 0 160 100" aria-hidden="true">
+              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
+              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
+              <rect class="heading" x="24" y="30" width="64" height="5" rx="1.5"/>
+              <line class="accent-line" x1="24" y1="44" x2="96" y2="44"/>
+              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
+              <line class="line" x1="24" y1="61" x2="104" y2="61"/>
+              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
+              <line class="line" x1="24" y1="75" x2="100" y2="75"/>
+              <line class="line" x1="24" y1="82" x2="108" y2="82"/>
+            </svg>
+          </div>
+          <div class="paper-body">
+            <div class="paper-meta">Feb 2026 <span class="sep"></span> VLDB (in submission)</div>
+            <h3 class="paper-title">Document Graphs as a First-Class Index</h3>
+            <p class="paper-authors">D. Lin, S. Chen, K. Thiagarajan</p>
+            <p class="paper-abstract">Treating the document graph as a primary access path — not a post-hoc rerank — yields a 4× reduction in tokens-to-correct-answer on multi-hop financial queries.</p>
+            <div class="paper-foot">
+              <span class="links">
+                <a href="#">PDF</a>
+                <a href="#">arXiv</a>
+                <a href="#">BibTeX</a>
+              </span>
+              <span class="paper-tag">18 pp</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="paper-card reveal d1" href="#">
+          <div class="paper-thumb">
+            <span class="paper-badge">Tech Report</span>
+            <svg viewBox="0 0 160 100" aria-hidden="true">
+              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
+              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
+              <rect class="heading" x="24" y="30" width="80" height="5" rx="1.5"/>
+              <line class="accent-line" x1="24" y1="44" x2="80" y2="44"/>
+              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
+              <line class="line" x1="24" y1="61" x2="96" y2="61"/>
+              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
+              <line class="line" x1="24" y1="75" x2="104" y2="75"/>
+              <line class="line" x1="24" y1="82" x2="100" y2="82"/>
+            </svg>
+          </div>
+          <div class="paper-body">
+            <div class="paper-meta">Jan 2026 <span class="sep"></span> Ember TR-2026-01</div>
+            <h3 class="paper-title">Benchmarking Retrieval over Real Private-Equity Deal Rooms</h3>
+            <p class="paper-authors">D. Lin, S. Chen, K. Thiagarajan, M. Park</p>
+            <p class="paper-abstract">A 12,400-query benchmark across 47 anonymized deal rooms. We release the evaluation harness; the underlying corpora remain under NDA.</p>
+            <div class="paper-foot">
+              <span class="links">
+                <a href="#">PDF</a>
+                <a href="#">Harness</a>
+                <a href="#">BibTeX</a>
+              </span>
+              <span class="paper-tag">31 pp</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="paper-card reveal d2" href="#">
+          <div class="paper-thumb">
+            <span class="paper-badge">Workshop · ICML '25</span>
+            <svg viewBox="0 0 160 100" aria-hidden="true">
+              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
+              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
+              <rect class="heading" x="24" y="30" width="52" height="5" rx="1.5"/>
+              <line class="accent-line" x1="24" y1="44" x2="104" y2="44"/>
+              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
+              <line class="line" x1="24" y1="61" x2="108" y2="61"/>
+              <line class="line" x1="24" y1="68" x2="100" y2="68"/>
+              <line class="line" x1="24" y1="75" x2="112" y2="75"/>
+              <line class="line" x1="24" y1="82" x2="96" y2="82"/>
+            </svg>
+          </div>
+          <div class="paper-body">
+            <div class="paper-meta">Jul 2025 <span class="sep"></span> ICML R2-FM Workshop</div>
+            <h3 class="paper-title">Long-Context Models Forget Earlier Citations: A Failure Mode We Should Stop Hiding</h3>
+            <p class="paper-authors">S. Chen, K. Thiagarajan</p>
+            <p class="paper-abstract">Frontier 200k-context models degrade by 28% on attribution faithfulness past 60k tokens, even when raw recall stays flat. Implications for long-document RAG.</p>
+            <div class="paper-foot">
+              <span class="links">
+                <a href="#">PDF</a>
+                <a href="#">arXiv</a>
+                <a href="#">BibTeX</a>
+              </span>
+              <span class="paper-tag">9 pp</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="paper-card reveal d3" href="#">
+          <div class="paper-thumb">
+            <span class="paper-badge">Tech Report</span>
+            <svg viewBox="0 0 160 100" aria-hidden="true">
+              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
+              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
+              <rect class="heading" x="24" y="30" width="68" height="5" rx="1.5"/>
+              <line class="accent-line" x1="24" y1="44" x2="92" y2="44"/>
+              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
+              <line class="line" x1="24" y1="61" x2="100" y2="61"/>
+              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
+              <line class="line" x1="24" y1="75" x2="96" y2="75"/>
+              <line class="line" x1="24" y1="82" x2="108" y2="82"/>
+            </svg>
+          </div>
+          <div class="paper-body">
+            <div class="paper-meta">Oct 2025 <span class="sep"></span> Ember TR-2025-04</div>
+            <h3 class="paper-title">Ingestion at Audit Standards: A Pipeline for Regulated Verticals</h3>
+            <p class="paper-authors">M. Park, D. Lin</p>
+            <p class="paper-abstract">How we extract, normalize, and provenance-track 14 document types — including handwritten margin notes on legacy memos — for audit-grade retrieval.</p>
+            <div class="paper-foot">
+              <span class="links">
+                <a href="#">PDF</a>
+                <a href="#">Harness</a>
+                <a href="#">BibTeX</a>
+              </span>
+              <span class="paper-tag">17 pp</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="see-more-row">
+        <a class="see-more" href="#">See all papers →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="brand" aria-label="Ember Intelligence">
+            <svg class="brand-glyph" viewBox="0 0 22 22" aria-hidden="true">
+              <circle class="ring-stroke" cx="11" cy="11" r="9.4"/>
+            </svg>
+            <span>Ember</span>
+          </a>
+          <address class="footer-addr">
+            Ember Intelligence LLC<br/>
+            New York City · Shanghai<br/>
+            <a href="mailto:hello@allember.com">hello@allember.com</a>
+          </address>
+        </div>
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <a href="/#platform">Demo</a>
+          <a href="#">Ember Native</a>
+          <a href="#">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <h5>Technicals</h5>
+          <a href="#">Architecture</a>
+          <a href="#">Benchmarks</a>
+        </div>
+        <div class="footer-col">
+          <h5>Integrations</h5>
+          <a href="#">Claude Cowork</a>
+          <a href="#">MS Copilot</a>
+          <a href="#">Cursor</a>
+          <a href="#">Custom Stacks</a>
+        </div>
+        <div class="footer-col">
+          <h5>Our Output</h5>
+          <a href="/output#blog">Blog</a>
+          <a href="/output#papers">Papers</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#">About</a>
+          <a href="/careers">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="copyright">© 2026 Ember Intelligence LLC. All rights reserved.</span>
+        <div class="footer-social" aria-label="Social links">
+          <a href="https://www.linkedin.com/company/emberintel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <rect x="2" y="6" width="2" height="8"/>
+              <circle cx="3" cy="3.5" r="1.2"/>
+              <path d="M6 6h2v1.15c0.55-0.85 1.55-1.35 2.65-1.35c1.7 0 2.35 1 2.35 2.7V14h-2V9.5c0-0.9-0.45-1.4-1.25-1.4S8 8.7 8 9.6V14H6z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/Ember-Intelligence" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 1.5C4.4 1.5 1.5 4.4 1.5 8c0 2.9 1.9 5.3 4.45 6.18c0.3 0.05 0.4-0.13 0.4-0.3v-1.15c-1.8 0.4-2.2-0.85-2.2-0.85c-0.3-0.75-0.7-0.95-0.7-0.95c-0.6-0.4 0.05-0.4 0.05-0.4c0.65 0.05 1 0.65 1 0.65c0.6 1 1.55 0.75 1.95 0.55c0.05-0.4 0.2-0.75 0.4-0.9c-1.4-0.15-2.9-0.7-2.9-3.2c0-0.7 0.25-1.3 0.7-1.7c-0.05-0.2-0.3-0.9 0.1-1.8c0 0 0.55-0.2 1.85 0.65c0.55-0.15 1.1-0.2 1.65-0.2c0.55 0 1.1 0.05 1.65 0.2c1.3-0.85 1.85-0.65 1.85-0.65c0.4 0.9 0.15 1.6 0.1 1.8c0.4 0.45 0.7 1 0.7 1.7c0 2.5-1.5 3.05-2.9 3.2c0.2 0.2 0.4 0.6 0.4 1.2v1.7c0 0.18 0.1 0.35 0.4 0.3C12.6 13.3 14.5 10.9 14.5 8C14.5 4.4 11.6 1.5 8 1.5z"/>
+            </svg>
+          </a>
+          <a href="https://x.com/EmbrIntel" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M9.55 7.05L13.9 2h-1.1L9.05 6.4L6.05 2H2.6l4.55 6.55L2.6 14h1.1l4-4.65L11 14h3.45L9.55 7.05zM8.3 8.55l-0.45-0.65L4.1 2.85h1.65l3 4.3l0.45 0.65l3.85 5.5h-1.65L8.3 8.55z"/>
+            </svg>
+          </a>
+        </div>
+        <span class="legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">DPA</a>
+          <a href="#">Trust</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    var papers = document.getElementById('papers');
+    if (!papers) return;
+
+    var body = document.body;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var rect = papers.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+
+      // Transition window: starts when the top of "papers" reaches 75% down the viewport,
+      // ends when it reaches 25% down.
+      var start = vh * 0.75;
+      var end = vh * 0.25;
+
+      var t;
+      if (rect.top >= start) t = 0;
+      else if (rect.top <= end) t = 1;
+      else t = (start - rect.top) / (start - end);
+
+      body.style.setProperty('--theme', t.toFixed(4));
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+</script>
+
+</body>
+</html>
