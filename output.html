@@ -151,7 +151,7 @@
   /* Section primitives */
   section { position: relative; }
   .section { padding: 96px 0; }
-  .section-tight { padding: 64px 0; }
+  .section-tight { padding: 32px 0 64px; }
 
   .eyebrow {
     font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
@@ -175,7 +175,8 @@
     content: ""; width: 18px; height: 1px; background: var(--accent); display: inline-block;
   }
 
-  .page-head { padding: 88px 0 36px; text-align: left; }
+  .page-head { padding: 72px 0 8px; text-align: left; }
+  #papers.page-head { padding-top: 56px; }
   .page-title {
     margin: 22px 0 16px;
     font-size: clamp(40px, 6vw, 72px);
@@ -193,7 +194,6 @@
   /* Post grid */
   .post-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    margin-top: 40px;
   }
   .post-card {
     position: relative; overflow: hidden;
@@ -210,40 +210,36 @@
     box-shadow: 0 16px 50px color-mix(in srgb, var(--accent-b) 10%, transparent);
   }
   .post-thumb {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--hairline-2);
   }
   .post-thumb::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 60%, color-mix(in srgb, var(--bg-elev) 65%, transparent) 100%);
+    background:
+      radial-gradient(140% 80% at 50% 110%, rgba(0,0,0,0.35) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.22) 100%);
+    pointer-events: none;
   }
   /* per-card thumb gradients — distinct, harmonious */
-  .t-a { background: radial-gradient(120% 90% at 15% 20%, #4F2A8F 0%, #B22A7C 35%, #E45A7B 65%, #F2A65A 100%); }
-  .t-b { background: radial-gradient(110% 100% at 80% 30%, #11112E 0%, #4F2A8F 35%, #B22A7C 70%, #E45A7B 100%); }
-  .t-c { background: linear-gradient(135deg, #07071A 0%, #4F2A8F 40%, #E45A7B 75%, #F2A65A 100%); }
-  .t-d { background: radial-gradient(120% 90% at 30% 70%, #2DD4BF 0%, #4F9EF8 45%, #818CF8 85%); }
-  .t-e { background: linear-gradient(135deg, #11112E 0%, #2D2A8F 35%, #818CF8 65%, #2DD4BF 100%); }
-  .t-f { background: radial-gradient(110% 100% at 70% 75%, #818CF8 0%, #4F9EF8 35%, #2DD4BF 70%, #FFE9C7 100%); }
+  .t-a { background: radial-gradient(120% 110% at 20% 18%, #6B3CB8 0%, #B22A7C 38%, #E45A7B 68%, #F2A65A 100%); }
+  .t-b { background: radial-gradient(110% 110% at 80% 25%, #1A1644 0%, #4F2A8F 35%, #B22A7C 72%, #E45A7B 100%); }
+  .t-c { background: linear-gradient(135deg, #1A0F35 0%, #4F2A8F 38%, #E45A7B 78%, #F2A65A 100%); }
+  .t-d { background: radial-gradient(120% 110% at 30% 75%, #2DD4BF 0%, #4F9EF8 50%, #818CF8 90%); }
+  .t-e { background: linear-gradient(135deg, #1A1644 0%, #3D2DA8 38%, #818CF8 70%, #2DD4BF 100%); }
+  .t-f { background: radial-gradient(110% 110% at 70% 78%, #818CF8 0%, #4F9EF8 38%, #2DD4BF 75%, #FFE9C7 100%); }
 
   .thumb-mark {
-    position: absolute; left: 18px; top: 16px;
+    position: absolute; left: 16px; top: 14px;
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: 10.5px; letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.78); text-transform: uppercase;
-    padding: 4px 8px; border-radius: 999px;
-    background: rgba(0,0,0,0.32); backdrop-filter: blur(4px);
+    color: rgba(255,255,255,0.92); text-transform: uppercase;
+    padding: 4px 9px; border-radius: 999px;
+    background: rgba(0,0,0,0.28);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.12);
     z-index: 2;
-  }
-  .thumb-art {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.85);
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 56px; font-weight: 400; letter-spacing: -0.03em;
-    text-shadow: 0 4px 24px rgba(0,0,0,0.35);
-    z-index: 1;
   }
   .post-body { padding: 22px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
   .post-meta {
@@ -281,12 +277,12 @@
 
   /* Featured strip */
   .featured {
-    margin: 96px 0 0;
-    padding: 32px 36px;
+    margin: 28px 0 0;
+    padding: 28px 36px;
     border: 1px solid var(--hairline);
     border-radius: 18px;
     background: var(--bg-elev);
-    display: flex; flex-direction: column; gap: 22px; align-items: center;
+    display: flex; flex-direction: column; gap: 20px; align-items: center;
   }
   .featured .label {
     text-align: center; color: var(--muted-2);
@@ -324,75 +320,70 @@
     opacity: .55;
   }
 
-  /* Papers grid (denser, with badge) */
+  /* Papers grid — text-forward, no thumbnails */
   .paper-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    margin-top: 40px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
   }
   .paper-card {
-    position: relative; overflow: hidden;
+    position: relative;
     background: var(--bg-elev);
     border: 1px solid var(--hairline);
-    border-radius: 16px;
-    display: flex; flex-direction: column;
+    border-radius: 14px;
+    padding: 26px 24px 22px;
+    display: flex; flex-direction: column; gap: 10px;
     color: inherit;
+    overflow: hidden;
     transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .35s var(--ease), background-color .3s ease;
   }
   .paper-card::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: var(--cool); opacity: 0;
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--cool); opacity: .45;
     transition: opacity .3s ease;
   }
-  .paper-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c2) 45%, var(--hairline)); box-shadow: 0 16px 50px rgba(79,158,248,0.10); }
-  .paper-card:hover::before { opacity: .85; }
-
-  .paper-thumb {
-    aspect-ratio: 16 / 10;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--hairline-2);
-    background: linear-gradient(135deg, #F8FAFF 0%, #E6ECFB 100%);
-    display: flex; align-items: center; justify-content: center;
+  .paper-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--c2) 40%, var(--hairline));
+    box-shadow: 0 14px 40px rgba(79,158,248,0.08);
   }
-  /* paper preview look — abstract "pages" */
-  .paper-thumb svg { width: 70%; height: 70%; }
-  .paper-thumb .page-bg { fill: #FFFFFF; stroke: #D7DDF0; stroke-width: 1; }
-  .paper-thumb .page-bg.back { fill: #F2F5FF; }
-  .paper-thumb .line { stroke: #C4CCE3; stroke-width: 1.5; stroke-linecap: round; }
-  .paper-thumb .accent-line { stroke: url(#paperAccent); stroke-width: 2.5; stroke-linecap: round; }
-  .paper-thumb .heading { fill: #0E1330; }
+  .paper-card:hover::before { opacity: 1; }
 
+  .paper-top {
+    display: flex; align-items: center; gap: 10px;
+    flex-wrap: wrap;
+  }
   .paper-badge {
-    position: absolute; left: 14px; top: 14px;
     font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px; letter-spacing: 0.08em;
-    color: #0E1330; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 999px;
-    background: rgba(255,255,255,0.86); border: 1px solid #D7DDF0;
-    z-index: 2;
+    font-size: 10.5px; letter-spacing: 0.06em;
+    color: var(--text); text-transform: uppercase;
+    padding: 4px 9px; border-radius: 999px;
+    background: color-mix(in srgb, var(--c2) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c2) 35%, var(--hairline));
+    white-space: nowrap;
   }
-
-  .paper-body { padding: 22px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .paper-meta {
+  .paper-date {
     font-size: 11.5px; font-weight: 500; letter-spacing: 0.04em;
     color: var(--muted-2); text-transform: uppercase;
-    display: inline-flex; gap: 8px; align-items: center;
   }
   .paper-title {
-    margin: 0; font-size: 18.5px; line-height: 1.25;
+    margin: 4px 0 0; font-size: 19px; line-height: 1.25;
     letter-spacing: -0.015em; font-weight: 600; color: var(--text);
   }
-  .paper-authors { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .paper-title a { color: inherit; transition: color .2s var(--ease); }
+  .paper-title a:hover { color: var(--c2); }
+  .paper-authors {
+    margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5;
+    font-style: italic;
+  }
   .paper-abstract { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
   .paper-foot {
-    margin-top: auto; padding-top: 14px;
+    margin-top: auto; padding-top: 16px;
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
     border-top: 1px solid var(--hairline-2);
     font-size: 12.5px;
   }
   .paper-foot .links { display: inline-flex; gap: 14px; }
   .paper-foot .links a {
-    color: var(--muted); font-size: 12.5px;
+    color: var(--muted); font-size: 12.5px; font-weight: 500;
     transition: color .2s var(--ease);
   }
   .paper-foot .links a:hover { color: var(--text); }
@@ -468,16 +459,6 @@
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="paperAccent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#2DD4BF"/>
-      <stop offset="50%"  stop-color="#4F9EF8"/>
-      <stop offset="100%" stop-color="#818CF8"/>
-    </linearGradient>
-  </defs>
-</svg>
-
 <div class="nav-outer">
 <header class="nav reveal d1">
   <div class="wrap nav-inner">
@@ -522,7 +503,6 @@
         <a class="post-card reveal d1" href="#">
           <div class="post-thumb t-a">
             <span class="thumb-mark">Retrieval</span>
-            <div class="thumb-art" aria-hidden="true">G·R</div>
           </div>
           <div class="post-body">
             <div class="post-meta">Apr 22, 2026 <span class="sep"></span> 8 min read</div>
@@ -538,7 +518,6 @@
         <a class="post-card reveal d2" href="#">
           <div class="post-thumb t-b">
             <span class="thumb-mark">Architecture</span>
-            <div class="thumb-art" aria-hidden="true">{ }</div>
           </div>
           <div class="post-body">
             <div class="post-meta">Apr 08, 2026 <span class="sep"></span> 5 min read</div>
@@ -554,7 +533,6 @@
         <a class="post-card reveal d3" href="#">
           <div class="post-thumb t-c">
             <span class="thumb-mark">Field Notes</span>
-            <div class="thumb-art" aria-hidden="true">PE</div>
           </div>
           <div class="post-body">
             <div class="post-meta">Mar 19, 2026 <span class="sep"></span> 12 min read</div>
@@ -570,7 +548,6 @@
         <a class="post-card reveal d1" href="#">
           <div class="post-thumb t-d">
             <span class="thumb-mark">Graph</span>
-            <div class="thumb-art" aria-hidden="true">⌗</div>
           </div>
           <div class="post-body">
             <div class="post-meta">Mar 02, 2026 <span class="sep"></span> 9 min read</div>
@@ -586,7 +563,6 @@
         <a class="post-card reveal d2" href="#">
           <div class="post-thumb t-e">
             <span class="thumb-mark">Security</span>
-            <div class="thumb-art" aria-hidden="true">/T</div>
           </div>
           <div class="post-body">
             <div class="post-meta">Feb 14, 2026 <span class="sep"></span> 6 min read</div>
@@ -602,7 +578,6 @@
         <a class="post-card reveal d3" href="#">
           <div class="post-thumb t-f">
             <span class="thumb-mark">Strategy</span>
-            <div class="thumb-art" aria-hidden="true">IK</div>
           </div>
           <div class="post-body">
             <div class="post-meta">Jan 28, 2026 <span class="sep"></span> 4 min read</div>
@@ -652,191 +627,113 @@
     <div class="wrap">
       <div class="paper-grid">
 
-        <a class="paper-card reveal d1" href="#">
-          <div class="paper-thumb">
-            <span class="paper-badge">NeurIPS '26 W/S</span>
-            <svg viewBox="0 0 160 100" aria-hidden="true">
-              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
-              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
-              <rect class="heading" x="24" y="30" width="58" height="5" rx="1.5"/>
-              <line class="accent-line" x1="24" y1="44" x2="100" y2="44"/>
-              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
-              <line class="line" x1="24" y1="61" x2="108" y2="61"/>
-              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
-              <line class="line" x1="24" y1="75" x2="96" y2="75"/>
-              <line class="line" x1="24" y1="82" x2="104" y2="82"/>
-            </svg>
+        <div class="paper-card reveal d1">
+          <div class="paper-top">
+            <span class="paper-badge">NeurIPS '26 Workshop</span>
+            <span class="paper-date">Apr 2026</span>
           </div>
-          <div class="paper-body">
-            <div class="paper-meta">Apr 2026 <span class="sep"></span> NeurIPS Workshop</div>
-            <h3 class="paper-title">GraphRAG-X: Citation-Aware Retrieval over Heterogeneous Enterprise Corpora</h3>
-            <p class="paper-authors">S. Chen, K. Thiagarajan, D. Lin, et al.</p>
-            <p class="paper-abstract">A retrieval architecture that treats citations as first-class edges. Outperforms dense baselines by 17.4 nDCG@10 on a held-out PE deal-room benchmark.</p>
-            <div class="paper-foot">
-              <span class="links">
-                <a href="#">PDF</a>
-                <a href="#">arXiv</a>
-                <a href="#">BibTeX</a>
-              </span>
-              <span class="paper-tag">14 pp</span>
-            </div>
+          <h3 class="paper-title"><a href="#">GraphRAG-X: Citation-Aware Retrieval over Heterogeneous Enterprise Corpora</a></h3>
+          <p class="paper-authors">S. Chen, K. Thiagarajan, D. Lin, et al.</p>
+          <p class="paper-abstract">A retrieval architecture that treats citations as first-class edges. Outperforms dense baselines by 17.4 nDCG@10 on a held-out PE deal-room benchmark.</p>
+          <div class="paper-foot">
+            <span class="links">
+              <a href="#">PDF</a>
+              <a href="#">arXiv</a>
+              <a href="#">BibTeX</a>
+            </span>
+            <span class="paper-tag">14 pp</span>
           </div>
-        </a>
+        </div>
 
-        <a class="paper-card reveal d2" href="#">
-          <div class="paper-thumb">
+        <div class="paper-card reveal d2">
+          <div class="paper-top">
             <span class="paper-badge">arXiv preprint</span>
-            <svg viewBox="0 0 160 100" aria-hidden="true">
-              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
-              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
-              <rect class="heading" x="24" y="30" width="74" height="5" rx="1.5"/>
-              <line class="accent-line" x1="24" y1="44" x2="88" y2="44"/>
-              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
-              <line class="line" x1="24" y1="61" x2="100" y2="61"/>
-              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
-              <line class="line" x1="24" y1="75" x2="108" y2="75"/>
-              <line class="line" x1="24" y1="82" x2="92" y2="82"/>
-            </svg>
+            <span class="paper-date">Mar 2026 · 2603.11421</span>
           </div>
-          <div class="paper-body">
-            <div class="paper-meta">Mar 2026 <span class="sep"></span> arXiv:2603.11421</div>
-            <h3 class="paper-title">Cross-Tenant Retrieval Without Cross-Tenant Leakage</h3>
-            <p class="paper-authors">K. Thiagarajan, S. Chen</p>
-            <p class="paper-abstract">A permission-aware retriever that enforces tenant boundaries below the embedding layer. Zero cross-tenant hits across 1.2M adversarial probes; 0.3% latency overhead.</p>
-            <div class="paper-foot">
-              <span class="links">
-                <a href="#">PDF</a>
-                <a href="#">arXiv</a>
-                <a href="#">BibTeX</a>
-              </span>
-              <span class="paper-tag">22 pp</span>
-            </div>
+          <h3 class="paper-title"><a href="#">Cross-Tenant Retrieval Without Cross-Tenant Leakage</a></h3>
+          <p class="paper-authors">K. Thiagarajan, S. Chen</p>
+          <p class="paper-abstract">A permission-aware retriever that enforces tenant boundaries below the embedding layer. Zero cross-tenant hits across 1.2M adversarial probes; 0.3% latency overhead.</p>
+          <div class="paper-foot">
+            <span class="links">
+              <a href="#">PDF</a>
+              <a href="#">arXiv</a>
+              <a href="#">BibTeX</a>
+            </span>
+            <span class="paper-tag">22 pp</span>
           </div>
-        </a>
+        </div>
 
-        <a class="paper-card reveal d3" href="#">
-          <div class="paper-thumb">
+        <div class="paper-card reveal d3">
+          <div class="paper-top">
             <span class="paper-badge">VLDB '26</span>
-            <svg viewBox="0 0 160 100" aria-hidden="true">
-              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
-              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
-              <rect class="heading" x="24" y="30" width="64" height="5" rx="1.5"/>
-              <line class="accent-line" x1="24" y1="44" x2="96" y2="44"/>
-              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
-              <line class="line" x1="24" y1="61" x2="104" y2="61"/>
-              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
-              <line class="line" x1="24" y1="75" x2="100" y2="75"/>
-              <line class="line" x1="24" y1="82" x2="108" y2="82"/>
-            </svg>
+            <span class="paper-date">Feb 2026 · in submission</span>
           </div>
-          <div class="paper-body">
-            <div class="paper-meta">Feb 2026 <span class="sep"></span> VLDB (in submission)</div>
-            <h3 class="paper-title">Document Graphs as a First-Class Index</h3>
-            <p class="paper-authors">D. Lin, S. Chen, K. Thiagarajan</p>
-            <p class="paper-abstract">Treating the document graph as a primary access path — not a post-hoc rerank — yields a 4× reduction in tokens-to-correct-answer on multi-hop financial queries.</p>
-            <div class="paper-foot">
-              <span class="links">
-                <a href="#">PDF</a>
-                <a href="#">arXiv</a>
-                <a href="#">BibTeX</a>
-              </span>
-              <span class="paper-tag">18 pp</span>
-            </div>
+          <h3 class="paper-title"><a href="#">Document Graphs as a First-Class Index</a></h3>
+          <p class="paper-authors">D. Lin, S. Chen, K. Thiagarajan</p>
+          <p class="paper-abstract">Treating the document graph as a primary access path — not a post-hoc rerank — yields a 4× reduction in tokens-to-correct-answer on multi-hop financial queries.</p>
+          <div class="paper-foot">
+            <span class="links">
+              <a href="#">PDF</a>
+              <a href="#">arXiv</a>
+              <a href="#">BibTeX</a>
+            </span>
+            <span class="paper-tag">18 pp</span>
           </div>
-        </a>
+        </div>
 
-        <a class="paper-card reveal d1" href="#">
-          <div class="paper-thumb">
+        <div class="paper-card reveal d1">
+          <div class="paper-top">
             <span class="paper-badge">Tech Report</span>
-            <svg viewBox="0 0 160 100" aria-hidden="true">
-              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
-              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
-              <rect class="heading" x="24" y="30" width="80" height="5" rx="1.5"/>
-              <line class="accent-line" x1="24" y1="44" x2="80" y2="44"/>
-              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
-              <line class="line" x1="24" y1="61" x2="96" y2="61"/>
-              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
-              <line class="line" x1="24" y1="75" x2="104" y2="75"/>
-              <line class="line" x1="24" y1="82" x2="100" y2="82"/>
-            </svg>
+            <span class="paper-date">Jan 2026 · TR-2026-01</span>
           </div>
-          <div class="paper-body">
-            <div class="paper-meta">Jan 2026 <span class="sep"></span> Ember TR-2026-01</div>
-            <h3 class="paper-title">Benchmarking Retrieval over Real Private-Equity Deal Rooms</h3>
-            <p class="paper-authors">D. Lin, S. Chen, K. Thiagarajan, M. Park</p>
-            <p class="paper-abstract">A 12,400-query benchmark across 47 anonymized deal rooms. We release the evaluation harness; the underlying corpora remain under NDA.</p>
-            <div class="paper-foot">
-              <span class="links">
-                <a href="#">PDF</a>
-                <a href="#">Harness</a>
-                <a href="#">BibTeX</a>
-              </span>
-              <span class="paper-tag">31 pp</span>
-            </div>
+          <h3 class="paper-title"><a href="#">Benchmarking Retrieval over Real Private-Equity Deal Rooms</a></h3>
+          <p class="paper-authors">D. Lin, S. Chen, K. Thiagarajan, M. Park</p>
+          <p class="paper-abstract">A 12,400-query benchmark across 47 anonymized deal rooms. We release the evaluation harness; the underlying corpora remain under NDA.</p>
+          <div class="paper-foot">
+            <span class="links">
+              <a href="#">PDF</a>
+              <a href="#">Harness</a>
+              <a href="#">BibTeX</a>
+            </span>
+            <span class="paper-tag">31 pp</span>
           </div>
-        </a>
+        </div>
 
-        <a class="paper-card reveal d2" href="#">
-          <div class="paper-thumb">
-            <span class="paper-badge">Workshop · ICML '25</span>
-            <svg viewBox="0 0 160 100" aria-hidden="true">
-              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
-              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
-              <rect class="heading" x="24" y="30" width="52" height="5" rx="1.5"/>
-              <line class="accent-line" x1="24" y1="44" x2="104" y2="44"/>
-              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
-              <line class="line" x1="24" y1="61" x2="108" y2="61"/>
-              <line class="line" x1="24" y1="68" x2="100" y2="68"/>
-              <line class="line" x1="24" y1="75" x2="112" y2="75"/>
-              <line class="line" x1="24" y1="82" x2="96" y2="82"/>
-            </svg>
+        <div class="paper-card reveal d2">
+          <div class="paper-top">
+            <span class="paper-badge">ICML '25 Workshop</span>
+            <span class="paper-date">Jul 2025 · R2-FM</span>
           </div>
-          <div class="paper-body">
-            <div class="paper-meta">Jul 2025 <span class="sep"></span> ICML R2-FM Workshop</div>
-            <h3 class="paper-title">Long-Context Models Forget Earlier Citations: A Failure Mode We Should Stop Hiding</h3>
-            <p class="paper-authors">S. Chen, K. Thiagarajan</p>
-            <p class="paper-abstract">Frontier 200k-context models degrade by 28% on attribution faithfulness past 60k tokens, even when raw recall stays flat. Implications for long-document RAG.</p>
-            <div class="paper-foot">
-              <span class="links">
-                <a href="#">PDF</a>
-                <a href="#">arXiv</a>
-                <a href="#">BibTeX</a>
-              </span>
-              <span class="paper-tag">9 pp</span>
-            </div>
+          <h3 class="paper-title"><a href="#">Long-Context Models Forget Earlier Citations: A Failure Mode We Should Stop Hiding</a></h3>
+          <p class="paper-authors">S. Chen, K. Thiagarajan</p>
+          <p class="paper-abstract">Frontier 200k-context models degrade by 28% on attribution faithfulness past 60k tokens, even when raw recall stays flat. Implications for long-document RAG.</p>
+          <div class="paper-foot">
+            <span class="links">
+              <a href="#">PDF</a>
+              <a href="#">arXiv</a>
+              <a href="#">BibTeX</a>
+            </span>
+            <span class="paper-tag">9 pp</span>
           </div>
-        </a>
+        </div>
 
-        <a class="paper-card reveal d3" href="#">
-          <div class="paper-thumb">
+        <div class="paper-card reveal d3">
+          <div class="paper-top">
             <span class="paper-badge">Tech Report</span>
-            <svg viewBox="0 0 160 100" aria-hidden="true">
-              <rect class="page-bg back" x="22" y="14" width="110" height="78" rx="3"/>
-              <rect class="page-bg" x="14" y="20" width="110" height="78" rx="3"/>
-              <rect class="heading" x="24" y="30" width="68" height="5" rx="1.5"/>
-              <line class="accent-line" x1="24" y1="44" x2="92" y2="44"/>
-              <line class="line" x1="24" y1="54" x2="112" y2="54"/>
-              <line class="line" x1="24" y1="61" x2="100" y2="61"/>
-              <line class="line" x1="24" y1="68" x2="112" y2="68"/>
-              <line class="line" x1="24" y1="75" x2="96" y2="75"/>
-              <line class="line" x1="24" y1="82" x2="108" y2="82"/>
-            </svg>
+            <span class="paper-date">Oct 2025 · TR-2025-04</span>
           </div>
-          <div class="paper-body">
-            <div class="paper-meta">Oct 2025 <span class="sep"></span> Ember TR-2025-04</div>
-            <h3 class="paper-title">Ingestion at Audit Standards: A Pipeline for Regulated Verticals</h3>
-            <p class="paper-authors">M. Park, D. Lin</p>
-            <p class="paper-abstract">How we extract, normalize, and provenance-track 14 document types — including handwritten margin notes on legacy memos — for audit-grade retrieval.</p>
-            <div class="paper-foot">
-              <span class="links">
-                <a href="#">PDF</a>
-                <a href="#">Harness</a>
-                <a href="#">BibTeX</a>
-              </span>
-              <span class="paper-tag">17 pp</span>
-            </div>
+          <h3 class="paper-title"><a href="#">Ingestion at Audit Standards: A Pipeline for Regulated Verticals</a></h3>
+          <p class="paper-authors">M. Park, D. Lin</p>
+          <p class="paper-abstract">How we extract, normalize, and provenance-track 14 document types — including handwritten margin notes on legacy memos — for audit-grade retrieval.</p>
+          <div class="paper-foot">
+            <span class="links">
+              <a href="#">PDF</a>
+              <a href="#">Harness</a>
+              <a href="#">BibTeX</a>
+            </span>
+            <span class="paper-tag">17 pp</span>
           </div>
-        </a>
+        </div>
 
       </div>
 
