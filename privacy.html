@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Privacy — Ember Intelligence</title>
+<meta name="description" content="Privacy policy for Ember Intelligence." />
+<meta name="theme-color" content="#07071A" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #07071A; --bg-deep: #030310; --bg-elev: #0B0B22; --card: #11112E;
+    --text: #F4F4F8; --muted: #8A8AA3; --muted-2: #6B6B85;
+    --hairline: #1F1F3D; --hairline-2: #15152F;
+    --o1: #4F2A8F; --o2: #B22A7C; --o3: #E45A7B; --o4: #F2A65A; --o5: #FFE9C7;
+    --ember: linear-gradient(90deg, var(--o1) 0%, var(--o2) 26%, var(--o3) 52%, var(--o4) 76%, var(--o5) 100%);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --maxw: 1200px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { background: var(--bg); }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5; overflow-x: hidden; min-height: 100vh;
+  }
+  ::selection { background: rgba(228, 90, 123, 0.30); color: var(--text); }
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid transparent; outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(7,7,26,1), 0 0 0 4px rgba(228, 90, 123, 0.65);
+    border-radius: 6px;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; position: relative; }
+
+  .nav-outer {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(7,7,26,0.72);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-bottom: 1px solid var(--hairline-2);
+  }
+  .nav { padding: 18px 0; }
+  .nav-inner { display: flex; align-items: center; gap: 28px; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-weight: 500; font-size: 17px; color: var(--text);
+  }
+  .brand-glyph { width: 22px; height: 22px; }
+  .brand-glyph circle.ring-stroke { fill: none; stroke: url(#brandGrad); stroke-width: 1.25; }
+  .nav-links { display: flex; gap: 26px; margin-left: 24px; flex: 1; }
+  .nav-links a { color: var(--muted); font-size: 13.5px; transition: color .2s var(--ease); }
+  .nav-links a:hover { color: var(--text); }
+  .btn {
+    height: 36px; display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 14px; font-size: 13px; font-weight: 500;
+    color: var(--text); border-radius: 10px; text-decoration: none;
+    background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--ember) border-box;
+    border: 1px solid transparent;
+    transition: transform .25s var(--ease), box-shadow .35s var(--ease);
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(228, 90, 123, 0.10); }
+
+  .legal-page { padding: 96px 0 80px; }
+  .eyebrow {
+    font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 14px; border: 1px solid var(--hairline); border-radius: 999px;
+    background: rgba(11,11,34,0.6);
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 999px;
+    background: linear-gradient(135deg, var(--o3), var(--o4));
+  }
+  .legal-title {
+    margin: 24px 0 24px;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.04; letter-spacing: -0.03em; font-weight: 600;
+  }
+  .legal-body { max-width: 68ch; color: #C9C9D8; font-size: 16px; line-height: 1.7; }
+  .legal-body p { margin: 0 0 18px; }
+  .legal-body a { color: var(--text); border-bottom: 1px solid color-mix(in srgb, var(--o3) 35%, var(--hairline)); padding-bottom: 1px; }
+  .legal-note {
+    margin-top: 32px; padding: 16px 18px;
+    border: 1px solid var(--hairline-2); border-radius: 10px;
+    color: var(--muted); font-size: 13.5px;
+    background: var(--bg-elev);
+  }
+  .legal-meta {
+    margin-top: 28px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted-2);
+  }
+
+  footer {
+    border-top: 1px solid var(--hairline-2);
+    background: var(--bg-deep);
+    padding: 36px 0;
+  }
+  .footer-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-row .copyright { color: var(--muted-2); font-size: 12px; }
+  .footer-row .legal-links { display: inline-flex; gap: 18px; }
+  .footer-row .legal-links a { color: var(--muted-2); font-size: 12px; transition: color .2s var(--ease); }
+  .footer-row .legal-links a:hover { color: var(--text); }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#4F2A8F"/>
+      <stop offset="28%"  stop-color="#B22A7C"/>
+      <stop offset="52%"  stop-color="#E45A7B"/>
+      <stop offset="76%"  stop-color="#F2A65A"/>
+      <stop offset="100%" stop-color="#FFE9C7"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="nav-outer">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="Ember Intelligence">
+      <svg class="brand-glyph" viewBox="0 0 22 22" aria-hidden="true">
+        <circle class="ring-stroke" cx="11" cy="11" r="9.4"/>
+      </svg>
+      <span>Ember</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#platform">Platform</a>
+      <a href="/about">About</a>
+      <a href="/careers">Careers</a>
+    </nav>
+    <a class="btn" href="mailto:founders@allember.com?subject=Curious%20about%20Ember">Contact the Founders</a>
+  </div>
+</header>
+</div>
+
+<main>
+  <section class="legal-page">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span> Legal</span>
+      <h1 class="legal-title">Privacy.</h1>
+      <div class="legal-body">
+        <p>
+          Ember Intelligence handles customer data under the privacy and confidentiality standards expected of a vendor operating inside finance and consulting firms. Our full privacy policy is being finalized as part of our enterprise diligence package.
+        </p>
+        <p>
+          In the interim, design partners and prospective customers can request our current data-handling policy, sub-processor list, and incident-response posture directly from the founders. We will return a complete document within one business day.
+        </p>
+        <div class="legal-note">
+          For privacy and data-protection inquiries, contact <a href="mailto:privacy@allember.com">privacy@allember.com</a> or the founders at <a href="mailto:founders@allember.com">founders@allember.com</a>.
+        </div>
+        <div class="legal-meta">Last updated · 2026-05-14</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span class="copyright">© 2026 Ember Intelligence LLC. All rights reserved.</span>
+      <span class="legal-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/dpa">DPA</a>
+        <a href="/trust">Trust</a>
+      </span>
+    </div>
+  </footer>
+</main>
+
+</body>
+</html>
