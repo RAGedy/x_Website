@@ -40,6 +40,7 @@ body{
   font-size:16px;
   line-height:1.5;
   -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
 }
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -135,9 +136,30 @@ a{color:inherit}
 .nav-cta{
   background:rgba(255,255,255,.1);border:1px solid var(--hairline-2);color:#fff;
   border-radius:999px;padding:12px 24px;font-weight:700;font-size:15px;text-decoration:none;
-  transition:background .2s,color .2s;
+  transition:background .2s,color .2s;white-space:nowrap;
 }
 .nav-cta:hover{background:#fff;color:#0c0c0c}
+.nav-burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:44px;height:44px;padding:10px;
+  background:none;border:none;cursor:pointer;
+}
+.nav-burger span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:transform .2s,opacity .2s}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{
+  display:none;max-width:var(--container-lg);margin:10px auto 0;
+  background:#131315;border:1px solid var(--hairline-2);border-radius:20px;
+  padding:20px 24px;
+}
+.nav-mobile.open{display:block}
+.nav-mobile .eyebrow{margin:16px 0 8px;font-size:11px}
+.nav-mobile .eyebrow:first-child{margin-top:0}
+.nav-mobile a{
+  display:block;padding:9px 0;color:#fff;font-weight:700;font-size:16px;text-decoration:none;
+}
+.nav-mobile a:active,.nav-mobile a:hover{color:var(--accent)}
 
 /* ============ HERO ============ */
 .hero{padding:120px 0 60px;display:flex;flex-direction:column;align-items:center}
@@ -358,12 +380,47 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
   .tpl-constellation{display:none}
   .foot-grid{grid-template-columns:1fr;gap:48px}
   .nav-menu{display:none}
+  .nav-burger{display:flex}
+  .container{padding-left:24px;padding-right:24px}
 }
 @media (max-width:700px){
-  .cards-8{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:1fr}
-  .foot-cols{grid-template-columns:repeat(2,1fr)}
+  .nav-outer{padding:12px 16px}
+  .nav-pill{padding:12px 18px}
+  .brand-lockup .ae{font-size:21px}
+  .brand-lockup .bar{height:26px}
+  .brand-lockup .name{font-size:18px}
+  .nav-side{gap:14px}
   .nav-side .textlink{display:none}
+  .nav-cta{padding:10px 18px;font-size:14px}
+  .section{padding:80px 0}
+  .section--tight-top{padding-top:40px}
+  .section--tight-bottom{padding-bottom:40px}
+  .hero{padding:80px 0 44px}
+  .hero-sub{margin-top:28px}
+  .hero-ctas{margin-top:32px}
+  .hero-ctas .btn{padding:15px 22px;font-size:15px}
+  .trust{padding:48px 0 16px}
+  .trust-left{flex-wrap:wrap;gap:20px}
+  .trust-logos{flex-wrap:wrap;gap:24px 28px}
+  .trust-logos img{height:30px}
+  .sizzle-overlay{padding:22px 18px;gap:26px}
+  .sizzle-head .hl{padding:4px 12px}
+  .sizzle-head .sub .hl{padding:4px 10px}
+  .card--glass{padding:18px 18px 18px 30px}
+  .stats-grid{grid-template-columns:1fr;margin-top:44px}
+  .stat{padding:18px 0 26px}
+  .cards-8{grid-template-columns:1fr;gap:16px}
+  .card--sm .card-band{height:132px}
+  .tpl-head{padding:64px 0 40px}
+  .tpl-tab{padding:18px 20px;font-size:15px}
+  .tpl-body{padding:24px 20px}
+  .cta-banner{padding:96px 0}
+  .foot-cols{grid-template-columns:repeat(2,1fr);gap:24px}
+  .foot-grid{gap:36px}
+  .foot-px{gap:28px;margin-top:48px}
+  .foot-px img{height:40px}
+  footer{padding:64px 0 44px}
+  .container{padding-left:20px;padding-right:20px}
 }
 </style>
 </head>
@@ -413,8 +470,26 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
     <div class="nav-side">
       <a class="textlink" href="hearth-login.html">Log in</a>
       <a class="nav-cta" href="https://calendly.com/colden-allember/30min" target="_blank" rel="noopener">Let's talk</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-expanded="false" aria-controls="navMobile" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+  <nav class="nav-mobile" id="navMobile" aria-label="mobile">
+    <p class="eyebrow">How We Help</p>
+    <a href="#approach">Initial Consult</a>
+    <a href="#approach">FDE on Retainer</a>
+    <a href="#approach">Hearth Software Suite</a>
+    <p class="eyebrow">Who We Are</p>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <p class="eyebrow">Resources</p>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <p class="eyebrow">Account</p>
+    <a href="hearth-login.html">Log in</a>
+  </nav>
 </div>
 
 <main id="main">
@@ -704,6 +779,23 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 </main>
 
 <script>
+(function(){
+  var burger = document.getElementById('navBurger');
+  var menu = document.getElementById('navMobile');
+  if(burger && menu){
+    burger.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
+
 document.querySelectorAll('.tpl-tab').forEach(function(tab){
   tab.addEventListener('click', function(){
     document.querySelectorAll('.tpl-tab').forEach(function(t){t.setAttribute('aria-selected','false');});
