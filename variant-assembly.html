@@ -209,7 +209,6 @@ a{color:inherit}
   display:flex;align-items:center;justify-content:center;
   font-weight:700;font-size:15px;color:#fff;
 }
-.lead-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .card--glass:hover{border-color:rgba(255,255,255,.4);background:rgba(12,12,12,.68)}
 .card--glass h3{font-size:19px;font-weight:700;margin-bottom:8px}
 .card--glass p{color:#d6d7d9;font-size:14.5px;line-height:1.5}
@@ -475,7 +474,6 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
   <div class="sizzle-panel">
     <img class="bg" src="assets/campfire_stars_twinkle_seamless.gif" alt="Pixel-art campfire under a starry night sky">
     <div class="sizzle-overlay">
-      <svg class="lead-line" id="leadLine" aria-hidden="true"></svg>
       <div class="sizzle-head">
         <h2><span class="hl">See how Ember <span class="grad">transforms</span> your company</span></h2>
         <p class="sub"><span class="hl">Ember's three pronged approach makes sure that<br>you never have to worry.</span></p>
@@ -723,33 +721,6 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 </main>
 
 <script>
-function drawLead(){
-  var svg = document.getElementById('leadLine');
-  if(!svg) return;
-  var panel = document.querySelector('.sizzle-panel');
-  var hl = document.querySelector('.sizzle-head h2 .hl');
-  var card = document.querySelector('.sizzle-cards .card--glass');
-  if(!panel || !hl || !card) return;
-  if(window.matchMedia('(max-width:1100px)').matches){ svg.innerHTML=''; return; }
-  var p = panel.getBoundingClientRect();
-  var lines = hl.getClientRects();
-  if(lines.length < 2){ svg.innerHTML=''; return; }
-  var sy = (lines[0].bottom + lines[1].top) / 2 - p.top;
-  var sx = Math.max(lines[0].right, lines[1].right) - p.left + 30;
-  var c = card.getBoundingClientRect();
-  var ey = c.top + c.height / 2 - p.top;
-  var ex = c.left - p.left - 34;
-  svg.setAttribute('viewBox', '0 0 ' + p.width + ' ' + p.height);
-  var midx = sx + (ex - sx) * 0.55;
-  var d = 'M' + sx + ' ' + sy + ' C ' + midx + ' ' + sy + ', ' + (ex - 90) + ' ' + ey + ', ' + ex + ' ' + ey;
-  svg.innerHTML =
-    '<path d="' + d + '" stroke="#fff" stroke-width="2" stroke-dasharray="7 7" fill="none" opacity=".9"/>' +
-    '<path d="M' + (ex + 13) + ' ' + ey + ' L' + ex + ' ' + (ey - 7) + ' L' + ex + ' ' + (ey + 7) + ' Z" fill="#fff" opacity=".95"/>';
-}
-window.addEventListener('load', drawLead);
-window.addEventListener('resize', drawLead);
-drawLead();
-
 document.querySelectorAll('.tpl-tab').forEach(function(tab){
   tab.addEventListener('click', function(){
     document.querySelectorAll('.tpl-tab').forEach(function(t){t.setAttribute('aria-selected','false');});
