@@ -492,6 +492,15 @@ a.tag:hover{color:var(--accent);border-color:var(--accent)}
 @media (max-width:1100px){.split{grid-template-columns:1fr;gap:32px}.people-grid--4{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:700px){.people-grid{grid-template-columns:1fr}.people-grid--4{grid-template-columns:1fr}.supp-grid{grid-template-columns:1fr}.cta-strip{padding:40px 24px}.partner-band{gap:28px}.partner-band img{height:26px}.sec-label{margin-top:64px}.page-bottom{padding-bottom:96px}}
 
+
+.page-hero{padding:56px 0 0}
+.sec-label{margin-top:56px}
+.person-card{flex-direction:row;gap:22px;align-items:flex-start}
+.person-card .photo{flex:0 0 190px;margin-bottom:0}
+.person-card .photo img{height:230px !important;filter:none;object-position:center}
+.person-card .pbody{display:flex;flex-direction:column;flex:1;min-width:0}
+.person-card .tags{margin-top:auto;padding-top:14px}
+@media (max-width:700px){.person-card{flex-direction:column}.person-card .photo{flex:none;width:100%}.person-card .photo img{height:260px !important}}
 </style>
 </head>
 <body>
@@ -517,15 +526,7 @@ a.tag:hover{color:var(--accent);border-color:var(--accent)}
           </ul>
         </div>
       </li>
-      <li class="nav-item">
-        <button class="nav-link" type="button">Who We Are</button>
-        <div class="nav-drop">
-          <ul>
-            <li><a href="about.html"><span class="t">About</span></a></li>
-            <li><a href="team.html"><span class="t">Team</span></a></li>
-          </ul>
-        </div>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="team.html">Who We Are</a></li>
       <li class="nav-item">
         <button class="nav-link" type="button">Resources</button>
         <div class="nav-drop">
@@ -551,7 +552,6 @@ a.tag:hover{color:var(--accent);border-color:var(--accent)}
     <a href="/#approach">FDE on Retainer</a>
     <a href="/#approach">Hearth Software Suite</a>
     <p class="eyebrow">Who We Are</p>
-    <a href="about.html">About</a>
     <a href="team.html">Team</a>
     <p class="eyebrow">Resources</p>
     <a href="support.html">Support</a>
@@ -564,62 +564,46 @@ a.tag:hover{color:var(--accent);border-color:var(--accent)}
 
 <main id="main">
 <section class="page-hero container">
-  <p class="eyebrow">The Ember team</p>
   <h1 class="h-xl">The team behind <span class="grad">Ember Intelligence.</span></h1>
-  <p class="sub">Six people. Two founders, four founding engineers. The founder story and the company we are building live on the <a href="about.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">about page</a>; this is the full team and what each of us owns.</p>
 </section>
 <section class="container sec-label">
-  <p class="eyebrow">Leadership</p>
   <h2>The founders.</h2>
   <div class="people-grid">
-    <article class="person-card">
-      <div class="photo"><img src="assets/team/colden.png" alt="Colden Johnson"></div>
+    <article class="person-card"><div class="photo"><img src="assets/team/colden.png" alt="Colden Johnson"></div><div class="pbody">
       <h3>Colden Johnson</h3>
       <p class="role">Co-Founder &amp; CEO</p>
-      <p>Previously AI Automation Engineer at Texas Instruments, building production AI tooling inside one of the most data-intensive industrial environments in the world. Leads engineering, architecture, and product direction at Ember. Duke, CS &amp; Finance.</p>
-      <div class="tags"><span class="tag">Texas Instruments</span><span class="tag">Duke CS &amp; Finance</span></div>
-    </article>
-    <article class="person-card">
-      <div class="photo"><img src="assets/team/krishna.png" alt="Krishna Thiagarajan"></div>
+      <p>Experience as an AI Automation Engineer at Texas Instruments, building production AI tooling inside one of the most data-intensive industrial environments in the world. Leads engineering, architecture, and product direction at Ember. Duke, CS &amp; Finance.</p>
+      <div class="tags"><span class="tag">Texas Instruments</span><span class="tag">Duke CS &amp; Finance</span></div></div></article>
+    <article class="person-card"><div class="photo"><img src="assets/team/krishna.png" alt="Krishna Thiagarajan"></div><div class="pbody">
       <h3>Krishna Thiagarajan</h3>
       <p class="role">Co-Founder &amp; COO</p>
-      <p>Internships across private equity and finance, then Forward Deployed Engineer at the Murugappa Group &mdash; a multi-billion-dollar Indian industrial conglomerate &mdash; building AI against their hardest unstructured-data problems. Leads go-to-market, design partnerships, and customer engineering. Duke, CS &amp; Finance.</p>
-      <div class="tags"><span class="tag">Murugappa Group</span><span class="tag">Duke CS &amp; Finance</span></div>
-    </article>
+      <p>Experience in private equity, mergers and acquisitions, and finance. Leads go-to-market, design partnerships, and customer engineering. Duke, CS &amp; Finance.</p>
+      <div class="tags"><span class="tag">Duke CS &amp; Finance</span></div></div></article>
   </div>
 </section>
 <section class="container sec-label page-bottom">
-  <p class="eyebrow">Engineering</p>
   <h2>The founding engineers.</h2>
   <div class="people-grid">
-    <article class="person-card">
-      <div class="photo photo--sm"><img src="assets/team/gavin.jpg" alt="Gavin Huang"></div>
+    <article class="person-card"><div class="photo photo--sm"><img src="assets/team/gavin.jpg" alt="Gavin Huang"></div><div class="pbody">
       <h3>Gavin Huang</h3>
       <p class="role">Founding Engineer &middot; Ingestion &amp; Retrieval</p>
       <p>Previously AI Engineer at Intel and Solidigm, working on production ML systems operating against billions of records. At Ember, Gavin owns ingestion, chunking, and context enrichment &mdash; the layer that turns a firm's raw documents into something an agent can actually reason over.</p>
-      <div class="tags"><span class="tag">Intel &middot; Solidigm</span><span class="tag">Retrieval pipeline</span></div>
-    </article>
-    <article class="person-card">
-      <div class="photo photo--sm"><img src="assets/team/temuulen.jpg" alt="Temuulen Enkhtamir"></div>
+      <div class="tags"><span class="tag">Intel &middot; Solidigm</span><span class="tag">Retrieval pipeline</span></div></div></article>
+    <article class="person-card"><div class="photo photo--sm"><img src="assets/team/temuulen.jpg" alt="Temuulen Enkhtamir"></div><div class="pbody">
       <h3>Temuulen Enkhtamir</h3>
       <p class="role">Founding Engineer &middot; Agent &amp; Tooling</p>
       <p>Formerly a software engineer at AND Global, where he built agent-driven tooling against live production workloads. At Ember, Temuulen owns the agent runtime and developer surface &mdash; the code that gets called every time an LLM reaches into a customer's knowledge graph.</p>
-      <div class="tags"><span class="tag">AND Global</span><span class="tag">Agent &amp; SDK</span></div>
-    </article>
-    <article class="person-card">
-      <div class="photo photo--sm"><img src="assets/team/anar.jpg" alt="Anar Nyambayar"></div>
+      <div class="tags"><span class="tag">AND Global</span><span class="tag">Agent &amp; SDK</span></div></div></article>
+    <article class="person-card"><div class="photo photo--sm"><img src="assets/team/anar.jpg" alt="Anar Nyambayar"></div><div class="pbody">
       <h3>Anar Nyambayar</h3>
       <p class="role">Founding Engineer &middot; Product Surface</p>
       <p>Duke CS. Owns Ember's front-end and product surface &mdash; the interface customers, design partners, and operators see every day, and the only thing standing between a sophisticated retrieval graph and a partner-grade workflow.</p>
-      <div class="tags"><span class="tag">Duke CS</span><span class="tag">Front-end &amp; UX</span></div>
-    </article>
-    <article class="person-card">
-      <div class="photo photo--sm"><img src="assets/team/ethan.png" alt="Ethan Deal"></div>
+      <div class="tags"><span class="tag">Duke CS</span><span class="tag">Front-end &amp; UX</span></div></div></article>
+    <article class="person-card"><div class="photo photo--sm"><img src="assets/team/ethan.png" alt="Ethan Deal"></div><div class="pbody">
       <h3>Ethan Deal</h3>
       <p class="role">Founding Engineer &middot; Systems &amp; Integration</p>
       <p>Duke CS. Owns authentication, integration, and the systems plumbing that lets Ember plug into a tenant's identity provider, document stores, and existing agent stack &mdash; typically in an afternoon, without a custom deployment.</p>
-      <div class="tags"><span class="tag">Duke CS</span><span class="tag">Auth &amp; integrations</span></div>
-    </article>
+      <div class="tags"><span class="tag">Duke CS</span><span class="tag">Auth &amp; integrations</span></div></div></article>
   </div>
 </section>
 </main>
@@ -657,7 +641,7 @@ a.tag:hover{color:var(--accent);border-color:var(--accent)}
         <div class="foot-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="team.html">Who We Are</a></li>
             <li><a href="https://calendly.com/colden-allember/30min" target="_blank" rel="noopener">Let's talk</a></li>
             <li><a href="hearth-login.html">Log in</a></li>
           </ul>
