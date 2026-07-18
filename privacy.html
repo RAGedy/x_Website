@@ -437,6 +437,61 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 .person .role{color:var(--accent);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
 @media (max-width:1100px){.people{grid-template-columns:repeat(2,1fr)}.page-hero{padding-left:24px;padding-right:24px}}
 @media (max-width:700px){.people{grid-template-columns:1fr}.page-hero{padding:64px 20px 24px}}
+
+/* ===== structured page components ===== */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.split .eyebrow{margin-bottom:14px}
+.split p{color:var(--muted);font-size:17px;line-height:1.7;margin-bottom:16px;max-width:560px}
+.split p strong{color:#fff}
+.quote-panel{background:var(--panel);border:1px solid var(--hairline);border-left:3px solid var(--accent);border-radius:16px;padding:30px 32px}
+.quote-panel p{color:#d6d7d9;font-size:17.5px;line-height:1.65;margin:0}
+.quote-panel p em{color:#fff}
+.quote-panel .who{margin-top:20px;color:#fff;font-weight:700;font-size:14.5px}
+.quote-panel .who span{display:block;color:var(--muted-2);font-weight:400;font-size:13px;margin-top:2px}
+.sec-label{margin-top:96px}
+.sec-label>.eyebrow{margin-bottom:12px}
+.sec-label h2{font-size:clamp(1.6rem,2.6vw,2.25rem);font-weight:700;color:#fff}
+.lede{color:var(--muted);font-size:16.5px;line-height:1.65;margin-top:16px;max-width:660px}
+.lede a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.lede a:hover{color:var(--accent)}
+.people-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.people-grid--4{grid-template-columns:repeat(4,1fr)}
+.person-card{background:var(--panel);border:1px solid var(--hairline);border-radius:24px;padding:22px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.person-card:hover{border-color:var(--hairline-2);transform:translateY(-4px)}
+.person-card .photo{border-radius:14px;overflow:hidden;background:#1d1d1f;margin-bottom:20px}
+.person-card .photo img{width:100%;height:300px;object-fit:cover;object-position:center 32%;display:block;filter:grayscale(1) contrast(1.04);transition:filter .35s}
+.people-grid--4 .person-card .photo img{height:210px}
+.photo--sm img{height:230px !important}
+.person-card:hover .photo img{filter:grayscale(0)}
+.person-card h3{font-size:20px;color:#fff;margin:0 0 4px}
+.person-card .role{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.person-card p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0 0 10px}
+.person-card .pq{color:#d6d7d9;font-style:italic;border-top:1px solid var(--hairline);padding-top:12px;margin-top:6px}
+.person-card .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:14px}
+.tag{border:1px solid var(--hairline-2);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;color:#d6d7d9;text-decoration:none}
+a.tag:hover{color:var(--accent);border-color:var(--accent)}
+.partner-band{display:flex;align-items:center;gap:48px;flex-wrap:wrap;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:36px 0;margin-top:36px}
+.partner-band img{height:34px;width:auto;opacity:.8;filter:grayscale(1) brightness(1.1)}
+.numsecs{margin-top:16px;max-width:820px}
+.num-sec{border-top:1px solid var(--hairline-2);padding:36px 0 22px}
+.num-sec .num{display:block;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.14em;margin-bottom:10px}
+.num-sec h2{font-size:clamp(1.3rem,2vw,1.7rem);font-weight:700;color:#fff;margin:0 0 14px}
+.num-sec p,.num-sec li{color:var(--muted);font-size:16.5px;line-height:1.7;margin-bottom:14px}
+.num-sec strong{color:#fff}
+.num-sec a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.num-sec a:hover{color:var(--accent)}
+.num-sec ul,.num-sec ol{padding-left:22px;margin-bottom:14px}
+.cta-strip{background:var(--panel);border:1px solid var(--hairline);border-radius:24px;padding:56px 48px;text-align:center;margin-top:96px}
+.cta-strip h3{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;color:#fff;max-width:760px;margin:0 auto}
+.cta-strip p{color:var(--muted);font-size:16.5px;line-height:1.6;max-width:660px;margin:16px auto 0}
+.cta-strip p a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.cta-strip .hero-ctas{margin-top:32px}
+.meta-line{color:var(--muted-2);font-size:13.5px;margin-top:36px}
+.supp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.page-bottom{padding-bottom:140px}
+@media (max-width:1100px){.split{grid-template-columns:1fr;gap:32px}.people-grid--4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.people-grid{grid-template-columns:1fr}.people-grid--4{grid-template-columns:1fr}.supp-grid{grid-template-columns:1fr}.cta-strip{padding:40px 24px}.partner-band{gap:28px}.partner-band img{height:26px}.sec-label{margin-top:64px}.page-bottom{padding-bottom:96px}}
+
 </style>
 </head>
 <body>
@@ -515,31 +570,11 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
   <p class="sub">This privacy policy describes how Ember Intelligence LLC ("Ember," "we," "us," or "our") collects, uses, and protects information in connection with the <strong>Ember</strong> service, including the Ember MCP (Model Context Protocol) connector for Microsoft 365.</p>
 </section>
 
-<section class="container">
-  <div class="prose">
-    <h2>Information we collect</h2>
-    <p>When you connect Ember to external services, we request OAuth authorization tokens. These tokens are stored securely and are used solely to authenticate requests on your behalf. We do not collect or persistently store the content of documents or data accessed through these connections &mdash; that data is processed in real time to fulfill your requests and is not retained after the response is returned.</p>
-    <p>We may collect basic usage metadata (such as error logs and request counts) for the purpose of operating and improving the service. This metadata does not include the content of your personal data.</p>
-
-    <h2>How we use your information</h2>
-    <p>We use the information described above only to provide and maintain the Ember service. We do not sell, rent, or share your personal information with third parties for marketing or advertising purposes.</p>
-
-    <h2>Data retention</h2>
-    <p>OAuth tokens are retained only while your connection to Ember is active. You may revoke access at any time through your Microsoft account's connected app settings, which will cause us to delete associated tokens.</p>
-
-    <h2>Security</h2>
-    <p>We use industry-standard practices to protect your information, including encrypted storage and transport for OAuth credentials.</p>
-
-    <h2>Children</h2>
-    <p>Ember is not directed at children under 13 and we do not knowingly collect personal information from children.</p>
-
-    <h2>Changes to this policy</h2>
-    <p>We may update this policy from time to time. Continued use of the Ember service after changes are posted constitutes acceptance of the revised policy.</p>
+<section class="container page-bottom"><div class="numsecs"><div class="num-sec"><span class="num">01</span><h2>Information we collect</h2><p>When you connect Ember to external services, we request OAuth authorization tokens. These tokens are stored securely and are used solely to authenticate requests on your behalf. We do not collect or persistently store the content of documents or data accessed through these connections &mdash; that data is processed in real time to fulfill your requests and is not retained after the response is returned.</p>
+    <p>We may collect basic usage metadata (such as error logs and request counts) for the purpose of operating and improving the service. This metadata does not include the content of your personal data.</p></div><div class="num-sec"><span class="num">02</span><h2>How we use your information</h2><p>We use the information described above only to provide and maintain the Ember service. We do not sell, rent, or share your personal information with third parties for marketing or advertising purposes.</p></div><div class="num-sec"><span class="num">03</span><h2>Data retention</h2><p>OAuth tokens are retained only while your connection to Ember is active. You may revoke access at any time through your Microsoft account's connected app settings, which will cause us to delete associated tokens.</p></div><div class="num-sec"><span class="num">04</span><h2>Security</h2><p>We use industry-standard practices to protect your information, including encrypted storage and transport for OAuth credentials.</p></div><div class="num-sec"><span class="num">05</span><h2>Children</h2><p>Ember is not directed at children under 13 and we do not knowingly collect personal information from children.</p></div><div class="num-sec"><span class="num">06</span><h2>Changes to this policy</h2><p>We may update this policy from time to time. Continued use of the Ember service after changes are posted constitutes acceptance of the revised policy.</p>
 
     <p>For privacy and data-protection inquiries, contact <a href="mailto:privacy@allember.com">privacy@allember.com</a>.</p>
-    <p>Last updated &middot; 2026-07-08</p>
-  </div>
-</section>
+    <p>Last updated &middot; 2026-07-08</p></div></div></section>
 
 </main>
 

@@ -437,6 +437,61 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 .person .role{color:var(--accent);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
 @media (max-width:1100px){.people{grid-template-columns:repeat(2,1fr)}.page-hero{padding-left:24px;padding-right:24px}}
 @media (max-width:700px){.people{grid-template-columns:1fr}.page-hero{padding:64px 20px 24px}}
+
+/* ===== structured page components ===== */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.split .eyebrow{margin-bottom:14px}
+.split p{color:var(--muted);font-size:17px;line-height:1.7;margin-bottom:16px;max-width:560px}
+.split p strong{color:#fff}
+.quote-panel{background:var(--panel);border:1px solid var(--hairline);border-left:3px solid var(--accent);border-radius:16px;padding:30px 32px}
+.quote-panel p{color:#d6d7d9;font-size:17.5px;line-height:1.65;margin:0}
+.quote-panel p em{color:#fff}
+.quote-panel .who{margin-top:20px;color:#fff;font-weight:700;font-size:14.5px}
+.quote-panel .who span{display:block;color:var(--muted-2);font-weight:400;font-size:13px;margin-top:2px}
+.sec-label{margin-top:96px}
+.sec-label>.eyebrow{margin-bottom:12px}
+.sec-label h2{font-size:clamp(1.6rem,2.6vw,2.25rem);font-weight:700;color:#fff}
+.lede{color:var(--muted);font-size:16.5px;line-height:1.65;margin-top:16px;max-width:660px}
+.lede a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.lede a:hover{color:var(--accent)}
+.people-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.people-grid--4{grid-template-columns:repeat(4,1fr)}
+.person-card{background:var(--panel);border:1px solid var(--hairline);border-radius:24px;padding:22px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.person-card:hover{border-color:var(--hairline-2);transform:translateY(-4px)}
+.person-card .photo{border-radius:14px;overflow:hidden;background:#1d1d1f;margin-bottom:20px}
+.person-card .photo img{width:100%;height:300px;object-fit:cover;object-position:center 32%;display:block;filter:grayscale(1) contrast(1.04);transition:filter .35s}
+.people-grid--4 .person-card .photo img{height:210px}
+.photo--sm img{height:230px !important}
+.person-card:hover .photo img{filter:grayscale(0)}
+.person-card h3{font-size:20px;color:#fff;margin:0 0 4px}
+.person-card .role{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.person-card p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0 0 10px}
+.person-card .pq{color:#d6d7d9;font-style:italic;border-top:1px solid var(--hairline);padding-top:12px;margin-top:6px}
+.person-card .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:14px}
+.tag{border:1px solid var(--hairline-2);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;color:#d6d7d9;text-decoration:none}
+a.tag:hover{color:var(--accent);border-color:var(--accent)}
+.partner-band{display:flex;align-items:center;gap:48px;flex-wrap:wrap;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:36px 0;margin-top:36px}
+.partner-band img{height:34px;width:auto;opacity:.8;filter:grayscale(1) brightness(1.1)}
+.numsecs{margin-top:16px;max-width:820px}
+.num-sec{border-top:1px solid var(--hairline-2);padding:36px 0 22px}
+.num-sec .num{display:block;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.14em;margin-bottom:10px}
+.num-sec h2{font-size:clamp(1.3rem,2vw,1.7rem);font-weight:700;color:#fff;margin:0 0 14px}
+.num-sec p,.num-sec li{color:var(--muted);font-size:16.5px;line-height:1.7;margin-bottom:14px}
+.num-sec strong{color:#fff}
+.num-sec a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.num-sec a:hover{color:var(--accent)}
+.num-sec ul,.num-sec ol{padding-left:22px;margin-bottom:14px}
+.cta-strip{background:var(--panel);border:1px solid var(--hairline);border-radius:24px;padding:56px 48px;text-align:center;margin-top:96px}
+.cta-strip h3{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;color:#fff;max-width:760px;margin:0 auto}
+.cta-strip p{color:var(--muted);font-size:16.5px;line-height:1.6;max-width:660px;margin:16px auto 0}
+.cta-strip p a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.cta-strip .hero-ctas{margin-top:32px}
+.meta-line{color:var(--muted-2);font-size:13.5px;margin-top:36px}
+.supp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.page-bottom{padding-bottom:140px}
+@media (max-width:1100px){.split{grid-template-columns:1fr;gap:32px}.people-grid--4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.people-grid{grid-template-columns:1fr}.people-grid--4{grid-template-columns:1fr}.supp-grid{grid-template-columns:1fr}.cta-strip{padding:40px 24px}.partner-band{gap:28px}.partner-band img{height:26px}.sec-label{margin-top:64px}.page-bottom{padding-bottom:96px}}
+
 </style>
 </head>
 <body>
@@ -508,137 +563,92 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 </div>
 
 <main id="main">
-
-<!-- ================= PAGE HERO ================= -->
 <section class="page-hero container">
   <p class="eyebrow">About Ember</p>
-  <h1 class="h-xl">About <span class="grad">Ember</span></h1>
-  <p class="sub">Agents are only as good as <em>what they can reach</em>.</p>
+  <h1 class="h-xl">Agents are only as good as<br><span class="grad">what they can reach.</span></h1>
 </section>
-
-<!-- ================= CONTENT ================= -->
 <section class="container">
-  <div class="prose">
-
-    <p class="eyebrow">Why we exist</p>
-    <p>Every serious firm now runs agents on top of frontier models. Almost none of them have wired those agents into the body of work that actually defines the firm — the memos, the diligence files, the model outputs, the partner-level reasoning that lives across a dozen systems and a thousand documents.</p>
-    <p>The result is the most expensive form of dilution in software: <strong>capable models making mediocre decisions</strong>, because the institutional context never reaches them. Ember exists to close that gap. We are the layer between a firm's knowledge and the agents that need it — a citation-aware, permission-aware, multi-tenant graph that any agent stack can call in two files.</p>
-
-    <blockquote style="border-left:2px solid var(--accent);padding-left:18px;margin:24px 0">
+  <div class="split">
+    <div>
+      <p class="eyebrow">Why we exist</p>
+      <p>Every serious firm now runs agents on top of frontier models. Almost none of them have wired those agents into the body of work that actually defines the firm &mdash; the memos, the diligence files, the model outputs, the partner-level reasoning that lives across a dozen systems and a thousand documents.</p>
+      <p>The result is the most expensive form of dilution in software: <strong>capable models making mediocre decisions</strong>, because the institutional context never reaches them. Ember exists to close that gap. We are the layer between a firm's knowledge and the agents that need it &mdash; a citation-aware, permission-aware, multi-tenant graph that any agent stack can call in two files.</p>
+    </div>
+    <div class="quote-panel">
       <p>&ldquo;We started Ember after watching the same pattern across private equity, consulting, and venture: the agents work, the people are sharp, and the firm's actual knowledge <em>never makes it into the loop</em>.&rdquo;</p>
-      <p><strong>Krishna Thiagarajan</strong> — Co-Founder &amp; COO, Ember Intelligence</p>
-    </blockquote>
-
-    <p class="eyebrow" style="margin:64px 0 0">Leadership</p>
-    <h2 style="margin-top:10px">The founders.</h2>
-
-    <h3>Colden Johnson</h3>
-    <p><strong>Co-Founder &amp; Chief Executive Officer</strong></p>
-    <p>Colden is an AI Automation Engineer at Texas Instruments, where he builds and ships production AI tooling inside one of the most data-intensive industrial environments in the world. He started Ember after seeing first-hand the gap between a firm's institutional knowledge and the agents its people increasingly rely on.</p>
-    <blockquote style="border-left:2px solid var(--accent);padding-left:18px;margin:20px 0">
-      <p>&ldquo;The hardest part of enterprise AI is not the model. It's the layer between the model and the firm's real documents. That's what we're building.&rdquo;</p>
-    </blockquote>
-    <p>co-founder · ceo — <a href="mailto:colden@allember.com">Email</a> · <a href="https://www.linkedin.com/in/colden-johnson/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-
-    <h3>Krishna Thiagarajan</h3>
-    <p><strong>Co-Founder &amp; Chief Operating Officer</strong></p>
-    <p>Krishna spent internships across private equity and finance before joining the Murugappa Group as a Forward Deployed Engineer, where he works with operating teams to build AI systems against the multi-billion-dollar Indian industrial conglomerate's hardest unstructured-data problems. He started Ember after seeing where standard agentic solutions fail in the finance and consulting vertical.</p>
-    <blockquote style="border-left:2px solid var(--accent);padding-left:18px;margin:20px 0">
-      <p>&ldquo;Every PE associate I know has trouble with their agents — from Claude to Copilot. Retrieval is spotty, knowledge is fragmented, and performance suffers for it. That's the gap Ember closes.&rdquo;</p>
-    </blockquote>
-    <p>co-founder · coo — <a href="mailto:krish@allember.com">Email</a> · <a href="https://www.linkedin.com/in/krishna-thiagarajan/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-
-    <p class="eyebrow" style="margin:64px 0 0">Engineering</p>
-    <h2 style="margin-top:10px">The founding engineers.</h2>
-    <p>Four founding engineers, each owning a critical surface of the product end-to-end.</p>
-    <ul>
-      <li><strong>Gavin Huang</strong> — Ingestion &amp; Retrieval</li>
-      <li><strong>Temuulen Enkhtamir</strong> — Agent &amp; Tooling</li>
-      <li><strong>Anar Nyambayar</strong> — Product Surface</li>
-      <li><strong>Ethan Deal</strong> — Systems &amp; Integration</li>
-    </ul>
-    <p>Our four founding engineers own the critical surfaces of Ember end-to-end — ingestion, retrieval, agent runtime, and integration. Each of them has shipped production systems before Ember, and each of them writes code that goes in front of paying customers every week. Detailed bios on the <a href="/team">team page</a>.</p>
-
-    <p class="eyebrow" style="margin:64px 0 0">Working with</p>
-    <h2 style="margin-top:10px">Early design partners running Ember today.</h2>
-    <ul>
-      <li>The Duke Endowment</li>
-      <li>DIIG</li>
-      <li>Sapien Labs</li>
-      <li>WSU</li>
-      <li>Build Consulting</li>
-    </ul>
-    <p>Early design partners across university endowments, research labs, and consulting. Working with finance and consulting firms now — full announcements when our partners are ready.</p>
-
-    <p class="eyebrow" style="margin:64px 0 0">How we work</p>
-    <h2 style="margin-top:10px">A different kind of company at a different size.</h2>
-    <p>We have built this company differently on purpose. No sales reps. No offshored engineering. No resellers in the middle of any customer relationship. No roadmap that runs ahead of what our design partners are actually using today. That posture costs us reach. It earns us trust.</p>
-    <p>Every paying customer at Ember is run by one of us — Krishna or Colden, or a founding engineer who built the part of the system the customer is using. Every commit that ends up in front of a fund's data has a name on it. Every retrieval that answers a partner's question has a passage, a chunk, and an edge it can point to. We will be a different kind of company at a different size. Today, we are this one.</p>
-    <p>— Krishna &amp; Colden, Co-Founders.</p>
-
-    <h2>We're taking on a small number of new design partners this quarter.</h2>
-    <p>PE, consulting, and venture firms running real agent stacks. If the institutional memory under your agents is the gap, talk to the founders.</p>
-    <p><a href="mailto:founders@allember.com?subject=Ember%20%E2%80%94%20design%20partner%20interest">Talk to the founders</a> · <a href="/careers">View open roles →</a></p>
-
+      <p class="who">Krishna Thiagarajan<span>Co-Founder &amp; COO, Ember Intelligence</span></p>
+    </div>
   </div>
 </section>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="container">
-    <div class="foot-grid">
-      <div>
-        <a href="/" class="brand-lockup brand-lockup--lg" aria-label="AllEmber home">
-          <span class="ae">&AElig;</span>
-          <span class="bar" aria-hidden="true"></span>
-          <span class="name"><em>All</em>Ember</span>
-        </a>
-      </div>
-      <nav class="foot-cols" aria-label="footer">
-        <div class="foot-col">
-          <h4>How We Help</h4>
-          <ul>
-            <li><a href="/#approach">Initial Consult</a></li>
-            <li><a href="/#approach">FDE on Retainer</a></li>
-            <li><a href="/#approach">Hearth Software Suite</a></li>
-          </ul>
-        </div>
-        <div class="foot-col">
-          <h4>Industries</h4>
-          <ul>
-            <li><a href="/#use-cases">Finance</a></li>
-            <li><a href="/#use-cases">Consulting</a></li>
-            <li><a href="/#use-cases">Research</a></li>
-            <li><a href="/#use-cases">Marketing</a></li>
-            <li><a href="/#use-cases">Small Business</a></li>
-          </ul>
-        </div>
-        <div class="foot-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="https://calendly.com/colden-allember/30min" target="_blank" rel="noopener">Let's talk</a></li>
-            <li><a href="hearth-login.html">Log in</a></li>
-          </ul>
-        </div>
-        <div class="foot-col">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="support.html">Support</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-          </ul>
-        </div>
-      </nav>
+<section class="container sec-label">
+  <p class="eyebrow">Leadership</p>
+  <h2>The founders.</h2>
+  <div class="people-grid">
+    <article class="person-card">
+      <div class="photo"><img src="assets/team/colden.png" alt="Colden Johnson"></div>
+      <h3>Colden Johnson</h3>
+      <p class="role">Co-Founder &amp; Chief Executive Officer</p>
+      <p>Colden is an AI Automation Engineer at Texas Instruments, where he builds and ships production AI tooling inside one of the most data-intensive industrial environments in the world. He started Ember after seeing first-hand the gap between a firm's institutional knowledge and the agents its people increasingly rely on.</p>
+      <p class="pq">&ldquo;The hardest part of enterprise AI is not the model. It's the layer between the model and the firm's real documents. That's what we're building.&rdquo;</p>
+      <div class="tags"><a class="tag" href="mailto:colden@allember.com">Email</a><a class="tag" href="https://www.linkedin.com/in/colden-johnson/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+    </article>
+    <article class="person-card">
+      <div class="photo"><img src="assets/team/krishna.png" alt="Krishna Thiagarajan"></div>
+      <h3>Krishna Thiagarajan</h3>
+      <p class="role">Co-Founder &amp; Chief Operating Officer</p>
+      <p>Krishna spent internships across private equity and finance before joining the Murugappa Group as a Forward Deployed Engineer, where he works with operating teams to build AI systems against the multi-billion-dollar Indian industrial conglomerate's hardest unstructured-data problems. He started Ember after seeing where standard agentic solutions fail in the finance and consulting vertical.</p>
+      <p class="pq">&ldquo;Every PE associate I know has trouble with their agents &mdash; from Claude to Copilot. Retrieval is spotty, knowledge is fragmented, and performance suffers for it. That's the gap Ember closes.&rdquo;</p>
+      <div class="tags"><a class="tag" href="mailto:krish@allember.com">Email</a><a class="tag" href="https://www.linkedin.com/in/krishna-thiagarajan/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+    </article>
+  </div>
+</section>
+<section class="container sec-label">
+  <p class="eyebrow">Engineering</p>
+  <h2>The founding engineers.</h2>
+  <p class="lede">Four founding engineers, each owning a critical surface of the product end-to-end.</p>
+  <div class="people-grid people-grid--4">
+    <article class="person-card"><div class="photo"><img src="assets/team/gavin.jpg" alt="Gavin Huang"></div><h3>Gavin Huang</h3><p class="role">Ingestion &amp; Retrieval</p></article>
+    <article class="person-card"><div class="photo"><img src="assets/team/temuulen.jpg" alt="Temuulen Enkhtamir"></div><h3>Temuulen Enkhtamir</h3><p class="role">Agent &amp; Tooling</p></article>
+    <article class="person-card"><div class="photo"><img src="assets/team/anar.jpg" alt="Anar Nyambayar"></div><h3>Anar Nyambayar</h3><p class="role">Product Surface</p></article>
+    <article class="person-card"><div class="photo"><img src="assets/team/ethan.png" alt="Ethan Deal"></div><h3>Ethan Deal</h3><p class="role">Systems &amp; Integration</p></article>
+  </div>
+  <p class="lede">Our four founding engineers own the critical surfaces of Ember end-to-end &mdash; ingestion, retrieval, agent runtime, and integration. Each of them has shipped production systems before Ember, and each of them writes code that goes in front of paying customers every week. Detailed bios on the <a href="team.html">team page</a>.</p>
+</section>
+<section class="container sec-label">
+  <p class="eyebrow">Working with</p>
+  <h2>Early design partners running Ember today.</h2>
+  <p class="lede">Early design partners across university endowments, research labs, and consulting. Working with finance and consulting firms now &mdash; full announcements when our partners are ready.</p>
+  <div class="partner-band">
+    <img src="assets/logos/dukeendowment_light.png" alt="The Duke Endowment">
+    <img src="assets/logos/DIIG.png" alt="DIIG">
+    <img src="assets/logos/sapien_labs.png" alt="Sapien Labs">
+    <img src="assets/logos/WSU.png" alt="Washington State University">
+    <img src="assets/logos/build_consulting.webp" alt="Build Consulting">
+  </div>
+</section>
+<section class="container sec-label">
+  <div class="split">
+    <div>
+      <p class="eyebrow">How we work</p>
+      <h2>A different kind of company at a different size.</h2>
     </div>
-    <div class="foot-px" aria-hidden="true">
-      <img src="assets/px/px_consult.svg" alt="">
-      <img src="assets/px/px_hearth.svg" alt="">
-      <img src="assets/px/px_tender.svg" alt="">
+    <div>
+      <p>We have built this company differently on purpose. No sales reps. No offshored engineering. No resellers in the middle of any customer relationship. No roadmap that runs ahead of what our design partners are actually using today. That posture costs us reach. It earns us trust.</p>
+      <p>Every paying customer at Ember is run by one of us &mdash; Krishna or Colden, or a founding engineer who built the part of the system the customer is using. Every commit that ends up in front of a fund's data has a name on it. Every retrieval that answers a partner's question has a passage, a chunk, and an edge it can point to. We will be a different kind of company at a different size. Today, we are this one.</p>
+      <p><strong>&mdash; Krishna &amp; Colden, Co-Founders.</strong></p>
     </div>
   </div>
-</footer>
-
+</section>
+<section class="container page-bottom">
+  <div class="cta-strip">
+    <h3>We're taking on a small number of new design partners this quarter.</h3>
+    <p>PE, consulting, and venture firms running real agent stacks. If the institutional memory under your agents is the gap, talk to the founders.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="https://calendly.com/colden-allember/30min" target="_blank" rel="noopener">Talk to the founders</a>
+      <a class="btn btn--ghost" href="careers.html">View open roles <span aria-hidden="true">&rsaquo;</span></a>
+    </div>
+  </div>
+</section>
 </main>
 
 <script>

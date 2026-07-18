@@ -439,6 +439,61 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 .person .role{color:var(--accent);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
 @media (max-width:1100px){.people{grid-template-columns:repeat(2,1fr)}.page-hero{padding-left:24px;padding-right:24px}}
 @media (max-width:700px){.people{grid-template-columns:1fr}.page-hero{padding:64px 20px 24px}}
+
+/* ===== structured page components ===== */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.split .eyebrow{margin-bottom:14px}
+.split p{color:var(--muted);font-size:17px;line-height:1.7;margin-bottom:16px;max-width:560px}
+.split p strong{color:#fff}
+.quote-panel{background:var(--panel);border:1px solid var(--hairline);border-left:3px solid var(--accent);border-radius:16px;padding:30px 32px}
+.quote-panel p{color:#d6d7d9;font-size:17.5px;line-height:1.65;margin:0}
+.quote-panel p em{color:#fff}
+.quote-panel .who{margin-top:20px;color:#fff;font-weight:700;font-size:14.5px}
+.quote-panel .who span{display:block;color:var(--muted-2);font-weight:400;font-size:13px;margin-top:2px}
+.sec-label{margin-top:96px}
+.sec-label>.eyebrow{margin-bottom:12px}
+.sec-label h2{font-size:clamp(1.6rem,2.6vw,2.25rem);font-weight:700;color:#fff}
+.lede{color:var(--muted);font-size:16.5px;line-height:1.65;margin-top:16px;max-width:660px}
+.lede a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.lede a:hover{color:var(--accent)}
+.people-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.people-grid--4{grid-template-columns:repeat(4,1fr)}
+.person-card{background:var(--panel);border:1px solid var(--hairline);border-radius:24px;padding:22px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.person-card:hover{border-color:var(--hairline-2);transform:translateY(-4px)}
+.person-card .photo{border-radius:14px;overflow:hidden;background:#1d1d1f;margin-bottom:20px}
+.person-card .photo img{width:100%;height:300px;object-fit:cover;object-position:center 32%;display:block;filter:grayscale(1) contrast(1.04);transition:filter .35s}
+.people-grid--4 .person-card .photo img{height:210px}
+.photo--sm img{height:230px !important}
+.person-card:hover .photo img{filter:grayscale(0)}
+.person-card h3{font-size:20px;color:#fff;margin:0 0 4px}
+.person-card .role{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.person-card p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0 0 10px}
+.person-card .pq{color:#d6d7d9;font-style:italic;border-top:1px solid var(--hairline);padding-top:12px;margin-top:6px}
+.person-card .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:14px}
+.tag{border:1px solid var(--hairline-2);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;color:#d6d7d9;text-decoration:none}
+a.tag:hover{color:var(--accent);border-color:var(--accent)}
+.partner-band{display:flex;align-items:center;gap:48px;flex-wrap:wrap;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:36px 0;margin-top:36px}
+.partner-band img{height:34px;width:auto;opacity:.8;filter:grayscale(1) brightness(1.1)}
+.numsecs{margin-top:16px;max-width:820px}
+.num-sec{border-top:1px solid var(--hairline-2);padding:36px 0 22px}
+.num-sec .num{display:block;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.14em;margin-bottom:10px}
+.num-sec h2{font-size:clamp(1.3rem,2vw,1.7rem);font-weight:700;color:#fff;margin:0 0 14px}
+.num-sec p,.num-sec li{color:var(--muted);font-size:16.5px;line-height:1.7;margin-bottom:14px}
+.num-sec strong{color:#fff}
+.num-sec a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.num-sec a:hover{color:var(--accent)}
+.num-sec ul,.num-sec ol{padding-left:22px;margin-bottom:14px}
+.cta-strip{background:var(--panel);border:1px solid var(--hairline);border-radius:24px;padding:56px 48px;text-align:center;margin-top:96px}
+.cta-strip h3{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;color:#fff;max-width:760px;margin:0 auto}
+.cta-strip p{color:var(--muted);font-size:16.5px;line-height:1.6;max-width:660px;margin:16px auto 0}
+.cta-strip p a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.cta-strip .hero-ctas{margin-top:32px}
+.meta-line{color:var(--muted-2);font-size:13.5px;margin-top:36px}
+.supp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.page-bottom{padding-bottom:140px}
+@media (max-width:1100px){.split{grid-template-columns:1fr;gap:32px}.people-grid--4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.people-grid{grid-template-columns:1fr}.people-grid--4{grid-template-columns:1fr}.supp-grid{grid-template-columns:1fr}.cta-strip{padding:40px 24px}.partner-band{gap:28px}.partner-band img{height:26px}.sec-label{margin-top:64px}.page-bottom{padding-bottom:96px}}
+
 </style>
 </head>
 <body>
@@ -510,29 +565,29 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 </div>
 
 <main id="main">
-
-<!-- ================= PAGE HERO ================= -->
 <section class="page-hero container">
   <p class="eyebrow">Support</p>
   <h1 class="h-xl"><span class="grad">Support.</span></h1>
-  <p class="sub">If you're experiencing an issue with the <strong>Ember</strong> MCP connector or have a question about your account, we're here to help.</p>
+  <p class="sub">If you're experiencing an issue with the Ember MCP connector or have a question about your account, we're here to help.</p>
 </section>
-
-<!-- ================= CONTENT ================= -->
-<section class="container">
-  <div class="prose">
-    <h2>Contact support</h2>
-    <p>Email us at <a href="mailto:support@allember.com">support@allember.com</a> and we'll respond within one business day.</p>
-
-    <h2>Common issues</h2>
-    <p><strong>Connection errors</strong> — If Ember loses access to your Microsoft 365 account, try disconnecting and reconnecting via your Microsoft account's connected app settings, then re-authorize Ember.</p>
-    <p><strong>Other questions</strong> — For anything else, email <a href="mailto:support@allember.com">support@allember.com</a> with a brief description of the issue and the Microsoft account you're using.</p>
-
-    <p>Support is provided by Ember Intelligence LLC. Response time: within one business day.</p>
-    <p>Last updated · 2026-07-08</p>
+<section class="container page-bottom">
+  <div class="supp-grid">
+    <article class="card">
+      <div class="card-band"><img src="assets/px/px_consult.svg" alt=""></div>
+      <h3>Contact support</h3>
+      <p>Email us at <a href="mailto:support@allember.com" style="color:#fff;text-decoration:underline;text-underline-offset:3px">support@allember.com</a> and we'll respond within one business day.</p>
+      <a class="link-cta" href="mailto:support@allember.com">Email support <span class="tri">&#9654;</span></a>
+    </article>
+    <article class="card">
+      <div class="card-band"><img src="assets/px/px_alert.svg" alt=""></div>
+      <h3>Common issues</h3>
+      <p><strong style="color:#fff">Connection errors</strong> &mdash; If Ember loses access to your Microsoft 365 account, try disconnecting and reconnecting via your Microsoft account's connected app settings, then re-authorize Ember.</p>
+      <p><strong style="color:#fff">Other questions</strong> &mdash; For anything else, email <a href="mailto:support@allember.com" style="color:#fff;text-decoration:underline;text-underline-offset:3px">support@allember.com</a> with a brief description of the issue and the Microsoft account you're using.</p>
+    </article>
   </div>
+  <p class="meta-line">Support is provided by Ember Intelligence LLC. Response time: within one business day.</p>
+  <p class="meta-line" style="margin-top:8px">Last updated &middot; 2026-07-08</p>
 </section>
-
 </main>
 
 <!-- ================= FOOTER ================= -->
