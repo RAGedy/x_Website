@@ -498,6 +498,27 @@ a.tag:hover{color:var(--accent);border-color:var(--accent)}
 .page-hero{padding:44px 0 0}
 .page-hero .sub{margin-top:14px}
 .supp-grid{margin-top:30px}
+
+/* ===== article sheet ===== */
+.post-wrap{padding:48px 20px 120px;display:flex;justify-content:center}
+.post{width:100%;max-width:780px;background:var(--panel);border:1px solid var(--hairline);border-radius:24px;padding:72px 84px 64px}
+.post .kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.post h1{font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.25;font-weight:700;letter-spacing:-.01em;color:#fff}
+.post .standfirst{margin-top:14px;font-size:17.5px;line-height:1.6;color:var(--muted)}
+.post .byline{display:flex;gap:10px;align-items:center;margin-top:22px;padding-bottom:26px;border-bottom:1px solid var(--hairline-2);color:var(--muted-2);font-size:13.5px}
+.post .byline b{color:#d6d7d9;font-weight:700}
+.post .pbodytext{margin-top:30px}
+.post .pbodytext p{font-size:17px;line-height:1.75;color:#b7babd;margin-bottom:20px}
+.post .pbodytext p strong{color:#fff}
+.post .pbodytext h2{font-size:21px;font-weight:700;color:#fff;margin:42px 0 14px}
+.post .stardiv{display:flex;justify-content:center;margin:38px 0;color:var(--accent);font-size:14px;letter-spacing:.6em;padding-left:.6em}
+.post .post-cta{margin-top:48px;padding-top:40px;border-top:1px solid var(--hairline-2);text-align:center}
+.post .post-cta h3{font-size:clamp(1.25rem,2vw,1.6rem);font-weight:700;color:#fff}
+.post .post-cta p{color:var(--muted);font-size:15.5px;margin-top:10px}
+.post .post-cta .btn{margin-top:24px}
+@media (max-width:1100px){.post{padding:56px 48px 48px}}
+@media (max-width:700px){.post{padding:36px 22px;border-radius:18px}.post-wrap{padding:12px 10px 72px}}
+
 </style>
 </head>
 <body>
@@ -560,41 +581,32 @@ a.tag:hover{color:var(--accent);border-color:var(--accent)}
 </div>
 
 <main id="main">
-<section class="page-hero container">
-  <p class="eyebrow">From Ember</p>
-  <h1 class="h-xl">No AI yet? <span class="grad">You're closer than you think.</span></h1>
-  <p class="sub">Consulting, finance, research, nonprofits &mdash; every firm we meet is one good engagement away from an AI stack that actually works.</p>
-</section>
-<section class="container page-bottom">
-  <div class="numsecs">
-    <div class="num-sec" style="border-top:none;padding-top:8px">
+<div class="post-wrap">
+  <article class="post">
+    <p class="kicker">From Ember &middot; Field notes</p>
+    <h1>No AI yet? <span class="grad">You're closer than you think.</span></h1>
+    <p class="standfirst">Consulting, finance, research, nonprofits &mdash; every firm we meet is one good engagement away from an AI stack that actually works.</p>
+    <div class="byline"><b>The Ember team</b><span>&middot;</span><span>July 2026</span><span>&middot;</span><span>4 min read</span></div>
+    <div class="pbodytext">
       <p>Most companies don't have an AI problem. They have an AI <strong>pile</strong>. A Copilot license someone turned on. A ChatGPT tab open in every browser. A folder of PDFs nobody can search. The tools are all there &mdash; what's missing is the <strong>stack</strong>: one coherent system where your documents, your workflows, and your agents actually talk to each other.</p>
       <p>That's what AllEmber does. We're AI implementation consultants. We go into companies of any background &mdash; consulting shops, finance teams, research labs, small businesses &mdash; and figure out how it all fits together: a unified AI stack, automated workflows, and an engineer who keeps it moving as your business changes.</p>
-    </div>
-    <div class="num-sec">
-      <span class="num">01</span>
+      <div class="stardiv" aria-hidden="true">&#10022;</div>
       <h2>What that looks like in practice</h2>
       <p>For <strong>Build Consulting</strong>, we built the firm's knowledge system end to end &mdash; a retrieval layer over years of institutional documents, so their people and their agents can ask the firm anything and get grounded answers. Then we automated the documents themselves: statements of work that used to eat a consultant's afternoon now draft themselves from the firm's own data. And every agent they run talks to the others over one shared MCP server. One brain, many hands.</p>
       <p>At <strong>Sapien Labs</strong>, we turbocharged the Copilot they already had, and we're instituting Claude across the entire organization &mdash; backed by Qdrant retrieval and wired for the open web. Their agents don't just answer questions anymore; they go find things out.</p>
-    </div>
-    <div class="num-sec">
-      <span class="num">02</span>
+      <div class="stardiv" aria-hidden="true">&#10022;</div>
       <h2>You don't need to know what to ask for</h2>
       <p>You don't arrive with requirements &mdash; that's our job. An engagement starts with a free consult: we scope what your company actually needs. Workflows, tools, platforms, the works. Then we implement it. And if you never want to think about it again, you keep one of our engineers on retainer, so your stack stays cutting edge while you run your business.</p>
       <p>It's the same three-pronged approach whether you're a two-person shop or a two-hundred-person firm: finance teams usually start with their tables and filings, consultancies with proposals and firm memory, research groups with overnight web sweeps, marketers with a secured Google Ads connection. Wherever you start, it ends the same way &mdash; one stack, tended.</p>
-    </div>
-    <div class="num-sec">
       <p>The firms pulling ahead aren't the ones with the biggest AI budgets. They're the ones that stopped letting the pile grow and started treating AI like infrastructure: <strong>built once, tended always.</strong></p>
     </div>
-  </div>
-  <div class="cta-strip">
-    <h3>Okay &mdash; let's get you scheduled for that consult.</h3>
-    <p>Thirty minutes, free, no prep needed. Bring your messiest workflow.</p>
-    <div class="hero-ctas">
+    <div class="post-cta">
+      <h3>Okay &mdash; let's get you scheduled for that consult.</h3>
+      <p>Thirty minutes, free, no prep needed. Bring your messiest workflow.</p>
       <a class="btn" href="https://calendly.com/colden-allember/30min" target="_blank" rel="noopener">Schedule that consult <span aria-hidden="true">&rsaquo;</span></a>
     </div>
-  </div>
-</section>
+  </article>
+</div>
 </main>
 
 <!-- ================= FOOTER ================= -->
