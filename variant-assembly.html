@@ -44,6 +44,8 @@ a{color:inherit}
 .container{width:100%;max-width:var(--container-lg);margin:0 auto;padding:0 32px}
 .container--md{max-width:var(--container-md)}
 .section{padding:140px 0}
+.section--tight-top{padding-top:56px}
+.section--tight-bottom{padding-bottom:56px}
 .eyebrow{
   font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);margin-bottom:20px;
@@ -193,12 +195,21 @@ a{color:inherit}
   width:400px;flex:none;
 }
 .card--glass{
+  position:relative;
   background:rgba(12,12,12,.55);
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   border:1px solid rgba(255,255,255,.22);border-radius:16px;
-  padding:22px 24px;display:flex;flex-direction:column;
+  padding:22px 24px 22px 36px;display:flex;flex-direction:column;
   transition:border-color .2s,background .2s;
 }
+.step-dot{
+  position:absolute;left:-18px;top:50%;transform:translateY(-50%);
+  width:36px;height:36px;border-radius:50%;
+  background:var(--accent);border:2px solid #fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:15px;color:#fff;
+}
+.lead-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .card--glass:hover{border-color:rgba(255,255,255,.4);background:rgba(12,12,12,.68)}
 .card--glass h3{font-size:19px;font-weight:700;margin-bottom:8px}
 .card--glass p{color:#d6d7d9;font-size:14.5px;line-height:1.5}
@@ -464,22 +475,26 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
   <div class="sizzle-panel">
     <img class="bg" src="assets/campfire_stars_twinkle_seamless.gif" alt="Pixel-art campfire under a starry night sky">
     <div class="sizzle-overlay">
+      <svg class="lead-line" id="leadLine" aria-hidden="true"></svg>
       <div class="sizzle-head">
         <h2><span class="hl">See how Ember <span class="grad">transforms</span> your company</span></h2>
-        <p class="sub"><span class="hl">Ember's three pronged approach makes sure that you never have to worry.</span></p>
+        <p class="sub"><span class="hl">Ember's three pronged approach makes sure that<br>you never have to worry.</span></p>
       </div>
       <div class="sizzle-cards">
         <article class="card--glass">
+          <span class="step-dot" aria-hidden="true">1</span>
           <h3>Initial Consult</h3>
           <p>Ember scopes what your company needs: workflows, tools, platforms, the works. Then, we implement.</p>
           <a class="link-cta" href="#">Schedule for free <span class="tri">&#9654;</span></a>
         </article>
         <article class="card--glass">
+          <span class="step-dot" aria-hidden="true">2</span>
           <h3>FDE on Retainer</h3>
           <p>You never fall behind: you keep one of our expert engineers on retainer. They keep you up to date — proactively.</p>
           <a class="link-cta" href="#">Read more <span class="tri">&#9654;</span></a>
         </article>
         <article class="card--glass">
+          <span class="step-dot" aria-hidden="true">3</span>
           <h3>Hearth Software Suite</h3>
           <p>Where you get your best tools: for tabular data, automated workflows, or knowledge retrieval.</p>
           <a class="link-cta" href="#">Read more <span class="tri">&#9654;</span></a>
@@ -490,7 +505,7 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 </section>
 
 <!-- ================= SPOTLIGHT ================= -->
-<section class="section container culture">
+<section class="section section--tight-bottom container culture">
   <svg class="culture-neural" viewBox="0 0 800 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="nnfade" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0.06"/><stop offset="0.45" stop-color="#fff" stop-opacity="0.35"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="nnmask"><rect width="800" height="440" fill="url(#nnfade)"/></mask></defs><g mask="url(#nnmask)"><line x1="23" y1="94" x2="203" y2="44" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="23" y1="94" x2="209" y2="140" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="23" y1="94" x2="215" y2="203" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="23" y1="94" x2="206" y2="365" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="31" y1="207" x2="203" y2="44" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="31" y1="207" x2="215" y2="203" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="31" y1="207" x2="204" y2="298" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="31" y1="207" x2="206" y2="365" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="28" y1="345" x2="203" y2="44" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="28" y1="345" x2="209" y2="140" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="28" y1="345" x2="215" y2="203" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="28" y1="345" x2="204" y2="298" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="28" y1="345" x2="206" y2="365" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="203" y1="44" x2="406" y2="65" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="203" y1="44" x2="394" y2="191" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="203" y1="44" x2="394" y2="248" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="203" y1="44" x2="397" y2="333" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="203" y1="44" x2="405" y2="364" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="209" y1="140" x2="406" y2="65" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="209" y1="140" x2="394" y2="248" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="209" y1="140" x2="397" y2="333" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="209" y1="140" x2="405" y2="364" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="215" y1="203" x2="406" y2="65" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="215" y1="203" x2="397" y2="140" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="215" y1="203" x2="397" y2="333" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="215" y1="203" x2="405" y2="364" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="204" y1="298" x2="406" y2="65" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="204" y1="298" x2="397" y2="140" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="204" y1="298" x2="394" y2="191" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="204" y1="298" x2="394" y2="248" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="204" y1="298" x2="397" y2="333" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="204" y1="298" x2="405" y2="364" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="206" y1="365" x2="406" y2="65" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="206" y1="365" x2="397" y2="140" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="206" y1="365" x2="394" y2="191" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="206" y1="365" x2="394" y2="248" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="206" y1="365" x2="405" y2="364" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="406" y1="65" x2="583" y2="49" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="406" y1="65" x2="583" y2="143" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="397" y1="140" x2="583" y2="49" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="397" y1="140" x2="583" y2="143" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="397" y1="140" x2="585" y2="225" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="191" x2="583" y2="49" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="191" x2="583" y2="143" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="191" x2="585" y2="225" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="191" x2="593" y2="295" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="191" x2="589" y2="382" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="248" x2="583" y2="49" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="248" x2="583" y2="143" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="248" x2="585" y2="225" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="248" x2="593" y2="295" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="394" y1="248" x2="589" y2="382" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="397" y1="333" x2="583" y2="49" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="397" y1="333" x2="585" y2="225" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="397" y1="333" x2="593" y2="295" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="397" y1="333" x2="589" y2="382" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="405" y1="364" x2="583" y2="49" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="405" y1="364" x2="583" y2="143" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="405" y1="364" x2="593" y2="295" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="583" y1="49" x2="775" y2="223" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="583" y1="49" x2="773" y2="338" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="583" y1="143" x2="767" y2="93" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="583" y1="143" x2="775" y2="223" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="583" y1="143" x2="773" y2="338" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="585" y1="225" x2="767" y2="93" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="585" y1="225" x2="775" y2="223" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="585" y1="225" x2="773" y2="338" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="593" y1="295" x2="767" y2="93" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="593" y1="295" x2="775" y2="223" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="593" y1="295" x2="773" y2="338" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="589" y1="382" x2="767" y2="93" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="589" y1="382" x2="775" y2="223" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><line x1="589" y1="382" x2="773" y2="338" stroke="#6D82B4" stroke-opacity="0.4" stroke-width="1"/><circle cx="23" cy="94" r="7" fill="#FFBE3C"/><circle cx="23" cy="94" r="12" stroke="#FFBE3C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="31" cy="207" r="7" fill="#F8801C"/><circle cx="31" cy="207" r="12" stroke="#F8801C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="28" cy="345" r="7" fill="#C64610"/><circle cx="28" cy="345" r="12" stroke="#C64610" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="203" cy="44" r="9" fill="#F8801C"/><circle cx="203" cy="44" r="14" stroke="#F8801C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="209" cy="140" r="9" fill="#C64610"/><circle cx="209" cy="140" r="14" stroke="#C64610" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="215" cy="203" r="9" fill="#FF4500"/><circle cx="215" cy="203" r="14" stroke="#FF4500" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="204" cy="298" r="9" fill="#FFBE3C"/><circle cx="204" cy="298" r="14" stroke="#FFBE3C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="206" cy="365" r="9" fill="#F8801C"/><circle cx="206" cy="365" r="14" stroke="#F8801C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="406" cy="65" r="9" fill="#C64610"/><circle cx="406" cy="65" r="14" stroke="#C64610" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="397" cy="140" r="9" fill="#FF4500"/><circle cx="397" cy="140" r="14" stroke="#FF4500" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="394" cy="191" r="9" fill="#FFBE3C"/><circle cx="394" cy="191" r="14" stroke="#FFBE3C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="394" cy="248" r="9" fill="#F8801C"/><circle cx="394" cy="248" r="14" stroke="#F8801C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="397" cy="333" r="9" fill="#C64610"/><circle cx="397" cy="333" r="14" stroke="#C64610" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="405" cy="364" r="9" fill="#FF4500"/><circle cx="405" cy="364" r="14" stroke="#FF4500" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="583" cy="49" r="9" fill="#FF4500"/><circle cx="583" cy="49" r="14" stroke="#FF4500" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="583" cy="143" r="9" fill="#FFBE3C"/><circle cx="583" cy="143" r="14" stroke="#FFBE3C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="585" cy="225" r="9" fill="#F8801C"/><circle cx="585" cy="225" r="14" stroke="#F8801C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="593" cy="295" r="9" fill="#C64610"/><circle cx="593" cy="295" r="14" stroke="#C64610" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="589" cy="382" r="9" fill="#FF4500"/><circle cx="589" cy="382" r="14" stroke="#FF4500" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="767" cy="93" r="7" fill="#FFBE3C"/><circle cx="767" cy="93" r="12" stroke="#FFBE3C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="775" cy="223" r="7" fill="#F8801C"/><circle cx="775" cy="223" r="12" stroke="#F8801C" stroke-opacity="0.35" stroke-width="1.5"/><circle cx="773" cy="338" r="7" fill="#C64610"/><circle cx="773" cy="338" r="12" stroke="#C64610" stroke-opacity="0.35" stroke-width="1.5"/></g></svg>
   <div class="culture-fg">
     <h2 class="h-xl">AI that&rsquo;s <span class="grad">tended,</span><br>not just installed.</h2>
@@ -510,7 +525,7 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 </section>
 
 <!-- ================= MULTICARD ================= -->
-<section class="section container">
+<section class="section section--tight-top container">
   <div class="sec-head">
     <h2 class="h-xl">Anything <span class="grad">worth automating</span>, we can build into your stack.</h2>
     <p class="sub">Automate what&rsquo;s tedious. Accelerate what&rsquo;s ambitious.</p>
@@ -708,6 +723,33 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 </main>
 
 <script>
+function drawLead(){
+  var svg = document.getElementById('leadLine');
+  if(!svg) return;
+  var panel = document.querySelector('.sizzle-panel');
+  var hl = document.querySelector('.sizzle-head h2 .hl');
+  var card = document.querySelector('.sizzle-cards .card--glass');
+  if(!panel || !hl || !card) return;
+  if(window.matchMedia('(max-width:1100px)').matches){ svg.innerHTML=''; return; }
+  var p = panel.getBoundingClientRect();
+  var lines = hl.getClientRects();
+  if(lines.length < 2){ svg.innerHTML=''; return; }
+  var sy = (lines[0].bottom + lines[1].top) / 2 - p.top;
+  var sx = Math.max(lines[0].right, lines[1].right) - p.left + 30;
+  var c = card.getBoundingClientRect();
+  var ey = c.top + c.height / 2 - p.top;
+  var ex = c.left - p.left - 34;
+  svg.setAttribute('viewBox', '0 0 ' + p.width + ' ' + p.height);
+  var midx = sx + (ex - sx) * 0.55;
+  var d = 'M' + sx + ' ' + sy + ' C ' + midx + ' ' + sy + ', ' + (ex - 90) + ' ' + ey + ', ' + ex + ' ' + ey;
+  svg.innerHTML =
+    '<path d="' + d + '" stroke="#fff" stroke-width="2" stroke-dasharray="7 7" fill="none" opacity=".9"/>' +
+    '<path d="M' + (ex + 13) + ' ' + ey + ' L' + ex + ' ' + (ey - 7) + ' L' + ex + ' ' + (ey + 7) + ' Z" fill="#fff" opacity=".95"/>';
+}
+window.addEventListener('load', drawLead);
+window.addEventListener('resize', drawLead);
+drawLead();
+
 document.querySelectorAll('.tpl-tab').forEach(function(tab){
   tab.addEventListener('click', function(){
     document.querySelectorAll('.tpl-tab').forEach(function(t){t.setAttribute('aria-selected','false');});
