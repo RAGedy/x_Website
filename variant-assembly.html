@@ -177,17 +177,17 @@ a{color:inherit}
   display:flex;justify-content:space-between;align-items:stretch;gap:48px;
   padding:48px;
 }
-.sizzle-head{max-width:600px;align-self:flex-start}
+.sizzle-head{max-width:680px;align-self:flex-start}
 .sizzle-head h2{
-  font-size:clamp(1.7rem,2.9vw,2.5rem);line-height:1.3;font-weight:700;
+  font-size:clamp(2rem,4.5vw,4rem);line-height:1.22;font-weight:700;letter-spacing:-.015em;
 }
-.sizzle-head h2 .chip,.sizzle-head .sub .chip{
+.sizzle-head h2 .hl,.sizzle-head .sub .hl{
   background:#0c0c0c;color:#fff;
   -webkit-box-decoration-break:clone;box-decoration-break:clone;
-  padding:5px 14px;
+  padding:6px 20px;
 }
-.sizzle-head .sub{margin-top:18px;font-size:1.05rem;line-height:1.7;color:#fff}
-.sizzle-head .sub .chip{color:#c9cccf}
+.sizzle-head .sub{margin-top:20px;font-size:clamp(1.05rem,1.5vw,1.35rem);line-height:1.75;color:#fff}
+.sizzle-head .sub .hl{color:#c9cccf;padding:5px 16px}
 .sizzle-cards{
   display:flex;flex-direction:column;justify-content:center;gap:16px;
   width:400px;flex:none;
@@ -230,7 +230,7 @@ a{color:inherit}
 /* ============ CULTURE (spotlight) ============ */
 .culture{position:relative}
 .culture-neural{
-  position:absolute;top:-20px;right:0;width:64%;max-width:780px;
+  position:absolute;top:80px;right:0;width:64%;max-width:780px;
   height:auto;aspect-ratio:800/440;
   pointer-events:none;
 }
@@ -255,22 +255,27 @@ a{color:inherit}
 .card--sm p{font-size:14px}
 .card--sm .link-cta{margin-top:18px;font-size:12.5px}
 
-/* ============ TICKER ============ */
-.ticker{
-  overflow:hidden;white-space:nowrap;padding:110px 0 70px;
+/* ============ VERTICALS HEADING ============ */
+.tpl-head{
+  font-size:clamp(2.4rem,5.8vw,5.5rem);font-weight:700;text-transform:uppercase;
+  letter-spacing:-.01em;line-height:1.02;text-align:center;text-wrap:balance;
+  padding:110px 0 70px;
 }
-.ticker-track{display:inline-block;animation:ticker 22s linear infinite}
-.ticker span{
-  font-size:clamp(3rem,7vw,6.5rem);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;
-  padding-right:.6em;
-}
-.ticker .star{color:var(--accent)}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ============ TEMPLATES / TABS ============ */
 .tpl-panel{
-  display:grid;grid-template-columns:1fr 1.2fr;gap:0;
+  display:grid;grid-template-columns:280px 1fr;gap:0;
   background:var(--panel);border:1px solid var(--hairline);border-radius:24px;overflow:hidden;
+  position:relative;
+}
+.tpl-constellation{
+  position:absolute;top:0;right:0;bottom:0;width:380px;
+  pointer-events:none;overflow:hidden;
+}
+.c-chip{
+  position:absolute;white-space:nowrap;
+  border:1px solid var(--hairline-2);border-radius:999px;padding:6px 14px;
+  font-size:13px;font-weight:700;color:#d6d7d9;background:rgba(255,255,255,.03);
 }
 .tpl-tabs{list-style:none;display:flex;flex-direction:column;border-right:1px solid var(--hairline)}
 .tpl-tab{
@@ -281,7 +286,7 @@ a{color:inherit}
 .tpl-tab:hover{color:#fff}
 .tpl-tab[aria-selected="true"]{color:#fff;background:rgba(255,69,0,.08);box-shadow:inset 3px 0 0 var(--accent)}
 .tpl-tabs li:last-child .tpl-tab{border-bottom:none}
-.tpl-body{padding:44px;display:none;flex-direction:column;align-items:flex-start;gap:28px}
+.tpl-body{padding:44px 400px 44px 44px;display:none;flex-direction:column;align-items:flex-start;gap:28px}
 .tpl-body.active{display:flex}
 .tpl-body p{color:var(--muted);font-size:17px;line-height:1.6;max-width:520px}
 .chip-group .eyebrow{margin-bottom:10px}
@@ -333,11 +338,12 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
   .trust-grid{grid-template-columns:1fr;gap:32px}
   .trust-divider{display:none}
   .culture-neural{position:static;width:100%;margin-top:32px}
-  .sizzle-panel{aspect-ratio:auto}
-  .sizzle-overlay{position:relative;flex-direction:column;padding:32px;gap:32px}
+  .sizzle-overlay{flex-direction:column;padding:32px;gap:32px;min-height:0}
   .sizzle-cards{width:100%}
   .tpl-panel{grid-template-columns:1fr}
   .tpl-tabs{border-right:none;border-bottom:1px solid var(--hairline)}
+  .tpl-body{padding:32px}
+  .tpl-constellation{display:none}
   .foot-grid{grid-template-columns:1fr;gap:48px}
   .nav-menu{display:none}
 }
@@ -459,8 +465,8 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
     <img class="bg" src="assets/campfire_stars_twinkle_seamless.gif" alt="Pixel-art campfire under a starry night sky">
     <div class="sizzle-overlay">
       <div class="sizzle-head">
-        <h2><span class="chip">See how Ember <span class="grad">transforms</span> your company</span></h2>
-        <p class="sub"><span class="chip">Ember's three pronged approach makes sure that you never have to worry.</span></p>
+        <h2><span class="hl">See how Ember <span class="grad">transforms</span> your company</span></h2>
+        <p class="sub"><span class="hl">Ember's three pronged approach makes sure that you never have to worry.</span></p>
       </div>
       <div class="sizzle-cards">
         <article class="card--glass">
@@ -563,12 +569,9 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 
 <!-- ================= TICKER + TEMPLATES ================= -->
 <section id="use-cases">
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>Your vertical? Here&rsquo;s the plan. <span class="star">&#10022;</span></span><span>Your vertical? Here&rsquo;s the plan. <span class="star">&#10022;</span></span><span>Your vertical? Here&rsquo;s the plan. <span class="star">&#10022;</span></span><span>Your vertical? Here&rsquo;s the plan. <span class="star">&#10022;</span></span>
-    </div>
+  <div class="container">
+    <h2 class="tpl-head">Your vertical? <span class="grad">Here&rsquo;s the plan.</span></h2>
   </div>
-  <h2 class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Your vertical? Here&rsquo;s the plan.</h2>
   <div class="container">
     <div class="tpl-panel">
       <ul class="tpl-tabs" role="tablist" aria-label="Verticals">
@@ -619,6 +622,19 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
             <div class="chip-group"><p class="eyebrow">Our custom stack</p><div class="chips"><span class="chip">Hearth Flows</span><span class="chip">Hearth Recall</span><span class="chip">Hearth Brain</span></div></div>
           </div>
         </div>
+      </div>
+      <div class="tpl-constellation" aria-hidden="true">
+        <span class="c-chip" style="top:9%;left:18%;transform:rotate(-7deg)">Claude</span>
+        <span class="c-chip" style="top:20%;left:52%;transform:rotate(4deg);opacity:.75">Microsoft 365 Copilot</span>
+        <span class="c-chip" style="top:33%;left:10%;transform:rotate(3deg);opacity:.6;font-size:11.5px">Azure OpenAI</span>
+        <span class="c-chip" style="top:43%;left:44%;transform:rotate(-4deg)">Google Ads MCP</span>
+        <span class="c-chip" style="top:56%;left:14%;transform:rotate(6deg);opacity:.8">Hearth Tables</span>
+        <span class="c-chip" style="top:65%;left:55%;transform:rotate(-6deg);opacity:.55;font-size:11.5px">Hearth Flows</span>
+        <span class="c-chip" style="top:77%;left:26%;transform:rotate(-3deg);opacity:.9">Claude Code</span>
+        <span class="c-chip" style="top:87%;left:52%;transform:rotate(5deg);opacity:.6;font-size:12px">Hearth Recall</span>
+        <span class="c-chip" style="top:14%;left:76%;transform:rotate(8deg);opacity:.5;font-size:11px">Hearth Brain</span>
+        <span class="c-chip" style="top:51%;left:78%;transform:rotate(-8deg);opacity:.45;font-size:11px">Hearth Watch</span>
+        <span class="c-chip" style="top:74%;left:79%;transform:rotate(3deg);opacity:.5;font-size:11.5px">Hearth Docs</span>
       </div>
     </div>
   </div>
