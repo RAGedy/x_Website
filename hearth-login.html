@@ -19,11 +19,13 @@ body{
   -webkit-font-smoothing:antialiased;padding:24px;
   background-image:radial-gradient(ellipse 60% 40% at 50% -10%,rgba(255,69,0,.08),transparent);
 }
-.brand-lockup{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:40px}
-.brand-lockup .ae{font-weight:700;font-size:24px;color:#fff;letter-spacing:.02em}
-.brand-lockup .bar{width:1px;height:30px;background:rgba(255,255,255,.35)}
-.brand-lockup .name{font-weight:400;font-size:20px;color:#fff;letter-spacing:.015em}
+.brand-lockup{display:flex;align-items:center;gap:13px;text-decoration:none;margin-bottom:40px}
+.brand-lockup .ae{font-weight:400;font-size:30px;color:#fff;letter-spacing:.01em;line-height:1}
+.brand-lockup .bar{width:1px;height:42px;background:rgba(255,255,255,.45)}
+.brand-lockup .name-stack{display:flex;flex-direction:column}
+.brand-lockup .name{font-weight:300;font-size:21px;color:#fff;letter-spacing:.02em;line-height:1.1}
 .brand-lockup .name em{font-style:normal;color:var(--accent)}
+.brand-lockup .sysllc{font-weight:300;font-size:9.5px;color:#fff;letter-spacing:.42em;margin-top:3px;white-space:nowrap}
 .card{
   width:100%;max-width:420px;background:var(--panel);
   border:1px solid var(--hairline);border-radius:16px;padding:40px;
@@ -79,7 +81,10 @@ button:disabled{opacity:.6;cursor:wait}
 <a class="brand-lockup" href="/" aria-label="Back to AllEmber">
   <span class="ae">&AElig;</span>
   <span class="bar" aria-hidden="true"></span>
-  <span class="name"><em>All</em>Ember</span>
+  <span class="name-stack">
+    <span class="name"><em>All</em>Ember</span>
+    <span class="sysllc">Systems&nbsp;LLC</span>
+  </span>
 </a>
 
 <div class="card" id="card">

@@ -97,14 +97,17 @@ a{color:inherit}
   border-radius:var(--r-lg);
   padding:20px 32px;
 }
-.brand-lockup{display:flex;align-items:center;gap:14px;text-decoration:none}
-.brand-lockup .ae{font-weight:700;font-size:25px;color:#fff;letter-spacing:.02em}
-.brand-lockup .bar{width:1px;height:32px;background:rgba(255,255,255,.35)}
-.brand-lockup .name{font-weight:400;font-size:21px;color:#fff;letter-spacing:.015em}
+.brand-lockup{display:flex;align-items:center;gap:15px;text-decoration:none}
+.brand-lockup .ae{font-weight:400;font-size:34px;color:#fff;letter-spacing:.01em;line-height:1}
+.brand-lockup .bar{width:1px;height:46px;background:rgba(255,255,255,.45)}
+.brand-lockup .name-stack{display:flex;flex-direction:column}
+.brand-lockup .name{font-weight:300;font-size:23px;color:#fff;letter-spacing:.02em;line-height:1.1}
 .brand-lockup .name em{font-style:normal;color:var(--accent)}
-.brand-lockup--lg .ae{font-size:33px}
-.brand-lockup--lg .bar{height:42px}
-.brand-lockup--lg .name{font-size:27px}
+.brand-lockup .sysllc{font-weight:300;font-size:10.5px;color:#fff;letter-spacing:.42em;margin-top:3px;white-space:nowrap}
+.brand-lockup--lg .ae{font-size:44px}
+.brand-lockup--lg .bar{height:60px}
+.brand-lockup--lg .name{font-size:30px}
+.brand-lockup--lg .sysllc{font-size:13px}
 .nav-menu{display:flex;align-items:center;gap:28px;list-style:none}
 .nav-item{position:relative}
 .nav-link{
@@ -377,54 +380,38 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
     <a class="brand-lockup" href="#" aria-label="AllEmber home">
       <span class="ae">&AElig;</span>
       <span class="bar" aria-hidden="true"></span>
-      <span class="name"><em>All</em>Ember</span>
+      <span class="name-stack">
+        <span class="name"><em>All</em>Ember</span>
+        <span class="sysllc">Systems&nbsp;LLC</span>
+      </span>
     </a>
     <ul class="nav-menu">
       <li class="nav-item">
         <button class="nav-link" type="button">How We Help</button>
-        <div class="nav-drop nav-drop--wide">
-          <div>
-            <p class="eyebrow">Primitives</p>
-            <ul>
-              <li><a href="https://www.browserbase.com/browsers"><span class="t">Browsers</span><span class="d">Real browsers for your agent to use the web, without the headaches</span></a></li>
-              <li><a href="https://www.browserbase.com/agents"><span class="t">Agents</span><span class="d">Scale fully managed browser agents with simple prompts.</span></a></li>
-              <li><a href="https://www.browserbase.com/search"><span class="t">Web Data APIs</span><span class="d">Search and fetch APIs to efficiently retrieve web data</span></a></li>
-              <li><a href="https://www.browserbase.com/runtime"><span class="t">Runtime</span><span class="d">Scalable, sandboxed environments for agent deployments</span></a></li>
-              <li><a href="https://www.browserbase.com/identity"><span class="t">Identity</span><span class="d">Authenticate your agent to navigate the web like a human</span></a></li>
-              <li><a href="https://www.browserbase.com/models"><span class="t">Models</span><span class="d">Use any model with a single API key</span></a></li>
-              <li><a href="https://www.browserbase.com/observability"><span class="t">Observability</span><span class="d">Unified debugging your agent across replays, logs, and prompts</span></a></li>
-            </ul>
-          </div>
-          <div>
-            <p class="eyebrow">Open Source</p>
-            <ul>
-              <li><a href="https://www.browserbase.com/browse-cli"><span class="t">Browse CLI</span><span class="d">Give your agent browsing skills with a single command</span></a></li>
-              <li><a href="https://www.browserbase.com/stagehand"><span class="t">Stagehand</span><span class="d">The most popular AI browser automation framework</span></a></li>
-            </ul>
-          </div>
+        <div class="nav-drop">
+          <ul>
+            <li><a href="#approach"><span class="t">Initial Consult</span></a></li>
+            <li><a href="#approach"><span class="t">FDE on Retainer</span></a></li>
+            <li><a href="#approach"><span class="t">Hearth Software Suite</span></a></li>
+          </ul>
         </div>
       </li>
       <li class="nav-item">
         <button class="nav-link" type="button">Who We Are</button>
         <div class="nav-drop">
           <ul>
-            <li><a href="https://www.browserbase.com/use-cases"><span class="t">All Use Cases</span></a></li>
-            <li><a href="https://www.browserbase.com/solutions/browser-agents"><span class="t">Browser Agent</span></a></li>
-            <li><a href="https://www.browserbase.com/solutions/testing"><span class="t">Automated Testing</span></a></li>
-            <li><a href="https://www.browserbase.com/solutions/workflow-automation"><span class="t">Workflow Automation</span></a></li>
-            <li><a href="https://www.browserbase.com/solutions/accessing-web-data"><span class="t">Web Data Extraction</span></a></li>
+            <li><a href="about.html"><span class="t">About</span></a></li>
+            <li><a href="team.html"><span class="t">Team</span></a></li>
           </ul>
         </div>
       </li>
       <li class="nav-item">
         <button class="nav-link" type="button">Resources</button>
         <div class="nav-drop">
-          <p class="eyebrow">Resources</p>
           <ul>
-            <li><a href="https://www.browserbase.com/blog"><span class="t">Blog</span></a></li>
-            <li><a href="https://www.browserbase.com/customer-stories"><span class="t">Customers</span></a></li>
-            <li><a href="https://www.browserbase.com/enterprise"><span class="t">Enterprise</span></a></li>
-            <li><a href="https://www.browserbase.com/templates"><span class="t">Templates</span></a></li>
+            <li><a href="support.html"><span class="t">Support</span></a></li>
+            <li><a href="privacy.html"><span class="t">Privacy Policy</span></a></li>
+            <li><a href="terms.html"><span class="t">Terms of Service</span></a></li>
           </ul>
         </div>
       </li>
@@ -443,7 +430,7 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
   <h1 class="h-display">Don't let your<br>AI stack <span class="grad">fall&nbsp;behind.</span></h1>
   <p class="hero-sub">Ember keeps your AI cutting edge without you having to think about it.</p>
   <div class="hero-ctas">
-    <a class="btn" href="https://www.browserbase.com/sign-up">Talk to Us <span aria-hidden="true">&rsaquo;</span></a>
+    <a class="btn" href="mailto:founders@allember.com">Talk to Us <span aria-hidden="true">&rsaquo;</span></a>
     <button class="btn btn--ghost" type="button">No AI yet? We can help</button>
   </div>
 </section>
@@ -472,7 +459,7 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
 </section>
 
 <!-- ================= SIZZLE PANEL ================= -->
-<section class="sizzle container">
+<section class="sizzle container" id="approach">
   <div class="sizzle-panel">
     <img class="bg" src="assets/campfire_stars_twinkle_seamless.gif" alt="Pixel-art campfire under a starry night sky">
     <div class="sizzle-overlay">
@@ -672,7 +659,10 @@ footer{border-top:1px solid var(--hairline);padding:90px 0 60px;position:relativ
         <a href="#" class="brand-lockup brand-lockup--lg" aria-label="AllEmber home">
           <span class="ae">&AElig;</span>
           <span class="bar" aria-hidden="true"></span>
-          <span class="name"><em>All</em>Ember</span>
+          <span class="name-stack">
+            <span class="name"><em>All</em>Ember</span>
+            <span class="sysllc">Systems&nbsp;LLC</span>
+          </span>
         </a>
       </div>
       <nav class="foot-cols" aria-label="footer">
