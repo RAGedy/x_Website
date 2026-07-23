@@ -6,3 +6,16 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Orphan tracking/marketing files from the Cloudflare "Save Page As" dump that
+# seeded New_Boilerplate.html. Nothing in the cleaned HTML references them.
+# Kept on disk for reference, ignored from version control.
+vestigial/
+New_Boilerplate.html.cloudflare-original.bak
+
+# Local Claude working notes
+CLAUDE.md
+
+node_modules/
+dist/
+/assets

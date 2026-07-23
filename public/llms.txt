@@ -1,0 +1,32 @@
+# AllEmber
+
+> AllEmber (Ember Intelligence LLC, doing business as AllEmber Systems) is an AI implementation consultancy. We go into companies of any background — consulting, finance, research, marketing, small business — and build them a unified AI stack: automated workflows, retrieval over their own knowledge, secure MCP servers, and an engineer who keeps it all current. Tagline: "Don't let your AI stack fall behind."
+
+## How we help
+
+- **Initial Consult** (free): we scope what your company needs — workflows, tools, platforms — then implement.
+- **FDE on Retainer**: a forward-deployed engineer stays on retainer and keeps your stack cutting edge, proactively.
+- **Hearth Software Suite**: our own tools for tabular data (Hearth Tables), documents (Hearth Docs), automated workflows (Hearth Flows), knowledge retrieval (Hearth Recall), a shared agent memory layer (Hearth Hivemind / Hearth Brain), and monitoring (Hearth Watch).
+
+## What we build
+
+Internal RAG systems over company documents; workflow automations that draft standard documents, decks, and reports; custom APIs and secure, tenant-managed MCP servers (including private builds of tools like the Google Ads MCP); a shared "company brain" MCP layer so all of a client's agents can exchange context; web-capable agents running on managed cloud servers; monitoring that flags and cuts off anything broken or compromised. We deploy and configure tools clients already know: Claude, Claude Code, Microsoft 365 Copilot, Azure OpenAI, Qdrant. AllEmber is a Microsoft AI Cloud Partner.
+
+## Selected work
+
+- **Build Consulting**: end-to-end knowledge retrieval over firm documents, statements of work that draft themselves, and agents connected over one shared MCP server.
+- **Sapien Labs**: turbocharged Microsoft Copilot, Claude across the whole organization, Qdrant-backed retrieval, web-capable agents.
+- Additional design partners across university endowments, research labs, and consulting.
+
+## Pages
+
+- [Home](https://www.allember.com/): what AllEmber does, offerings, and vertical playbooks for finance, consulting, research, marketing, and small business.
+- [No AI yet?](https://www.allember.com/no-ai-yet): article on going from an "AI pile" to a unified, tended AI stack.
+- [Team](https://www.allember.com/team): two founders (Colden Johnson, CEO; Krishna Thiagarajan, COO) and four founding engineers.
+- [Support](https://www.allember.com/support): support@allember.com, one-business-day response.
+- [Privacy](https://www.allember.com/privacy) · [Terms](https://www.allember.com/terms)
+
+## Contact
+
+- Book a free 30-minute consult: https://calendly.com/colden-allember/30min
+- Email the founders: founders@allember.com
