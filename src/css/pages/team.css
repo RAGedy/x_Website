@@ -1,4 +1,4 @@
-.page-hero{padding:96px 0 40px}
+.page-hero{padding-top:96px;padding-bottom:40px}
 .page-hero .eyebrow{margin-bottom:16px}
 .page-hero h1{max-width:900px}
 .page-hero .sub{margin-top:20px;max-width:720px}
@@ -72,7 +72,7 @@ a.tag:hover{color:var(--accent);border-color:var(--accent)}
 @media (max-width:700px){.people-grid{grid-template-columns:1fr}.people-grid--4{grid-template-columns:1fr}.supp-grid{grid-template-columns:1fr}.cta-strip{padding:40px 24px}.partner-band{gap:28px}.partner-band img{height:26px}.sec-label{margin-top:64px}.page-bottom{padding-bottom:96px}}
 
 
-.page-hero{padding:56px 0 0}
+.page-hero{padding-top:56px;padding-bottom:0}
 .sec-label{margin-top:56px}
 .person-card{flex-direction:row;gap:22px;align-items:flex-start}
 .person-card .photo{flex:0 0 190px;margin-bottom:0}

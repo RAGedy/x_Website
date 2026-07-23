@@ -14,8 +14,8 @@ Internal RAG systems over company documents; workflow automations that draft sta
 
 ## Selected work
 
-- **Build Consulting**: end-to-end knowledge retrieval over firm documents, statements of work that draft themselves, and agents connected over one shared MCP server.
-- **Sapien Labs**: turbocharged Microsoft Copilot, Claude across the whole organization, Qdrant-backed retrieval, web-capable agents.
+- **Build Consulting**: end-to-end knowledge retrieval over firm documents, statements of work that draft themselves, a turbocharged Microsoft Copilot backed by Qdrant retrieval and open-web access, and agents connected over one shared MCP server.
+- **Sapien Labs**: moving the entire organization onto Claude (from fragmented individual Claude/ChatGPT use), a shared agent memory layer, and connections to the third-party MCP servers their agents need.
 - Additional design partners across university endowments, research labs, and consulting.
 
 ## Pages
