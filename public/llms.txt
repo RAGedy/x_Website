@@ -1,6 +1,6 @@
 # AllEmber
 
-> AllEmber (Ember Intelligence LLC, doing business as AllEmber Systems) is an AI implementation consultancy. We go into companies of any background — consulting, finance, research, marketing, small business — and build them a unified AI stack: automated workflows, retrieval over their own knowledge, secure MCP servers, and an engineer who keeps it all current. Tagline: "Don't let your AI stack fall behind."
+> AllEmber (Ember Intelligence LLC, a Delaware limited liability company, Delaware File No. 10630937, doing business as AllEmber Systems) is an AI implementation consultancy. We go into companies of any background — consulting, finance, research, marketing, small business — and build them a unified AI stack: automated workflows, retrieval over their own knowledge, secure MCP servers, and an engineer who keeps it all current. Tagline: "Don't let your AI stack fall behind."
 
 ## How we help
 
