@@ -23,10 +23,11 @@ Internal RAG systems over company documents; workflow automations that draft sta
 - [Home](https://www.allember.com/): what AllEmber does, offerings, and vertical playbooks for finance, consulting, research, marketing, and small business.
 - [No AI yet?](https://www.allember.com/no-ai-yet): article on going from an "AI pile" to a unified, tended AI stack.
 - [Team](https://www.allember.com/team): two founders (Colden Johnson, CEO; Krishna Thiagarajan, COO) and four founding engineers.
-- [Support](https://www.allember.com/support): support@allember.com, one-business-day response.
+- [Support](https://www.allember.com/support): support@allember.com or +1 (877) EMBER-99 (+1 877-362-3799), one-business-day response.
 - [Privacy](https://www.allember.com/privacy) · [Terms](https://www.allember.com/terms)
 
 ## Contact
 
 - Book a free 30-minute consult: https://calendly.com/colden-allember/30min
 - Email the founders: founders@allember.com
+- Call support: +1 (877) EMBER-99 (+1 877-362-3799)

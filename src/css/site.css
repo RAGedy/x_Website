@@ -93,7 +93,7 @@ a{color:inherit}
 
 /* anchor jumps land below the sticky nav pill */
 html{scroll-behavior:smooth}
-#approach,#use-cases{scroll-margin-top:150px}
+#approach,#use-cases{scroll-margin-top:128px}
 .brand-lockup--lg .ae{font-size:33px}
 .brand-lockup--lg .bar{height:42px}
 .brand-lockup--lg .name{font-size:27px}
