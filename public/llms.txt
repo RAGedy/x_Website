@@ -26,6 +26,13 @@ Internal RAG systems over company documents; workflow automations that draft sta
 - [Support](https://www.allember.com/support): support@allember.com or +1 (877) EMBER-99 (+1 877-362-3799), one-business-day response.
 - [Privacy](https://www.allember.com/privacy) · [Terms](https://www.allember.com/terms)
 
+## Verify us
+
+- Legal entity: Ember Intelligence LLC, a Delaware limited liability company, File No. 10630937. Standing is independently verifiable via the Delaware Division of Corporations entity search (icis.corp.delaware.gov).
+- Microsoft AI Cloud Partner: Partner ID 7132521 is a Partner Location Account ID registered to Ember Intelligence LLC (WA, US). Live Microsoft Partner Center verification is available to prospective customers on request.
+- Master Services Agreement, order forms, and data-processing terms: provided to prospective customers on request via legal@allember.com.
+- Customer references: available on request during vendor diligence.
+
 ## Contact
 
 - Book a free 30-minute consult: https://calendly.com/d/dvzc-hbd-94b/ember?month=2026-07
