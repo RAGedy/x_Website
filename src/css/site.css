@@ -86,7 +86,7 @@ a{color:inherit}
   padding:20px 32px;
 }
 .brand-lockup{display:flex;align-items:center;gap:14px;text-decoration:none}
-.brand-lockup .ae{height:30px;width:30px;display:block}
+.brand-lockup .ae{height:21px;width:21px;display:block}
 .brand-lockup .bar{width:1px;height:32px;background:rgba(255,255,255,.35)}
 .brand-lockup .name{font-weight:400;font-size:21px;color:#fff;letter-spacing:.015em}
 .brand-lockup .name em{font-style:normal;color:var(--accent)}
@@ -94,7 +94,7 @@ a{color:inherit}
 /* anchor jumps land below the sticky nav pill */
 html{scroll-behavior:smooth}
 #approach,#use-cases{scroll-margin-top:128px}
-.brand-lockup--lg .ae{height:40px;width:40px}
+.brand-lockup--lg .ae{height:28px;width:28px}
 .brand-lockup--lg .bar{height:42px}
 .brand-lockup--lg .name{font-size:27px}
 .nav-menu{display:flex;align-items:center;gap:28px;list-style:none}
@@ -386,7 +386,7 @@ footer{border-top:1px solid var(--hairline);padding-top:90px;padding-bottom:60px
 @media (max-width:700px){
   .nav-outer{padding:12px 16px}
   .nav-pill{padding:12px 18px}
-  .brand-lockup .ae{height:25px;width:25px}
+  .brand-lockup .ae{height:17px;width:17px}
   .brand-lockup .bar{height:26px}
   .brand-lockup .name{font-size:18px}
   .nav-side{gap:14px}
