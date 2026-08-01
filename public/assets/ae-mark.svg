@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Minimalist AE monogram">
+  <rect x="0" y="0" width="200" height="200" fill="#000000"/>
+  <g fill="#FFFFFF">
+    <polygon points="80,40 97,40 57,160 40,160"/>
+    <rect x="105" y="40" width="55" height="16"/>
+    <rect x="105" y="92" width="55" height="16"/>
+    <rect x="105" y="144" width="55" height="16"/>
+  </g>
+</svg>

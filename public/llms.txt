@@ -10,7 +10,7 @@
 
 ## What we build
 
-Internal RAG systems over company documents; workflow automations that draft standard documents, decks, and reports; custom APIs and secure, tenant-managed MCP servers (including private builds of tools like the Google Ads MCP); a shared "company brain" MCP layer so all of a client's agents can exchange context; web-capable agents running on managed cloud servers; monitoring that flags and cuts off anything broken or compromised. We deploy and configure tools clients already know: Claude, Claude Code, Microsoft 365 Copilot, Azure OpenAI, Qdrant. AllEmber is a Microsoft AI Cloud Partner (Partner ID 7132521).
+Internal RAG systems over company documents; workflow automations that draft standard documents, decks, and reports; custom APIs and secure, tenant-managed MCP servers (including private builds of tools like the Google Ads MCP); a shared "company brain" MCP layer so all of a client's agents can exchange context; web-capable agents running on managed cloud servers; monitoring that flags and cuts off anything broken or compromised. We deploy and configure tools clients already know: Claude, Claude Code, Microsoft 365 Copilot, Azure OpenAI, Qdrant. AllEmber is a Microsoft AI Cloud Partner (Partner ID 7132521) and a registered member of the Claude Partner Network (Anthropic partner program).
 
 ## Selected work
 
@@ -30,6 +30,7 @@ Internal RAG systems over company documents; workflow automations that draft sta
 
 - Legal entity: Ember Intelligence LLC, a Delaware limited liability company, File No. 10630937. Standing is independently verifiable via the Delaware Division of Corporations entity search (icis.corp.delaware.gov).
 - Microsoft AI Cloud Partner: Partner ID 7132521 is a Partner Location Account ID registered to Ember Intelligence LLC (WA, US). Live Microsoft Partner Center verification is available to prospective customers on request.
+- Claude Partner Network: registered member (Anthropic partner program); verification available on request.
 - Master Services Agreement, order forms, and data-processing terms: provided to prospective customers on request via legal@allember.com.
 - Customer references: available on request during vendor diligence.
 
