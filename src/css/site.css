@@ -262,11 +262,11 @@ html{scroll-behavior:smooth}
 /* ============ CULTURE (spotlight) ============ */
 .culture{position:relative}
 .culture-neural{
-  position:absolute;top:80px;right:0;width:64%;max-width:780px;
-  height:auto;aspect-ratio:800/440;
+  position:absolute;top:80px;right:0;width:78.8%;max-width:960px;
+  height:auto;aspect-ratio:985/440;
   pointer-events:none;
 }
-.culture-fg{position:relative;z-index:1}
+.culture-fg{position:relative;z-index:1;pointer-events:none}
 .culture-copy{margin-top:30px;max-width:540px}
 .culture-copy p{font-size:clamp(1.1rem,1.6vw,1.4rem);color:var(--muted);margin-top:14px}
 .culture-copy p strong{color:#fff;font-weight:700}
