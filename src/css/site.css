@@ -168,7 +168,7 @@ html{scroll-behavior:smooth}
 .trust-divider{background:var(--hairline-2);height:100%;min-height:96px}
 .trust h2{font-size:15px;font-weight:700;line-height:1.45;color:var(--muted);text-transform:none}
 .trust h2 strong{color:#fff}
-.trust-left{display:flex;align-items:center;gap:28px}
+.trust-left{display:flex;align-items:center;gap:44px}
 .trust-badges{display:flex;align-items:center;gap:22px}
 .cpn{display:flex;align-items:center;gap:10px;flex:none}
 .cpn-spark{width:26px;height:26px;flex:none}
@@ -184,8 +184,8 @@ html{scroll-behavior:smooth}
 .msft-text b{display:block;font-size:16px}
 .msft-text span{color:var(--muted);font-size:12.5px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.trust-right{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
-.trust-logos{display:flex;align-items:center;gap:28px;flex-wrap:nowrap;flex:1;justify-content:space-between}
+.trust-right{display:flex;align-items:center;gap:44px;flex-wrap:wrap}
+.trust-logos{display:flex;align-items:center;gap:24px;flex-wrap:nowrap}
 .trust-logos img{height:42px;width:auto;opacity:.8;filter:grayscale(1) brightness(1.1);transition:opacity .2s}
 .trust-logos img:hover{opacity:1}
 
