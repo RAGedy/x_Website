@@ -4,5 +4,51 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "app.allember.com"
+        }
+      ],
+      "destination": "/hearth-login"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [
+        {
+          "type": "host",
+          "value": "app.allember.com"
+        }
+      ],
+      "destination": "/robots-app.txt"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/hearth-login",
+      "has": [
+        {
+          "type": "host",
+          "value": "app.allember.com"
+        }
+      ],
+      "destination": "https://app.allember.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:page(team|support|privacy|terms|no-ai-yet)",
+      "has": [
+        {
+          "type": "host",
+          "value": "app.allember.com"
+        }
+      ],
+      "destination": "https://www.allember.com/:page",
+      "permanent": false
+    }
+  ]
 }
