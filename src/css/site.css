@@ -165,10 +165,10 @@ html{scroll-behavior:smooth}
 .trust-grid{
   display:grid;grid-template-columns:auto 1px 1fr;gap:40px;align-items:center;
 }
-.trust-divider{background:var(--hairline-2);height:100%;min-height:96px}
+.trust-divider{background:var(--hairline-2);height:100%;min-height:96px;align-self:stretch}
 .trust h2{font-size:15px;font-weight:700;line-height:1.45;color:var(--muted);text-transform:none}
 .trust h2 strong{color:#fff}
-.trust-left{display:flex;align-items:center;gap:44px}
+.trust-left{display:flex;align-items:center;gap:18px 44px;flex-wrap:wrap}
 .trust-badges{display:flex;align-items:center;gap:22px}
 .cpn{display:flex;align-items:center;gap:10px;flex:none}
 .cpn-spark{width:26px;height:26px;flex:none}
@@ -184,7 +184,7 @@ html{scroll-behavior:smooth}
 .msft-text b{display:block;font-size:16px}
 .msft-text span{color:var(--muted);font-size:12.5px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.trust-right{display:flex;align-items:center;gap:44px;flex-wrap:wrap}
+.trust-right{display:flex;align-items:center;gap:18px 44px;flex-wrap:wrap}
 .trust-logos{display:flex;align-items:center;gap:24px;flex-wrap:nowrap}
 .trust-logos img{height:42px;width:auto;opacity:.8;filter:grayscale(1) brightness(1.1);transition:opacity .2s}
 .trust-logos img:hover{opacity:1}
@@ -366,11 +366,19 @@ footer{border-top:1px solid var(--hairline);padding-top:90px;padding-bottom:60px
 .foot-px img{height:52px;width:auto;image-rendering:pixelated}
 
 /* ============ RESPONSIVE ============ */
+@media (max-width:1439px){
+  /* side-by-side clusters can't fit inline headings (needs ~1330px inner):
+     stack heading above its group — both clusters together, never one alone */
+  .trust-grid{align-items:start}
+  .trust-left,.trust-right{flex-direction:column;align-items:flex-start;gap:18px}
+}
 @media (max-width:1100px){
   .cards-8{grid-template-columns:repeat(2,1fr)}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .trust-grid{grid-template-columns:1fr;gap:32px}
   .trust-divider{display:none}
+  /* single column = full container width again: inline headings fit until ~840px */
+  .trust-left,.trust-right{flex-direction:row;align-items:center;gap:18px 44px}
   .culture-neural{position:static;width:100%;margin-top:32px}
   .sizzle-overlay{flex-direction:column;padding:32px;gap:32px;min-height:0}
   .sizzle-cards{width:100%}
@@ -382,6 +390,9 @@ footer{border-top:1px solid var(--hairline);padding-top:90px;padding-bottom:60px
   .nav-menu{display:none}
   .nav-burger{display:flex}
   .container{padding-left:24px;padding-right:24px}
+}
+@media (max-width:860px){
+  .trust-left,.trust-right{flex-direction:column;align-items:flex-start;gap:18px}
 }
 @media (max-width:700px){
   .nav-outer{padding:12px 16px}
@@ -400,8 +411,8 @@ footer{border-top:1px solid var(--hairline);padding-top:90px;padding-bottom:60px
   .hero-ctas{margin-top:32px}
   .hero-ctas .btn{padding:15px 22px;font-size:15px}
   .trust{padding-top:48px;padding-bottom:16px}
-  .trust-left{flex-wrap:wrap;gap:20px}
-  .trust-logos{flex-wrap:wrap;gap:24px 28px}
+  .trust-badges{flex-wrap:wrap}
+  .trust-logos{flex-wrap:wrap;gap:18px 28px}
   .trust-logos img{height:30px}
   .sizzle-overlay{padding:22px 18px;gap:26px}
   .sizzle-head .hl{padding:4px 12px}
