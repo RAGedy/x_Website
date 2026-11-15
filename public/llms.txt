@@ -1,6 +1,6 @@
 # AllEmber
 
-> AllEmber (Ember Intelligence LLC, a Delaware limited liability company, Delaware File No. 10630937, doing business as AllEmber Systems) is an AI implementation consultancy. We go into companies of any background — consulting, finance, research, marketing, small business — and build them a unified AI stack: automated workflows, retrieval over their own knowledge, secure MCP servers, and an engineer who keeps it all current. Tagline: "Don't let your AI stack fall behind."
+> AllEmber (Ember Intelligence LLC, a Delaware limited liability company, Delaware File No. 10630937, doing business as AllEmber Systems) is an AI implementation consultancy. We go into companies of any background — consulting, finance, research, manufacturing, small business — and build them a unified AI stack: automated workflows, retrieval over their own knowledge, secure MCP servers, and an engineer who keeps it all current. Tagline: "Don't let your AI stack fall behind."
 
 ## How we help
 
@@ -20,7 +20,7 @@ Internal RAG systems over company documents; workflow automations that draft sta
 
 ## Pages
 
-- [Home](https://www.allember.com/): what AllEmber does, offerings, and vertical playbooks for finance, consulting, research, marketing, and small business.
+- [Home](https://www.allember.com/): what AllEmber does, offerings, and vertical playbooks for finance, consulting, research, manufacturing, and small business.
 - [No AI yet?](https://www.allember.com/no-ai-yet): article on going from an "AI pile" to a unified, tended AI stack.
 - [Team](https://www.allember.com/team): two founders (Colden Johnson, CEO; Krishna Thiagarajan, COO) and four founding engineers.
 - [Support](https://www.allember.com/support): support@allember.com or +1 (877) EMBER-99 (+1 877-362-3799), one-business-day response.
