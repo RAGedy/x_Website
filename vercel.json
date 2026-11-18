@@ -40,7 +40,7 @@
       "permanent": true
     },
     {
-      "source": "/:page(team|support|privacy|terms|no-ai-yet)",
+      "source": "/:page(team|support|privacy|terms|no-ai-yet|saas)",
       "has": [
         {
           "type": "host",

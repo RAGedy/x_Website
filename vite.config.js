@@ -16,6 +16,7 @@ export default defineConfig({
         terms: resolve(root, 'terms.html'),
         'no-ai-yet': resolve(root, 'no-ai-yet.html'),
         'hearth-login': resolve(root, 'hearth-login.html'),
+        saas: resolve(root, 'saas.html'),
       },
     },
   },

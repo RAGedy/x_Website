@@ -26,6 +26,7 @@ Beyond the AI stack, AllEmber takes on enterprise-grade custom software engageme
 ## Pages
 
 - [Home](https://www.allember.com/): what AllEmber does, offerings, custom software engagements, and vertical playbooks for finance, consulting, research, manufacturing, and small business.
+- [Replace your SaaS](https://www.allember.com/saas): landing page for the SaaS replacement offering. Custom software built around a client's team in place of the subscriptions they rent, an engineer on retainer to maintain it, and a free 30-minute call to scope it.
 - [No AI yet?](https://www.allember.com/no-ai-yet): article on going from an "AI pile" to a unified, tended AI stack.
 - [Team](https://www.allember.com/team): two founders (Colden Johnson, CEO; Krishna Thiagarajan, COO) and four founding engineers.
 - [Support](https://www.allember.com/support): support@allember.com or +1 (877) EMBER-99 (+1 877-362-3799), one-business-day response.
