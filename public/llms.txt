@@ -1,6 +1,6 @@
 # AllEmber
 
-> AllEmber (Ember Intelligence LLC, a Delaware limited liability company, Delaware File No. 10630937, doing business as AllEmber Systems) is an AI implementation consultancy. We go into companies of any background — consulting, finance, research, manufacturing, small business — and build them a unified AI stack: automated workflows, retrieval over their own knowledge, secure MCP servers, and an engineer who keeps it all current. Tagline: "Don't let your AI stack fall behind."
+> AllEmber (Ember Intelligence LLC, a Delaware limited liability company, Delaware File No. 10630937, doing business as AllEmber Systems) is an AI implementation consultancy. We go into companies of any background — consulting, finance, research, manufacturing, small business — and build them a unified AI stack: automated workflows, retrieval over their own knowledge, secure MCP servers, and an engineer who keeps it all current. We also take on enterprise-grade custom software engagements and general software and AI builds. Tagline: "Don't let your AI stack fall behind."
 
 ## How we help
 
@@ -12,6 +12,10 @@
 
 Internal RAG systems over company documents; workflow automations that draft standard documents, decks, and reports; custom APIs and secure, tenant-managed MCP servers (including private builds of tools like the Google Ads MCP); a shared "company brain" MCP layer so all of a client's agents can exchange context; web-capable agents running on managed cloud servers; monitoring that flags and cuts off anything broken or compromised. We deploy and configure tools clients already know: Claude, Claude Code, Microsoft 365 Copilot, Azure OpenAI, Qdrant. AllEmber is a Microsoft AI Cloud Partner (Partner ID 7132521) and a registered member of the Claude Partner Network (Anthropic partner program).
 
+## Custom software engagements
+
+Beyond the AI stack, AllEmber takes on enterprise-grade custom software engagements: software built around how a client's team actually works, so it can replace the SaaS subscriptions they pay for. Our sweet spot is small and mid-sized businesses and non-profits of up to roughly 1,000 full-time employees. We also do general software and AI builds aimed at growing client revenue, not only reducing cost.
+
 ## Selected work
 
 - **Build Consulting**: end-to-end knowledge retrieval over firm documents, statements of work that draft themselves, a turbocharged Microsoft Copilot backed by Qdrant retrieval and open-web access, and agents connected over one shared MCP server.
@@ -20,7 +24,7 @@ Internal RAG systems over company documents; workflow automations that draft sta
 
 ## Pages
 
-- [Home](https://www.allember.com/): what AllEmber does, offerings, and vertical playbooks for finance, consulting, research, manufacturing, and small business.
+- [Home](https://www.allember.com/): what AllEmber does, offerings, custom software engagements, and vertical playbooks for finance, consulting, research, manufacturing, and small business.
 - [No AI yet?](https://www.allember.com/no-ai-yet): article on going from an "AI pile" to a unified, tended AI stack.
 - [Team](https://www.allember.com/team): two founders (Colden Johnson, CEO; Krishna Thiagarajan, COO) and four founding engineers.
 - [Support](https://www.allember.com/support): support@allember.com or +1 (877) EMBER-99 (+1 877-362-3799), one-business-day response.
