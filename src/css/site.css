@@ -267,6 +267,8 @@ html{scroll-behavior:smooth}
   pointer-events:none;
 }
 .culture-fg{position:relative;z-index:1;pointer-events:none}
+.culture-fg h2{max-width:11.5em;text-wrap:balance}
+.culture-fg h2 .grad{white-space:nowrap}
 .culture-copy{margin-top:30px;max-width:540px}
 .culture-copy p{font-size:clamp(1.1rem,1.6vw,1.4rem);color:var(--muted);margin-top:14px}
 .culture-copy p strong{color:#fff;font-weight:700}
@@ -277,6 +279,31 @@ html{scroll-behavior:smooth}
 .stat{border-top:1px solid var(--hairline-2);padding:24px 0 40px}
 .stat-label{grid-column:1/-1;margin-bottom:18px}
 .stat ~ .stat-label{margin-top:24px}
+/* footnote markers: plain-language definition on hover, focus or tap */
+.stat p{position:relative}
+.stat .nw{white-space:nowrap}
+.fn{
+  appearance:none;background:none;border:0;border-radius:5px;
+  font:inherit;font-size:.5em;line-height:1;color:var(--accent);
+  vertical-align:super;cursor:help;padding:7px 9px;margin:-7px -7px -7px -2px;
+  transition:background .15s;
+}
+.fn:hover,.fn.open{background:rgba(255,69,0,.16)}
+.fn:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.fn-tip{
+  position:absolute;left:0;top:calc(100% + 10px);z-index:5;
+  width:min(340px,calc(100vw - 40px));padding:14px 16px;
+  background:var(--panel-2);border:1px solid var(--hairline-2);border-radius:12px;
+  box-shadow:0 14px 36px rgba(0,0,0,.55);
+  font-size:14px;line-height:1.5;font-weight:400;letter-spacing:0;color:#d6d7d9;text-align:left;white-space:normal;
+  cursor:default;opacity:0;visibility:hidden;transform:translateY(-4px);
+  transition:opacity .15s,transform .15s,visibility .15s;
+}
+.fn-tip::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.fn-tip b{color:#fff;font-weight:700}
+.fn:hover .fn-tip,.fn:focus-visible .fn-tip,.fn.open .fn-tip{opacity:1;visibility:visible;transform:none}
+.fn.dismissed .fn-tip{opacity:0;visibility:hidden}
+.stat:nth-of-type(3n) .fn-tip{left:auto;right:0}
 .stat .num{display:block;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.14em;margin-bottom:12px}
 .stat p{font-size:clamp(1.15rem,1.8vw,1.6rem);font-weight:700;line-height:1.22;max-width:300px}
 
@@ -429,6 +456,7 @@ footer{border-top:1px solid var(--hairline);padding-top:90px;padding-bottom:60px
   .sizzle-head .sub .hl{padding:4px 10px}
   .card--glass{padding:18px 18px 18px 30px}
   .stats-grid{grid-template-columns:1fr;margin-top:44px}
+  .stat:nth-of-type(3n) .fn-tip{left:0;right:auto}
   .stat{padding:18px 0 26px}
   .cards-8{grid-template-columns:1fr;gap:16px}
   .build-grid{grid-template-columns:1fr;gap:16px;margin-top:44px}
