@@ -9,7 +9,7 @@
 #why,#how,#security{scroll-margin-top:128px}
 
 /* ----- hero ----- */
-.hero.saas-hero{position:relative;padding-top:49px}
+.hero.saas-hero{position:relative;padding-top:59px}
 .saas-hero > *{position:relative;z-index:1}
 .saas-hero .eyebrow{color:var(--accent);margin-bottom:28px}
 .saas-hero .hero-sub{max-width:660px;text-wrap:balance}
@@ -82,7 +82,7 @@
   .sf--netsuite{--x:76%;--y:76%}
 }
 @media (max-width:700px){
-  .hero.saas-hero{padding-top:34px}
+  .hero.saas-hero{padding-top:40px}
   .saas-hero .eyebrow{margin-bottom:20px}
   .saas-meta{margin-top:22px;font-size:11.5px;letter-spacing:.1em}
   #how{padding-top:56px}
