@@ -4,7 +4,8 @@
 #why,#how,#security{scroll-margin-top:128px}
 
 /* ----- hero ----- */
-.saas-hero{padding-top:96px}
+.saas-hero{position:relative;padding-top:96px}
+.saas-hero > *{position:relative;z-index:1}
 .saas-hero .eyebrow{color:var(--accent);margin-bottom:28px}
 .saas-hero .hero-sub{max-width:660px;text-wrap:balance}
 .saas-meta{
@@ -12,6 +13,30 @@
   font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);
 }
 .saas-meta i{font-style:normal;color:var(--accent);margin:0 .55em}
+
+/* logos of the software being replaced, adrift behind the headline: each one sits in the
+   margin beside the copy (never under it), tilted, and bobs slowly on its own clock */
+.saas-hero > .saas-float{position:absolute;inset:0;z-index:0;pointer-events:none}
+.sf{
+  position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  color:var(--ink);opacity:var(--o,.75);
+  transform:rotate(var(--r,0deg));
+  animation:saas-drift var(--t,9s) ease-in-out var(--d,0s) infinite;
+}
+.sf svg,.sf img{display:block;width:100%;height:auto}
+.sf svg{fill:currentColor}
+@keyframes saas-drift{
+  0%,100%{transform:translate3d(0,0,0) rotate(var(--r,0deg))}
+  50%{transform:translate3d(calc(var(--dx,0px)*var(--k,1)),calc(var(--dy,-12px)*var(--k,1)),0) rotate(calc(var(--r,0deg) + var(--dr,3deg)))}
+}
+.sf--hubspot   {--ink:#FF7A59;--x:5%;   --y:15%;--w:clamp(44px,4.6vw,68px); --r:-10deg;--t:9s;            --dx:6px; --dy:-14px;--dr:4deg}
+.sf--trello    {--ink:#2684FF;--x:89%;  --y:11%;--w:clamp(38px,3.8vw,56px); --r:9deg;  --t:11s;--d:-3s;   --dx:-5px;--dy:-10px;--dr:-4deg}
+.sf--marketo   {--ink:#7A69C4;--x:1.5%; --y:52%;--w:clamp(34px,3.3vw,48px); --r:-6deg; --t:10s;--d:-6s;   --dx:5px; --dy:12px; --dr:3deg;--o:.8}
+.sf--salesforce{              --x:12%;  --y:73%;--w:clamp(76px,7.8vw,116px);--r:7deg;  --t:12s;--d:-2s;   --dx:8px; --dy:-10px;--dr:-3deg;--o:.85}
+.sf--netsuite  {              --x:80.5%;--y:71%;--w:clamp(96px,10vw,150px); --r:-5deg; --t:10.5s;--d:-7s; --dx:-6px;--dy:-12px;--dr:3deg;--o:.6}
+/* the NetSuite wordmark is dark ink on transparent: shown in white on this ground */
+.sf--netsuite img{filter:brightness(0) invert(1)}
+@media (prefers-reduced-motion:reduce){.sf{animation:none}}
 
 /* ----- why switch: the rented column, drawn in ash beside the ember one ----- */
 .duo-box--ash{
@@ -39,14 +64,29 @@
 .saas-alt{margin-top:28px;color:var(--muted-2);font-size:15px}
 .saas-alt a{color:#d6d7d9;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
 .saas-alt a:hover{color:var(--accent)}
+.saas-marks{margin:44px auto 0;max-width:620px;color:var(--muted-2);font-size:12px;line-height:1.6;opacity:.8}
 
 @media (max-width:1100px){
   .saas-split{grid-template-columns:1fr;gap:40px}
   .saas-split-copy h2{max-width:none}
+  /* the headline fills the row here, so the logos move to the bands above and below it */
+  .sf--hubspot{--x:4%;--y:7%}
+  .sf--trello{--x:88%;--y:6%}
+  .sf--marketo{--x:3%;--y:66%}
+  .sf--salesforce{--x:14%;--y:82%}
+  .sf--netsuite{--x:76%;--y:76%}
 }
 @media (max-width:700px){
   .saas-hero{padding-top:64px}
   .saas-hero .eyebrow{margin-bottom:20px}
   .saas-meta{margin-top:22px;font-size:11.5px;letter-spacing:.1em}
   #how{padding-top:56px}
+  /* phone: small marks beside the eyebrow and either side of the stacked buttons, drifting half as far */
+  .saas-float{--k:.5}
+  .sf--hubspot{--x:6%;--y:6.5%;--w:30px}
+  .sf--trello{--x:85%;--y:8%;--w:26px}
+  .sf--marketo{--x:83%;--y:81%;--w:24px}
+  .sf--salesforce{--x:5%;--y:70%;--w:52px}
+  .sf--netsuite{--x:78%;--y:73%;--w:66px}
+  .saas-marks{margin-top:32px}
 }
