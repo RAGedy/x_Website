@@ -280,20 +280,20 @@ html{scroll-behavior:smooth}
 .stat .num{display:block;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.14em;margin-bottom:12px}
 .stat p{font-size:clamp(1.15rem,1.8vw,1.6rem);font-weight:700;line-height:1.22;max-width:300px}
 
-/* two boxes of ticked rows, tinted with the two ends of the fire gradient (the same
-   ember and gold as the neural-net nodes beside them) over the site's panel colour */
+/* two boxes of ticked rows, lightly tinted with the two ends of the fire gradient (the same
+   ember and gold as the neural-net nodes beside them) over a half-transparent panel colour */
 .duo{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:72px;position:relative;z-index:1}
 .duo-box{
   border-radius:20px;padding:26px 28px 10px;color:var(--box-text,#fff);
   background:var(--box-bg);border:1px solid var(--box-line);
 }
 .duo-box--ember{
-  --box-bg:linear-gradient(165deg,rgba(198,70,16,.2),rgba(198,70,16,.05) 72%),var(--panel);
-  --box-line:rgba(248,128,28,.36);--box-ink:#F8801C;--box-rule:rgba(248,128,28,.17);--box-tick:rgba(248,128,28,.12);
+  --box-bg:linear-gradient(165deg,rgba(198,70,16,.12),rgba(198,70,16,.025) 72%),rgba(22,22,24,.45);
+  --box-line:rgba(248,128,28,.26);--box-ink:#F8801C;--box-rule:rgba(248,128,28,.14);--box-tick:rgba(248,128,28,.1);
 }
 .duo-box--gold{
-  --box-bg:linear-gradient(165deg,rgba(255,190,60,.15),rgba(255,190,60,.04) 72%),var(--panel);
-  --box-line:rgba(255,190,60,.34);--box-ink:#FFBE3C;--box-rule:rgba(255,190,60,.15);--box-tick:rgba(255,190,60,.1);
+  --box-bg:linear-gradient(165deg,rgba(255,190,60,.09),rgba(255,190,60,.02) 72%),rgba(22,22,24,.45);
+  --box-line:rgba(255,190,60,.24);--box-ink:#FFBE3C;--box-rule:rgba(255,190,60,.12);--box-tick:rgba(255,190,60,.08);
 }
 .duo-box .eyebrow{color:var(--box-ink);margin-bottom:16px}
 .duo-box ul{list-style:none}
