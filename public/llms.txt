@@ -4,7 +4,8 @@
 
 ## How we help
 
-- **Initial Consult** (free): we scope what your company needs — workflows, tools, platforms — then implement.
+- **Initial Consult** (free): we show you what SaaS you can eliminate, what you can automate, and how you can generate more revenue.
+- **Build**: our engineers do the actual work — automating your workflows, wiring in your tools, and delivering it all as Hearth and custom software.
 - **FDE on Retainer**: a forward-deployed engineer stays on retainer and keeps your stack cutting edge, proactively.
 - **Hearth Software Suite**: our own tools for tabular data (Hearth Tables), documents (Hearth Docs), automated workflows (Hearth Flows), knowledge retrieval (Hearth Recall), a shared agent memory layer (Hearth Hivemind / Hearth Brain), and monitoring (Hearth Watch).
 
