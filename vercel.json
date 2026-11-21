@@ -25,6 +25,10 @@
         }
       ],
       "destination": "/robots-app.txt"
+    },
+    {
+      "source": "/subcat",
+      "destination": "/subcat.png"
     }
   ],
   "redirects": [
