@@ -9,9 +9,8 @@
 #why,#how,#security{scroll-margin-top:128px}
 
 /* ----- hero ----- */
-.hero.saas-hero{position:relative;padding-top:59px}
+.hero.saas-hero{position:relative;padding-top:67px}
 .saas-hero > *{position:relative;z-index:1}
-.saas-hero .eyebrow{color:var(--accent);margin-bottom:28px}
 .saas-hero .hero-sub{max-width:660px;text-wrap:balance}
 .saas-meta{
   margin-top:26px;text-align:center;
@@ -82,11 +81,10 @@
   .sf--netsuite{--x:76%;--y:76%}
 }
 @media (max-width:700px){
-  .hero.saas-hero{padding-top:40px}
-  .saas-hero .eyebrow{margin-bottom:20px}
+  .hero.saas-hero{padding-top:46px}
   .saas-meta{margin-top:22px;font-size:11.5px;letter-spacing:.1em}
   #how{padding-top:56px}
-  /* phone: small marks beside the eyebrow and either side of the stacked buttons, drifting half as far */
+  /* phone: small marks above the headline and either side of the stacked buttons, drifting half as far */
   .saas-float{--k:.5}
   .sf--hubspot{--x:6%;--y:6.5%;--w:30px}
   .sf--trello{--x:85%;--y:8%;--w:26px}
